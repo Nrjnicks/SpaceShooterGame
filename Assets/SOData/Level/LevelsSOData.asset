@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48780a0a2d36f3438df9578448f2877, type: 3}
+  m_Name: LevelsSOData
+  m_EditorClassIdentifier: 
+  winCondition: {fileID: 11400000, guid: 324a84795e08c9244ae9cf39fa7e2442, type: 2}
+  totalNumOfLevels: 6
+  levelDatas:
+  - winCondition: {fileID: 0}
+    sequenceSpawnFrequency: 5
+    enemySpawnSequence:
+    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 1
+    - aIPlaneSOData: {fileID: 11400000, guid: c68661900f2af984987416c45a2e68d5, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 2
+    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 1
+  - winCondition: {fileID: 0}
+    sequenceSpawnFrequency: 5
+    enemySpawnSequence:
+    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 1
+  - winCondition: {fileID: 0}
+    sequenceSpawnFrequency: 5
+    enemySpawnSequence:
+    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 1
+    - aIPlaneSOData: {fileID: 11400000, guid: c68661900f2af984987416c45a2e68d5, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 2
+    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 1
+  - winCondition: {fileID: 0}
+    sequenceSpawnFrequency: 5
+    enemySpawnSequence:
+    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 1
+    - aIPlaneSOData: {fileID: 11400000, guid: c68661900f2af984987416c45a2e68d5, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 2
+    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 1
+  - winCondition: {fileID: 0}
+    sequenceSpawnFrequency: 5
+    enemySpawnSequence:
+    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 1
+    - aIPlaneSOData: {fileID: 11400000, guid: c68661900f2af984987416c45a2e68d5, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 2
+    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 1
+  - winCondition: {fileID: 0}
+    sequenceSpawnFrequency: 5
+    enemySpawnSequence:
+    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 1
+    - aIPlaneSOData: {fileID: 11400000, guid: c68661900f2af984987416c45a2e68d5, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 2
+    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
+      numberOfSpawns: 3
+      spawnFrequency: 1

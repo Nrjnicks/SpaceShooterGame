@@ -1,0 +1,9 @@
+.vscode/
+Library/
+obj/
+Packages/
+Temp/
+/
+1942Clone.sln
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
