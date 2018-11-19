@@ -8,12 +8,11 @@ public class GameManager : MonoBehaviour {
 	public LevelManager levelManager;
 	// Use this for initialization
 	void Start () {
-		levelManager.InitParam(scoreManager);
 		StartGame();
 	}
 
 	void StartGame(){
-		levelManager.SetUpLevel();
+		levelManager.InitParam(scoreManager);
 	}
 	
 	// Update is called once per frame

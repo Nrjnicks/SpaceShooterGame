@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 223328965418670032}
   - component: {fileID: 114716689209051322}
   - component: {fileID: 114082971392782506}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,8 +91,7 @@ GameObject:
   - component: {fileID: 224210236321186898}
   - component: {fileID: 222460698684148312}
   - component: {fileID: 114840143997270518}
-  - component: {fileID: 114880878585485044}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +109,7 @@ GameObject:
   - component: {fileID: 222793070936295648}
   - component: {fileID: 114135366417824666}
   - component: {fileID: 114039005229270558}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: HealthBackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,15 +149,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1428283105278556}
-  m_LocalRotation: {x: -0, y: -0, z: 0.9201825, w: 0.39148957}
-  m_LocalPosition: {x: 9.361815, y: 3.5849242, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4152083450027628}
   - {fileID: 4140322502007860}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 133.906}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50452917716837458
 Rigidbody2D:
   serializedVersion: 4
@@ -251,7 +250,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: db3f17eb297efab4bb73d1d21ff7fa74, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 26259876dfb922f4e8fb09b817d72743, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -329,14 +328,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.14117648, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: db3f17eb297efab4bb73d1d21ff7fa74, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 26259876dfb922f4e8fb09b817d72743, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -344,18 +343,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114880878585485044
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1842709768386926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611409235d3d39341907f05d8b3f6462, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 114840143997270518}
 --- !u!114 &114996236081442642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,7 +354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb7c3874cd7fa8489b77df23df13248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlaneData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
   healthModel: {fileID: 114435212668122166}
 --- !u!212 &212149770606320998
 SpriteRenderer:
@@ -405,7 +391,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bd33c44d185dd1b40bb07ccc2a45e52f, type: 3}
-  m_Color: {r: 1, g: 0.84719735, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.96657693, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -465,7 +451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224210236321186898
@@ -483,7 +469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224447776473099294
@@ -492,7 +478,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1452589203056752}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -502,6 +488,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.657}
+  m_AnchoredPosition: {x: 0, y: -0.6}
   m_SizeDelta: {x: 1, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}

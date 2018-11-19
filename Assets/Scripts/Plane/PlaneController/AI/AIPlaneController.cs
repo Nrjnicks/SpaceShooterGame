@@ -13,12 +13,13 @@ public class AIPlaneController : APlaneContoller {
 
 	AIPlaneStrategy currentStrategy;
 
-	float errorRange = 0.1f;
-
-	public override void InitControls(){
+	bool forceEvade;
+	public override void InitControls(LevelManager levelManager){
 		approachPlaneStrategy = new AIApproachPlaneStrategy();
 		attackPlaneStrategy = new AIAttackPlaneStrategy();
 		evadePlaneStrategy = new AIEvadePlaneStrategy();
+		levelManager.onLevelStart += OnLevelStart;
+		levelManager.onLevelComplete += OnLevelComplete;
 	}
 
 	public override void UpdateControls(Plane plane){
@@ -30,17 +31,17 @@ public class AIPlaneController : APlaneContoller {
 	}
 
 	public virtual bool ConditionToForceDie(Plane plane){
-		return ((AIPlaneSOData)plane.PlaneData).maxActiveTimeOnScreen<plane.ActiveTime 
+		return (((AIPlaneSOData)plane.PlaneData).maxActiveTimeOnScreen<plane.ActiveTime ||forceEvade)
 					&& WorldSpaceGameBoundary.Instance.IsPointOutsideCameraView(plane.transform.position);
 	}
 
 	void UpdateStrategy(Plane plane){
 		
-		if(plane.IsAttackInCoolDown || ((AIPlaneSOData)plane.PlaneData).maxActiveTimeOnScreen<plane.ActiveTime){
+		if(evadePlaneStrategy.ConditionToSwitch(plane, playerPlaneT)||forceEvade){
 			currentStrategy = evadePlaneStrategy;
 		}
 		else{			
-			if(Vector2.Distance(plane.transform.position,playerPlaneT.transform.position) > ((AIPlaneSOData)plane.PlaneData).minDistanceToAttack)
+			if(approachPlaneStrategy.ConditionToSwitch(plane, playerPlaneT))
 				currentStrategy = approachPlaneStrategy;
 			else
 				currentStrategy = attackPlaneStrategy;
@@ -52,8 +53,20 @@ public class AIPlaneController : APlaneContoller {
 		return plane.transform.up;
 	}
 
+	void OnLevelStart(int level){
+		SetForceEvade(false);
+	}
+	void OnLevelComplete(int level){
+		SetForceEvade(true);
+	}
+
+	void SetForceEvade(bool evade){
+		forceEvade = evade;
+	}
+
 	
 
+	float errorRange = 0.1f;
 	protected override bool ShouldOrNotMoveForward(){
 		if(currentStrategy.GetNormalizedMoveDirection().y > +errorRange)
 			return true;

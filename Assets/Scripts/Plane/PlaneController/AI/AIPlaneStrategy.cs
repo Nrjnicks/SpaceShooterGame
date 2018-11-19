@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIPlaneStrategy {
+public abstract class AIPlaneStrategy {
 	protected Vector2 moveTowards;
 	public virtual void UpdateMoveDirection(Transform aIPlaneT, Transform playerPlaneT){
 		moveTowards = Vector2.zero;
@@ -12,6 +12,10 @@ public class AIPlaneStrategy {
 		return moveTowards.normalized;
 	}
 	public virtual bool ShouldOrNotFire(Plane aIPlaneT, Transform playerPlaneT){
+		return false;
+	}
+
+	public virtual bool ConditionToSwitch(Plane aIPlaneT, Transform playerPlaneT){
 		return false;
 	}
 }

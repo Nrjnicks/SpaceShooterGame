@@ -10,7 +10,7 @@ public abstract class APlaneContoller: MonoBehaviour {
 	
 	public BulletPool bulletPool;
 
-	public virtual void InitControls(){
+	public virtual void InitControls(LevelManager levelManager){
 
 	}
 	

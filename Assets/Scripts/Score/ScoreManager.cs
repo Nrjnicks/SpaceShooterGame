@@ -9,12 +9,13 @@ public class ScoreManager : MonoBehaviour {
 	Plane playerPlane;
 	int enemiesKilled;
 
-	public void InitParam(Plane playerPlane){
+	public void InitParam(LevelManager levelManager){
 		score = 0;
 		enemiesKilled = 0;
-		this.playerPlane = playerPlane;
+		this.playerPlane = levelManager.playerPlane;
+		levelManager.onLevelStart += OnLevelStart;
+		levelManager.onLevelComplete += OnLevelComplete;
 		StartCoroutine(CalculateScore());
-
 	}
 
 	public int GetEnemiesKilledCount(){
@@ -29,6 +30,13 @@ public class ScoreManager : MonoBehaviour {
 		enemiesKilled++;
 		score+=50;
 		if(onScoreChange!=null) onScoreChange(score);
+	}
+
+	void OnLevelStart(int level){
+		enemiesKilled=0;
+	}
+	void OnLevelComplete(int level){
+		score+=1000;
 	}
 
 	IEnumerator CalculateScore(){

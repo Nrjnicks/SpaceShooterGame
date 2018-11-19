@@ -13,4 +13,8 @@ public class AIAttackPlaneStrategy : AIPlaneStrategy {
 			return true; 
 		return false;
 	}
+	public override bool ConditionToSwitch(Plane aIPlaneT, Transform playerPlaneT){
+		if(!aIPlaneT.IsAttackInCoolDown) return true;
+		return false;
+	}
 }

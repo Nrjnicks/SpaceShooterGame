@@ -11,8 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48780a0a2d36f3438df9578448f2877, type: 3}
   m_Name: LevelsSOData
   m_EditorClassIdentifier: 
+  isCommonWinCondition: 1
   winCondition: {fileID: 11400000, guid: 324a84795e08c9244ae9cf39fa7e2442, type: 2}
   totalNumOfLevels: 6
+  timeDifferenceBetweenLevels: 5
   levelDatas:
   - winCondition: {fileID: 0}
     sequenceSpawnFrequency: 5

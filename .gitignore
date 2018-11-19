@@ -4,6 +4,6 @@ obj/
 Packages/
 Temp/
 /
-1942Clone.sln
+*.sln
 Assembly-CSharp.csproj
 Assembly-CSharp-Editor.csproj

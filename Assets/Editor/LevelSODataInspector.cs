@@ -10,25 +10,30 @@ public class LevelSODataInspector : Editor {
 	SerializedProperty winCondition;
 	SerializedProperty numOfLevel;
 	SerializedProperty levelDatas;
-	bool commonWinCondition;
+	SerializedProperty commonWinCondition;
+	SerializedProperty timeDiffBwLevel;
 	void OnEnable()
     {
         winCondition = serializedObject.FindProperty("winCondition");
         numOfLevel = serializedObject.FindProperty("totalNumOfLevels");
         levelDatas = serializedObject.FindProperty("levelDatas");
+		commonWinCondition = serializedObject.FindProperty("isCommonWinCondition");
+		timeDiffBwLevel = serializedObject.FindProperty("timeDifferenceBetweenLevels");
     }
 	public override void OnInspectorGUI(){
 		serializedObject.Update();
 		
 		EditorGUILayout.Space();
-		commonWinCondition = EditorGUILayout.Toggle("Common Win Condition for All Levels?", commonWinCondition);
-		if(commonWinCondition){
+		commonWinCondition.boolValue = EditorGUILayout.Toggle("Common Win Condition for All Levels?", commonWinCondition.boolValue);
+		if(commonWinCondition.boolValue){
 			EditorGUILayout.PropertyField(winCondition, new GUIContent("Common Win Condition"));
 			EditorGUILayout.Space();
 		}
 		EditorGUILayout.Space();
         EditorGUILayout.PropertyField(numOfLevel);
 		if(numOfLevel.intValue>0){
+			EditorGUILayout.Space();
+			timeDiffBwLevel.floatValue = EditorGUILayout.FloatField("Time Between Consecutive Levels", timeDiffBwLevel.floatValue);
 			EditorGUILayout.Space();
 			EditorGUILayout.LabelField("Level Datas", EditorStyles.boldLabel);
 			levelDatas.arraySize = numOfLevel.intValue;	
@@ -49,8 +54,8 @@ public class LevelSODataInspector : Editor {
 					
 				if(inList.isExpanded){
 					EditorGUI.indentLevel += 1;
-					if(!commonWinCondition){
-						winCond = list.GetArrayElementAtIndex(i).FindPropertyRelative("winCondition");
+					winCond = list.GetArrayElementAtIndex(i).FindPropertyRelative("winCondition");
+					if(!commonWinCondition.boolValue){						
 						EditorGUILayout.PropertyField( winCond, new GUIContent("Win condition for this level"));
 						EditorGUILayout.Space();
 					}
