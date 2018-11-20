@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: AIPlaneSOData hard
   m_EditorClassIdentifier: 
   plane: {fileID: 0}
+  planeName: Master Plane
   Speed: 4
   maxHealth: 40
   attackCooldown: 0.5
@@ -20,3 +21,4 @@ MonoBehaviour:
   minDistanceToAttack: 10
   FOVToAttack: 5
   maxActiveTimeOnScreen: 15
+  scoreBonusOnKill: 100

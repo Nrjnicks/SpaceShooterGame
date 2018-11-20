@@ -13,6 +13,9 @@ public abstract class APlaneContoller: MonoBehaviour {
 	public virtual void InitControls(LevelManager levelManager){
 
 	}
+	public virtual void ResetControls(LevelManager levelManager){
+
+	}
 	
 	public virtual void UpdateControls(Plane plane){
 		Move(plane, GetMoveDeltaPosition(plane));

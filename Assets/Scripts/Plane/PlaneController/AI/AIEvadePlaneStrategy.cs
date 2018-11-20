@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AIEvadePlaneStrategy : AIPlaneStrategy {
 	
-	public override void UpdateMoveDirection(Transform aIPlaneT, Transform playerPlaneT){
-		moveTowards = aIPlaneT.position - playerPlaneT.position;
+	public override void UpdateMoveDirection(AIPlane aIPlane){
+		moveTowards = aIPlane.transform.position - aIPlane.enemyPlane.transform.position;
 	}
-	public override bool ConditionToSwitch(Plane aIPlaneT, Transform playerPlaneT){
-		if(aIPlaneT.IsAttackInCoolDown || ((AIPlaneSOData)aIPlaneT.PlaneData).maxActiveTimeOnScreen<aIPlaneT.ActiveTime) return true;
+	public override bool ConditionToSwitch(AIPlane aIPlane){
+		if(aIPlane.IsAttackInCoolDown || ((AIPlaneSOData)aIPlane.PlaneData).maxActiveTimeOnScreen<aIPlane.ActiveTime) return true;
 		return false;
 	}
 }

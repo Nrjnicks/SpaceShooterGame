@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AIPlaneController : APlaneContoller {
-	public Transform playerPlaneT;
+	Plane playerPlane;
+	AIPlane currentAIPlane;
 
 	//Strategies---------->
 	AIApproachPlaneStrategy approachPlaneStrategy;
@@ -14,34 +15,48 @@ public class AIPlaneController : APlaneContoller {
 	AIPlaneStrategy currentStrategy;
 
 	bool forceEvade;
-	public override void InitControls(LevelManager levelManager){
+
+	void Start(){		
 		approachPlaneStrategy = new AIApproachPlaneStrategy();
 		attackPlaneStrategy = new AIAttackPlaneStrategy();
 		evadePlaneStrategy = new AIEvadePlaneStrategy();
+	}
+	public override void InitControls(LevelManager levelManager){
 		levelManager.onLevelStart += OnLevelStart;
 		levelManager.onLevelComplete += OnLevelComplete;
+		playerPlane = levelManager.playerPlane;
+	}
+
+	public Plane GetEnemyPlane(){
+		return playerPlane;
+	}
+
+	public override void ResetControls(LevelManager levelManager){
+		levelManager.onLevelStart -= OnLevelStart;
+		levelManager.onLevelComplete -= OnLevelComplete;
 	}
 
 	public override void UpdateControls(Plane plane){
-		if(ConditionToForceDie(plane)) plane.DisablePlane();
+		currentAIPlane = (AIPlane)plane;
+		if(ConditionToForceDie(currentAIPlane)) plane.DisablePlane();
 		//update strategy here
-		UpdateStrategy(plane);
-		currentStrategy.UpdateMoveDirection(plane.transform, playerPlaneT);
+		UpdateStrategy(currentAIPlane);
+		currentStrategy.UpdateMoveDirection(currentAIPlane);
 		base.UpdateControls(plane);
 	}
 
-	public virtual bool ConditionToForceDie(Plane plane){
-		return (((AIPlaneSOData)plane.PlaneData).maxActiveTimeOnScreen<plane.ActiveTime ||forceEvade)
+	public virtual bool ConditionToForceDie(AIPlane plane){
+		return (((AIPlaneSOData)plane.PlaneData).maxActiveTimeOnScreen< plane.ActiveTime ||forceEvade)
 					&& WorldSpaceGameBoundary.Instance.IsPointOutsideCameraView(plane.transform.position);
 	}
 
-	void UpdateStrategy(Plane plane){
+	void UpdateStrategy(AIPlane aiPlane){
 		
-		if(evadePlaneStrategy.ConditionToSwitch(plane, playerPlaneT)||forceEvade){
+		if(evadePlaneStrategy.ConditionToSwitch(aiPlane)||forceEvade){
 			currentStrategy = evadePlaneStrategy;
 		}
 		else{			
-			if(approachPlaneStrategy.ConditionToSwitch(plane, playerPlaneT))
+			if(approachPlaneStrategy.ConditionToSwitch(aiPlane))
 				currentStrategy = approachPlaneStrategy;
 			else
 				currentStrategy = attackPlaneStrategy;
@@ -88,7 +103,7 @@ public class AIPlaneController : APlaneContoller {
 		return false;
 	}
 	protected override bool ShouldOrNotFire(Plane plane){
-		if(currentStrategy.ShouldOrNotFire(plane, playerPlaneT))
+		if(currentStrategy.ShouldOrNotFire((AIPlane)plane))
 			return true;
 		return false;
 	}

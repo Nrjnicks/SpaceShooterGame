@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: AIPlaneSOData easy
   m_EditorClassIdentifier: 
   plane: {fileID: 0}
+  planeName: Minion Plane
   Speed: 2
   maxHealth: 10
   attackCooldown: 1
@@ -20,3 +21,4 @@ MonoBehaviour:
   minDistanceToAttack: 4
   FOVToAttack: 15
   maxActiveTimeOnScreen: 10
+  scoreBonusOnKill: 100

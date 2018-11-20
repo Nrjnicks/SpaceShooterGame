@@ -26,6 +26,13 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : Component {
 			ObjPool.Add(temp);
 		}
 		nextUnused = 0;
+	}	
+
+	public virtual void DisableAllPoolObjects(){
+		if(ObjPool == null) return;
+		foreach(T obj in ObjPool){
+			obj.gameObject.SetActive(false);
+		}
 	}
 
 	protected T GetNextUnusedPooledObject(){

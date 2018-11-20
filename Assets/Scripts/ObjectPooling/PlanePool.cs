@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PlanePool : ObjectPool<Plane> {
 
-	public Plane SpawnPlane(PlaneSOData planeSOData, APlaneContoller planeContoller, Vector2 position){
+	public Plane SpawnPlane(PlaneSOData planeSOData, APlaneContoller planeContoller, Transform spawnPosRot){
 		Plane plane= GetNextUnusedPooledObject();
-		plane.InitPlane(planeSOData, planeContoller);
-		plane.transform.position = position;
-		plane.gameObject.SetActive(true);
+		plane.InitPlane(planeSOData, planeContoller,spawnPosRot);
         return plane;
 	}
 

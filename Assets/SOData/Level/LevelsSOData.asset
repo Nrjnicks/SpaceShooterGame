@@ -14,7 +14,8 @@ MonoBehaviour:
   isCommonWinCondition: 1
   winCondition: {fileID: 11400000, guid: 324a84795e08c9244ae9cf39fa7e2442, type: 2}
   totalNumOfLevels: 6
-  timeDifferenceBetweenLevels: 5
+  timeDifferenceBetweenLevels: 4
+  checkWinConditionFrequency: 0.5
   levelDatas:
   - winCondition: {fileID: 0}
     sequenceSpawnFrequency: 5

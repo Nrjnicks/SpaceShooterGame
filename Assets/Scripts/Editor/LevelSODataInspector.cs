@@ -12,6 +12,7 @@ public class LevelSODataInspector : Editor {
 	SerializedProperty levelDatas;
 	SerializedProperty commonWinCondition;
 	SerializedProperty timeDiffBwLevel;
+	SerializedProperty winCondCheckFrq;
 	void OnEnable()
     {
         winCondition = serializedObject.FindProperty("winCondition");
@@ -19,6 +20,7 @@ public class LevelSODataInspector : Editor {
         levelDatas = serializedObject.FindProperty("levelDatas");
 		commonWinCondition = serializedObject.FindProperty("isCommonWinCondition");
 		timeDiffBwLevel = serializedObject.FindProperty("timeDifferenceBetweenLevels");
+		winCondCheckFrq = serializedObject.FindProperty("checkWinConditionFrequency");
     }
 	public override void OnInspectorGUI(){
 		serializedObject.Update();
@@ -29,6 +31,8 @@ public class LevelSODataInspector : Editor {
 			EditorGUILayout.PropertyField(winCondition, new GUIContent("Common Win Condition"));
 			EditorGUILayout.Space();
 		}
+		EditorGUILayout.Space();
+		winCondCheckFrq.floatValue = EditorGUILayout.Slider("Check Win Condition Frequency (sec)", winCondCheckFrq.floatValue,0.02f,30);
 		EditorGUILayout.Space();
         EditorGUILayout.PropertyField(numOfLevel);
 		if(numOfLevel.intValue>0){

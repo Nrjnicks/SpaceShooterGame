@@ -22,6 +22,7 @@ public class LevelsSOData : ScriptableObject {
 	[SerializeField] AWinCondition winCondition;
 	public int totalNumOfLevels = 5;
 	public float timeDifferenceBetweenLevels = 5;
+	[Range(0.02f,30)]public float checkWinConditionFrequency = 0.5f;
 	public List<LevelData> levelDatas;
 
 	public LevelData GetLevelData(int level){

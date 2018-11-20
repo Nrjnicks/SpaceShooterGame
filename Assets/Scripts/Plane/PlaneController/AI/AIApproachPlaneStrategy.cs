@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AIApproachPlaneStrategy : AIPlaneStrategy {
 	
-	public override void UpdateMoveDirection(Transform aIPlaneT, Transform playerPlaneT){
-		moveTowards = playerPlaneT.position - aIPlaneT.position;
+	public override void UpdateMoveDirection(AIPlane aIPlane){
+		moveTowards = aIPlane.enemyPlane.transform.position - aIPlane.transform.position;
 	}
-	public override bool ConditionToSwitch(Plane aIPlaneT, Transform playerPlaneT){
-		if(Vector2.Distance(aIPlaneT.transform.position,playerPlaneT.transform.position) > ((AIPlaneSOData)aIPlaneT.PlaneData).minDistanceToAttack) return true;
+	public override bool ConditionToSwitch(AIPlane aIPlane){
+		if(Vector2.Distance(aIPlane.transform.position,aIPlane.enemyPlane.transform.position) > ((AIPlaneSOData)aIPlane.PlaneData).minDistanceToAttack) return true;
 		return false;
 	}
 }

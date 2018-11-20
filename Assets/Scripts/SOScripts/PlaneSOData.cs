@@ -7,6 +7,7 @@ public class PlaneSOData : ScriptableObject {
 	[Header("Plane Prefab for this data")]
 	public GameObject plane;
 	[Header("Generic Plane Data")]
+	public string planeName = "Plane";
 	public float Speed = 5;//Relative Thrust	
 	public float maxHealth = 100;
 	public float attackCooldown = 0.5f;

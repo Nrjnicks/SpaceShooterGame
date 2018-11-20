@@ -9,6 +9,11 @@ public class HealthBarBlink : MonoBehaviour {
 	[SerializeField] Material blinkMat;
 	// Use this for initialization
 	void Start () {
+		blinkMat = new Material(blinkMat);//new instance for individuality
+		blinkMat.SetColor("_Color", healthBar.color);
+	}
+
+	void OnEnable(){		
 		healthController.onHealthChange+=OnHealthChange;
 	}
 	
@@ -16,9 +21,13 @@ public class HealthBarBlink : MonoBehaviour {
 		if(currentHealth/maxHealth<percToStartBlink)
 		{
 			healthController.onHealthChange-=OnHealthChange;
-			healthBar.material = new Material(blinkMat);
-			healthBar.material.SetColor("_Color", healthBar.color);
+			healthBar.material = blinkMat;
 			healthBar.material.SetFloat("_Blink", 1);
 		}
+	}
+
+	void OnDisable(){		
+		healthController.onHealthChange-=OnHealthChange;
+		blinkMat.SetFloat("_Blink", 0);
 	}
 }

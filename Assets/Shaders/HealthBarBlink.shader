@@ -6,7 +6,7 @@
 		[Toggle]_Blink ("Start Blinking", float) = 0
 		_Color ("Normal Color", Color) = (1,1,1,1)
 		_BlinkColor ("Blink Color", Color) = (0,0,0,1)
-		_Speed("Blink Speed", Range(0.0, 10.0)) = 5
+		_Speed("Blink Speed", Range(0.0, 20.0)) = 5
 	}
 	SubShader
 	{

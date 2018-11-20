@@ -6,21 +6,22 @@ public class LevelManager : MonoBehaviour {
 	
 
 	public LevelsSOData levelsSOData;
-	int currentLevel;
 	public PlayerPlaneController playerPlaneController;
 	public AIPlaneController aIPlaneController;
 	public AIPlaneSpawnManager aIPlaneSpawnManager;
 	public Plane playerPlane;
 	public PlaneSOData playerPlaneData;
-	public HUDController hUDController;
 	
-	ScoreManager scoreManager;
+	public ScoreController scoreManager;
+	int currentLevel;
 	LevelData levelData;
-	public void InitParam(ScoreManager scoreManager){
-		currentLevel = 1;
-		this.scoreManager = scoreManager;		
-		this.scoreManager.InitParam(this);
-		hUDController.InitParam(scoreManager, playerPlane);
+	GameManager gameManager;
+	
+	public void InitParam(GameManager gameManager){
+		this.gameManager = gameManager;
+		currentLevel = 1;		
+		scoreManager.InitParam(this);
+		gameManager.onGameFinished+=scoreManager.OnGameFinished;
 		playerPlaneController.InitControls(this);
 		aIPlaneController.InitControls(this);
 
@@ -28,13 +29,26 @@ public class LevelManager : MonoBehaviour {
 		SetUpLevel(currentLevel);
 	}
 
+	public void ResetParam(){
+		scoreManager.ResetParam(this);
+		playerPlaneController.ResetControls(this);
+		aIPlaneController.ResetControls(this);
+		aIPlaneSpawnManager.DisableAllPlanes();
+	}
+
 	void StartNextLevel(){		
 		IncreaseLevelCount();
 		if(currentLevel>=levelsSOData.totalNumOfLevels){
 			Debug.Log("Game Done. Congrats!");
+			gameManager.OnGameFinished(true);
+			ResetParam();
 			return;
 		}
 		SetUpLevel(currentLevel);
+	}
+
+	public LevelData GetCurrentLevelData(){
+		return levelData;
 	}
 
 	public void SetUpLevel(int level){		
@@ -50,12 +64,14 @@ public class LevelManager : MonoBehaviour {
 	IEnumerator StartLevelAfter(float sec = 0){	
 		yield return new WaitForSeconds(sec);
 		if(onLevelStart!=null) onLevelStart(currentLevel);
+		StartCoroutine(CheckWinCondition());
 		yield return StartCoroutine(SpawnAIs());
 	}
 
 	IEnumerator SpawnPlayers(){
 		// Plane plane = planePool.GetNextUnusedPooledObject();
 		playerPlane.InitPlane(playerPlaneData, playerPlaneController);
+		playerPlane.onDeath+=OnPlayerDead;
 		yield break;
 	}
 
@@ -64,16 +80,29 @@ public class LevelManager : MonoBehaviour {
 			yield return aISpawnCoroutine = StartCoroutine(aIPlaneSpawnManager.SpawnPlanesForLevel(aIPlaneController, levelData, OnEnemyKilled));
 		}
 	}
-	public void OnEnemyKilled(){
-		scoreManager.OnEnemyKilled();
-		if(levelData.winCondition.ConditionToWin(scoreManager)){
-			OnLevelComplete();
-		}
+
+	void OnPlayerDead(PlaneSOData planeData){
+		gameManager.OnGameFinished(false);
+		ResetParam();
 	}
 
-	void OnLevelComplete(){
+	public void OnEnemyKilled(PlaneSOData planeData){
+		scoreManager.OnEnemyKilled((AIPlaneSOData)planeData);
+		// if(levelData.winCondition.ConditionToWin(scoreManager)){
+		// 	LevelComplete();
+		// }
+	}
+	
+
+	IEnumerator CheckWinCondition(){
+		while(!levelData.winCondition.ConditionToWin(scoreManager)) yield return new WaitForSeconds(levelsSOData.checkWinConditionFrequency);
+		LevelComplete();
+		
+	}
+
+	void LevelComplete(){
 		if(onLevelComplete!=null) onLevelComplete(currentLevel);
-		Debug.Log ("Level WON");
+		// Debug.Log ("Level WON "+currentLevel);
 		StopCoroutine(aISpawnCoroutine);
 		StartNextLevel();
 	}

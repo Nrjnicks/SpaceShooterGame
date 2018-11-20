@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c7fb641e93602846a5aa494e57c0d59, type: 3}
-  m_Name: EnemyKilledWinCondition
+  m_Script: {fileID: 11500000, guid: 781c097e118411c4187f77dc1a6d8f1d, type: 3}
+  m_Name: LevelScoreWinCondition
   m_EditorClassIdentifier: 
-  EnemyToKill: 3
+  minScoreToLevelComplete: 900

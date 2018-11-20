@@ -10,13 +10,13 @@ public class AIPlaneSpawnManager : MonoBehaviour {
 
 	Plane tempPlane;
 
-	public IEnumerator SpawnPlanesForLevel(APlaneContoller planeContoller, LevelData levelData, System.Action onDeathCallback){		
+	public IEnumerator SpawnPlanesForLevel(APlaneContoller planeContoller, LevelData levelData, System.Action<PlaneSOData> onDeathCallback){		
 		currentSpawnIndex = 0;
 		foreach(NoOfAIPerType aIPerType in levelData.enemySpawnSequence)
 		{
 			for (int i = 0; i < aIPerType.numberOfSpawns; i++)
 			{			
-				tempPlane = planePool.SpawnPlane(aIPerType.aIPlaneSOData, planeContoller, spawnPositions[currentSpawnIndex].position);
+				tempPlane = planePool.SpawnPlane(aIPerType.aIPlaneSOData, planeContoller, spawnPositions[currentSpawnIndex]);
 				tempPlane.onDeath+=onDeathCallback;
 				currentSpawnIndex = (currentSpawnIndex+1)%spawnPositions.Length;
 				yield return new WaitForSeconds(aIPerType.spawnFrequency);
@@ -24,4 +24,9 @@ public class AIPlaneSpawnManager : MonoBehaviour {
 			yield return new WaitForSeconds(levelData.sequenceSpawnFrequency);
 		}
 	}
+
+	public void DisableAllPlanes(){
+		planePool.DisableAllPoolObjects();
+	}
+	
 }
