@@ -54,7 +54,7 @@ public class ScoreModel : MonoBehaviour {
 	}
 	
 	void SetInitialHighScores(HighScores highScores){
-		string[] randomNames = {"Is this the real life?", "Is this just fantasy?","Caught in a landslide","no escape from reality", "Please Hire MEEE!!!"};
+		string[] randomNames = {"Is this the real life?", "Is this just fantasy?","Caught in a landslide","no escape from reality", "Please Hire MEE!!!"};
 		for (int i = 0; i < maxRankToSave; i++)
 		{
 			highScores.highScoresList.Add(new HighScoreInformation(randomNames[i],(maxRankToSave-i)*1000));

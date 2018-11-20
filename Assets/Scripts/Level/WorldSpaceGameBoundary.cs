@@ -48,12 +48,15 @@ public class WorldSpaceGameBoundary : MonoBehaviour {
 	
 
 	#if UNITY_EDITOR
-	Color inColor = new Color(1, 0, 0, 0.5f);
-	Color outColor = new Color(0, 1, 0, 0.5f);
+	Color inColor = new Color(0, 1, 0, 0.3f);
+	Color midColor = new Color(1, 1, 0, 0.3f);
+	Color outColor = new Color(1, 0, 0, 0.3f);
 	void OnDrawGizmosSelected()
     {
 		Gizmos.color = outColor;
         Gizmos.DrawCube(centre, boundSize + extraSpace);
+		Gizmos.color = midColor;
+        Gizmos.DrawCube(centre, boundSize + extraSpace*0.5f);
 		Gizmos.color = inColor;
         Gizmos.DrawCube(centre, boundSize);
     }
