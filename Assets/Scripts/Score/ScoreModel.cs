@@ -25,29 +25,39 @@ public class ScoreModel : MonoBehaviour {
 	public int maxRankToSave = 5;
 	HighScores highScores;
 	SaveLoad saveLoad;
-	void Start(){
-		saveLoad = new SaveLoad();
-	}
-	// Use this for initialization
+	
 	public List<HighScoreInformation> GetHighScoreList() {
+		if(highScores==null)
+			UpdateHighScores();
+		return highScores.highScoresList;
+	}
+
+	void UpdateHighScores(){		
+		if(saveLoad == null) 
+			saveLoad = new SaveLoad();
 		highScores = saveLoad.LoadData<HighScores>();
 		if(highScores == null){
 			highScores = new HighScores();			
 			SetInitialHighScores(highScores);
 			SaveHighScoreList(highScores.highScoresList);
 		}
-		return highScores.highScoresList;
 	}
 
 	public void SaveHighScoreList(List<HighScoreInformation> highScoresList){
+		if(saveLoad == null) 
+			saveLoad = new SaveLoad();
+			
+		if(highScores==null)
+			highScores = new HighScores();
 		this.highScores.highScoresList = highScoresList;
 		saveLoad.SaveData<HighScores>(highScores);
 	}
 	
 	void SetInitialHighScores(HighScores highScores){
-		for (int i = maxRankToSave; i > 0; i--)
+		string[] randomNames = {"Is this the real life?", "Is this just fantasy?","Caught in a landslide","no escape from reality", "Please Hire MEEE!!!"};
+		for (int i = 0; i < maxRankToSave; i++)
 		{
-			highScores.highScoresList.Add(new HighScoreInformation(i.ToString(),i*000));
+			highScores.highScoresList.Add(new HighScoreInformation(randomNames[i],(maxRankToSave-i)*1000));
 		}
 	}
 }
