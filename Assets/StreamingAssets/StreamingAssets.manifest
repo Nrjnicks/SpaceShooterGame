@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 3326330606
+CRC: 2450258482
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: coreelements
+      Name: mechanics/coreelements
       Dependencies: {}

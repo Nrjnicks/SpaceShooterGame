@@ -4,17 +4,22 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 public class WorldSpaceGameBoundary : MonoBehaviour {
-	public static WorldSpaceGameBoundary Instance{get; private set;}//Go for Dependency injection
+	static WorldSpaceGameBoundary instance;
+	public static WorldSpaceGameBoundary Instance{
+		get {if(instance==null) instance = GameObject.FindObjectOfType<WorldSpaceGameBoundary>();
+			return instance;
+			} 
+		}
 
 	Vector2 centre, boundSize;
 	Camera gameCamera;
 	// Use this for initialization
 	void Awake(){
-		if(Instance!=null) {
+		if(instance!=null) {
 			Destroy(gameObject);
 			return;
 		}
-		Instance = this;
+		instance = this;
 		gameCamera = Camera.main;
 	}
 	void OnEnable () {
@@ -44,6 +49,10 @@ public class WorldSpaceGameBoundary : MonoBehaviour {
 		if(_position.y>0.5f*_boundSize.y)
 			return false;
 		return true;
+	}
+
+	void OnDestroy(){
+		instance = null;
 	}
 	
 

@@ -20,6 +20,7 @@ public class LevelsSOData : ScriptableObject {
 
 	public bool isCommonWinCondition;
 	[SerializeField] AWinCondition winCondition;
+	public PlaneSOData playerPlaneSOData;
 	public int totalNumOfLevels = 5;
 	public float timeDifferenceBetweenLevels = 5;
 	[Range(0.02f,30)]public float checkWinConditionFrequency = 0.5f;

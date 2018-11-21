@@ -13,4 +13,5 @@ public class CreateAssetBundles
 		}
 		BuildPipeline.BuildAssetBundles(assetBundleDirectory, BuildAssetBundleOptions.ChunkBasedCompression, BuildTarget.StandaloneWindows);
     }
+
 }

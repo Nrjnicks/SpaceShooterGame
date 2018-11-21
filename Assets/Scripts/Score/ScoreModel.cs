@@ -22,7 +22,7 @@ public class ScoreModel : MonoBehaviour {
 			highScoresList = new List<HighScoreInformation>();
 		}
 	}
-	public int maxRankToSave = 5;
+	[Range(0,5)] public int maxRankToSave = 5;
 	HighScores highScores;
 	SaveLoad saveLoad;
 	

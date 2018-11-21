@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4938676099078332}
   - component: {fileID: 212427766639047294}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4528395363187988}
   - component: {fileID: 114385899396076270}
   - component: {fileID: 114119706317670962}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 114029492158786032}
   - component: {fileID: 61317915010798340}
   - component: {fileID: 50738979005240472}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

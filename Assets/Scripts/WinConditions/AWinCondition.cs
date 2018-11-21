@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class AWinCondition: ScriptableObject {
 
-	public abstract bool ConditionToWin(ScoreController scoreManager);
+	public abstract bool ConditionToWin(ScoreController scoreController);
 }

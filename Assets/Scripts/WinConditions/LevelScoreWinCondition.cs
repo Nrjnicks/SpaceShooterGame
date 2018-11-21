@@ -6,7 +6,7 @@ using UnityEngine;
 public class LevelScoreWinCondition : AWinCondition {
 	[Tooltip("Minimum Score (without level bonus) to complete current level")] 
 	public float minScoreToLevelComplete = 1000;
-	public override bool ConditionToWin(ScoreController scoreManager){
-		return scoreManager.GetThisLevelScore() >= minScoreToLevelComplete;
+	public override bool ConditionToWin(ScoreController scoreController){
+		return scoreController.GetThisLevelScore() >= minScoreToLevelComplete;
 	}
 }

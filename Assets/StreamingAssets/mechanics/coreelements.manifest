@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2912679642
+CRC: 757458657
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2cf4468aadae378dbcb1c361899e57f5
+    Hash: 99192478e2b12b1cd8b4a595d105d5e0
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 1b87d8387af4d4ea55592070e846029b
+    Hash: 4e2808715364bca8668e22abd226e5a8
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -39,6 +39,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: f4d5468d92e4ae549bdc9d84fc25c38b, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: b1ab8e3fe660efa4c8e41236304497ad, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 405353c44c5d3244cab19bfa7971124c, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 212
@@ -52,6 +54,7 @@ ClassTypes:
 - Class: 224
   Script: {instanceID: 0}
 Assets:
+- Assets/Prefabs/AIPlane.prefab
 - Assets/Prefabs/Bullet.prefab
 - Assets/Prefabs/Plane.prefab
 Dependencies: []

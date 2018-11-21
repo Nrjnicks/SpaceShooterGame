@@ -54,7 +54,7 @@ public class ScoreController : MonoBehaviour {
 		highScoresList = scoreModel.GetHighScoreList();
 		int rank = 1;
 		scoreRank = highScoresList.Count+1;
-		scoreView.IsHighScoreBeat(false);
+		scoreView.OnHighScoreBeat(false);
 		for (; rank <= highScoresList.Count; rank++)
 		{
 			if(highScoresList[rank-1].score<score){
@@ -69,7 +69,7 @@ public class ScoreController : MonoBehaviour {
 				highScoresList[rank-1] = highScoresList[rank-2];
 			}
 			highScoresList[scoreRank-1] = currentScoreInfo;
-			scoreView.IsHighScoreBeat(true);
+			scoreView.OnHighScoreBeat(true);
 		}
 		scoreView.SetHighScoreUIForList(highScoresList);
 	}

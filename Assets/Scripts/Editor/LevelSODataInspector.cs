@@ -13,6 +13,7 @@ public class LevelSODataInspector : Editor {
 	SerializedProperty commonWinCondition;
 	SerializedProperty timeDiffBwLevel;
 	SerializedProperty winCondCheckFrq;
+	SerializedProperty playerDataSO;
 	void OnEnable()
     {
         winCondition = serializedObject.FindProperty("winCondition");
@@ -21,22 +22,27 @@ public class LevelSODataInspector : Editor {
 		commonWinCondition = serializedObject.FindProperty("isCommonWinCondition");
 		timeDiffBwLevel = serializedObject.FindProperty("timeDifferenceBetweenLevels");
 		winCondCheckFrq = serializedObject.FindProperty("checkWinConditionFrequency");
+		playerDataSO = serializedObject.FindProperty("playerPlaneSOData");
     }
 	public override void OnInspectorGUI(){
 		serializedObject.Update();
-		
 		EditorGUILayout.Space();
+		
+		EditorGUILayout.LabelField("Win Condition Related", EditorStyles.boldLabel);
 		commonWinCondition.boolValue = EditorGUILayout.Toggle("Common Win Condition for All Levels?", commonWinCondition.boolValue);
 		if(commonWinCondition.boolValue){
 			EditorGUILayout.PropertyField(winCondition, new GUIContent("Common Win Condition"));
-			EditorGUILayout.Space();
 		}
-		EditorGUILayout.Space();
 		winCondCheckFrq.floatValue = EditorGUILayout.Slider("Check Win Condition Frequency (sec)", winCondCheckFrq.floatValue,0.02f,30);
+		
 		EditorGUILayout.Space();
+		EditorGUILayout.LabelField("Player Related", EditorStyles.boldLabel);
+		EditorGUILayout.PropertyField( playerDataSO, new GUIContent("Player Plane Data SO"));
+		EditorGUILayout.Space();
+		EditorGUILayout.Space();
+		EditorGUILayout.LabelField("Level Related", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(numOfLevel);
 		if(numOfLevel.intValue>0){
-			EditorGUILayout.Space();
 			timeDiffBwLevel.floatValue = EditorGUILayout.FloatField("Time Between Consecutive Levels", timeDiffBwLevel.floatValue);
 			EditorGUILayout.Space();
 			EditorGUILayout.LabelField("Level Datas", EditorStyles.boldLabel);
@@ -61,12 +67,12 @@ public class LevelSODataInspector : Editor {
 					winCond = list.GetArrayElementAtIndex(i).FindPropertyRelative("winCondition");
 					if(!commonWinCondition.boolValue){						
 						EditorGUILayout.PropertyField( winCond, new GUIContent("Win condition for this level"));
-						EditorGUILayout.Space();
+						// EditorGUILayout.Space();
 					}
-					inList.arraySize = EditorGUILayout.IntField ("Sequence Size", inList.arraySize);
+					inList.arraySize = EditorGUILayout.IntField ("No of Waves", inList.arraySize);
 					for (int j = 0; j < inList.arraySize; j++)
 					{	
-						EditorGUILayout.PropertyField(inList.GetArrayElementAtIndex(j), new GUIContent("Sqn"+j+": DataSO, Num, Frequency"));
+						EditorGUILayout.PropertyField(inList.GetArrayElementAtIndex(j), new GUIContent("Wv"+j+": DataSO, Num, Frequency"));
 					}
 					EditorGUILayout.Space();
 					if(inList.arraySize>1){						

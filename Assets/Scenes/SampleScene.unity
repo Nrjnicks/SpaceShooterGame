@@ -140,8 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e54e44fc260fe94eabaa17dbabd4b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectForPool: {fileID: 114029492158786032, guid: 21798db8e833cef49a8982b17130772e,
-    type: 2}
+  objectForPool: {fileID: 0}
   poolAmount: 5
   canGrow: 1
 --- !u!4 &10458936
@@ -525,7 +524,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.2, y: 2.1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1659060881}
+  m_Father: {fileID: 2040775293}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &187630048
@@ -915,7 +914,7 @@ Transform:
   - {fileID: 1494947230}
   - {fileID: 1312088943}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &254358687
 GameObject:
@@ -927,7 +926,7 @@ GameObject:
   - component: {fileID: 254358689}
   - component: {fileID: 254358688}
   m_Layer: 0
-  m_Name: AISpawnManager
+  m_Name: PlaneSpawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -944,13 +943,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c189f5d3f9b5f443a5888f28677f3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planePool: {fileID: 1259103888}
-  spawnPositions:
-  - {fileID: 1971300977}
-  - {fileID: 1087599139}
+  playerSpawnPosition: {fileID: 1724547005}
+  aIPlanePool: {fileID: 1259103888}
+  aISpawnPositions:
   - {fileID: 1557141157}
-  - {fileID: 794873040}
   - {fileID: 417206297}
+  - {fileID: 794873040}
+  - {fileID: 1971300977}
+  - {fileID: 794873040}
 --- !u!4 &254358689
 Transform:
   m_ObjectHideFlags: 0
@@ -961,6 +961,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1724547005}
   - {fileID: 1340359943}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1049,6 +1050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 311101277}
   - component: {fileID: 311101276}
+  - component: {fileID: 311101278}
   m_Layer: 0
   m_Name: AssetBundlesHandler
   m_TagString: Untagged
@@ -1078,8 +1080,23 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &311101278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 311101275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abbb8576ce1f6346a4ab7cd07f4e884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assetBundlesHandler: {fileID: 311101276}
+  coreMechanicsABInfo: {fileID: 11400000, guid: f7d3b903e8addb241a05018947942e29,
+    type: 2}
+  gameManager: {fileID: 1962192105}
 --- !u!1 &348885465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,12 +1497,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4653696931586386, guid: 53c5498b5f6c9f940ab043122745575d,
     type: 2}
   m_PrefabInternal: {fileID: 1813411467}
---- !u!114 &434152480 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114996236081442642, guid: 53c5498b5f6c9f940ab043122745575d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1813411467}
-  m_Script: {fileID: 11500000, guid: 4eb7c3874cd7fa8489b77df23df13248, type: 3}
 --- !u!1 &451470056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1878,7 +1889,7 @@ GameObject:
   - component: {fileID: 588532015}
   - component: {fileID: 588532016}
   m_Layer: 0
-  m_Name: ScoreManager
+  m_Name: ScoreController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3246,8 +3257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb43bb50bc164dc4eaa298698aff9eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectForPool: {fileID: 114845502503505218, guid: 61faaba13b79c274882a763cbec47205,
-    type: 2}
+  objectForPool: {fileID: 0}
   poolAmount: 10
   canGrow: 1
 --- !u!4 &1259103889
@@ -3464,7 +3474,7 @@ Transform:
   - {fileID: 1087599139}
   - {fileID: 794873040}
   m_Father: {fileID: 254358689}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1365936271
 GameObject:
@@ -4369,10 +4379,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 156009449}
-  m_Father: {fileID: 2040775293}
-  m_RootOrder: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1678795089
 GameObject:
@@ -4524,6 +4533,34 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1704211327}
   m_CullTransparentMesh: 0
+--- !u!1 &1724547004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1724547005}
+  m_Layer: 9
+  m_Name: PlayerSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1724547005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1724547004}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 254358689}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1725788958
 GameObject:
   m_ObjectHideFlags: 0
@@ -4676,6 +4713,10 @@ Prefab:
     - target: {fileID: 1428283105278556, guid: 53c5498b5f6c9f940ab043122745575d, type: 2}
       propertyPath: m_Name
       value: PlayerPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428283105278556, guid: 53c5498b5f6c9f940ab043122745575d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53c5498b5f6c9f940ab043122745575d, type: 2}
@@ -4950,7 +4991,7 @@ Transform:
   m_Children:
   - {fileID: 2040775293}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1962192105
 MonoBehaviour:
@@ -4965,6 +5006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelManager: {fileID: 2040775292}
   hUDController: {fileID: 252525930}
+  assetReferenceManager: {fileID: 311101278}
 --- !u!1 &1968112344
 GameObject:
   m_ObjectHideFlags: 0
@@ -5098,10 +5140,9 @@ MonoBehaviour:
   levelsSOData: {fileID: 11400000, guid: f302505eeee91084b9c883a5a089a55a, type: 2}
   playerPlaneController: {fileID: 1565677524}
   aIPlaneController: {fileID: 498542464}
-  aIPlaneSpawnManager: {fileID: 254358688}
-  playerPlane: {fileID: 434152480}
-  playerPlaneData: {fileID: 11400000, guid: e51937fa70cf0854aaf62da1d470a41b, type: 2}
-  scoreManager: {fileID: 588532015}
+  planeSpawnManager: {fileID: 254358688}
+  playerPlane: {fileID: 0}
+  scoreController: {fileID: 588532015}
 --- !u!4 &2040775293
 Transform:
   m_ObjectHideFlags: 0
@@ -5112,7 +5153,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1659060881}
+  - {fileID: 156009449}
   - {fileID: 1565677525}
   - {fileID: 498542465}
   - {fileID: 588532014}

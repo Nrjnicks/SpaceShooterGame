@@ -17,19 +17,24 @@ public class ScoreView : MonoBehaviour {
 	
 
 	public void SetHighScoreUIForList(List<ScoreModel.HighScoreInformation> highScoresList){
-		for (int rank = 1; rank <= highScoresList.Count; rank++)
+		int rank;
+		for (rank = 1; rank <= highScoresList.Count; rank++)
 		{
 			SetHighScoreUIForRank(rank,highScoresList[rank-1].name, highScoresList[rank-1].score);
-			
+		}
+		for (; rank <= highScoresUIInRank.Length; rank++)
+		{
+			highScoresUIInRank[rank-1].nameText.transform.parent.gameObject.SetActive(false);
 		}
 	}
 
-	public void IsHighScoreBeat(bool isBeat){
+	public void OnHighScoreBeat(bool isBeat){
 		highScoreNameInputField.SetActive(isBeat);
 	}
 
 	public void SetHighScoreUIForRank(int rank, string name, float score){
 		if(rank<1 || rank>highScoresUIInRank.Length) return;
+		highScoresUIInRank[rank-1].nameText.transform.parent.gameObject.SetActive(true);
 		highScoresUIInRank[rank-1].nameText.text = name;
 		highScoresUIInRank[rank-1].scoreText.text = score.ToString();
 	}
