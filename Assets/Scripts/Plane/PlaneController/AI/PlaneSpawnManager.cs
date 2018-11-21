@@ -42,6 +42,11 @@ public class PlaneSpawnManager : MonoBehaviour {
 		}
 	}
 
+	public void SetAllPlaneSprite(Sprite sprite){
+		playerPlane.SetPlaneSprite(sprite);
+		aIPlanePool.SetAllPlaneSprite(sprite);
+	}
+
 	public void DisableAllAIPlanes(){
 		aIPlanePool.DisableAllPoolObjects();
 	}

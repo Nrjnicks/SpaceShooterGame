@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 682393970
+CRC: 3295406612
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 72ef11bc7b46b89a2adfccb3be79a17d
+    Hash: 3359804a23838a69e0ee9935c665098c
   TypeTreeHash:
     serializedVersion: 2
-    Hash: b2d250dd549a242a750d50059d560d63
+    Hash: e34da3f5b43408ee0306ba741a73980b
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -58,5 +58,8 @@ ClassTypes:
 Assets:
 - Assets/Prefabs/AIPlane.prefab
 - Assets/Prefabs/Bullet.prefab
+- Assets/ArtAssets/Materials/HealthBarUI.mat
 - Assets/Prefabs/Plane.prefab
-Dependencies: []
+- Assets/ArtAssets/Materials/Unlit_ScrollableBackground.mat
+Dependencies:
+- C:/Users/Neeraj/Documents/UnityProjects/1942Clone/Assets/StreamingAssets/aesthetics/spacetheme

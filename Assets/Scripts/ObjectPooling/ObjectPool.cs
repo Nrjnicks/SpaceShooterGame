@@ -77,5 +77,9 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : Component {
 		return nextObj;
 	}
 
+	public List<T> GetPoolList(){
+		return ObjPool;
+	}
+
 
 }

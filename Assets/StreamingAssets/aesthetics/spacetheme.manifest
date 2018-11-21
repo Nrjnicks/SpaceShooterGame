@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 1992561220
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0ccbc8962c15f1e457036d5ef79e1db2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 31f64c287a356b7ccb4785f1c9e8bde2
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Shaders/HealthBarBlink.shader
+- Assets/ArtAssets/bone-white.jpg
+- Assets/Shaders/ScrollableBackground.shader
+- Assets/ArtAssets/Background.jpg
+- Assets/ArtAssets/PlaneSprite.png
+- Assets/ArtAssets/EnergyBlast.png
+Dependencies: []

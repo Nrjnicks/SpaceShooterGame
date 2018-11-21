@@ -6,11 +6,17 @@ public class HealthBarBlink : MonoBehaviour {
 	[SerializeField] HealthController healthController;
 	[SerializeField] [Range(0,1)] float percToStartBlink = 0.2f;
 	[SerializeField] UnityEngine.UI.Image healthBar;
-	[SerializeField] Material blinkMat;
+	[SerializeField] Shader shader;
+	Material blinkMat;
 	// Use this for initialization
 	void Start () {
-		blinkMat = new Material(blinkMat);//new instance for individuality
+		SetShader(shader);
+	}
+
+	public void SetShader(Shader shader){
+		blinkMat = new Material(shader);//new instance for individuality
 		blinkMat.SetColor("_Color", healthBar.color);
+		blinkMat.SetFloat("_Blink", 0);
 	}
 
 	void OnEnable(){		
@@ -28,6 +34,6 @@ public class HealthBarBlink : MonoBehaviour {
 
 	void OnDisable(){		
 		healthController.onHealthChange-=OnHealthChange;
-		blinkMat.SetFloat("_Blink", 0);
+		healthBar.material = null;
 	}
 }

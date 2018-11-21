@@ -2,8 +2,9 @@ fileFormatVersion: 2
 guid: cad56c84f66173c42836510b852723b9
 ShaderImporter:
   externalObjects: {}
-  defaultTextures: []
+  defaultTextures:
+  - _MainTex: {fileID: 2800000, guid: 26259876dfb922f4e8fb09b817d72743, type: 3}
   nonModifiableTextures: []
   userData: 
-  assetBundleName: 
+  assetBundleName: aesthetics/spacetheme
   assetBundleVariant: 

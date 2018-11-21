@@ -27,6 +27,10 @@ public class Plane : MonoBehaviour, IHealthable {
 			transform.rotation = spawnPosRot.rotation;
 		}
 	}
+
+	public void SetPlaneSprite(Sprite sprite){
+		planeSprite.sprite = sprite;
+	}
 	
 	// Update is called once per frame
 	protected virtual void Update () {

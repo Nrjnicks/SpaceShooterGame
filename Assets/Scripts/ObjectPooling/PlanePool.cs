@@ -10,4 +10,13 @@ public class PlanePool : ObjectPool<Plane> {
         return plane;
 	}
 
+	public void SetAllPlaneSprite(Sprite sprite){
+		objectForPool.SetPlaneSprite(sprite);
+		
+		List<Plane> planePool = GetPoolList();
+		foreach (Plane plane in planePool)
+		{			
+			plane.SetPlaneSprite(sprite);
+		}
+	}
 }

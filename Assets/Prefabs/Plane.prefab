@@ -285,7 +285,7 @@ MonoBehaviour:
   healthController: {fileID: 114666500182992818}
   percToStartBlink: 0.45
   healthBar: {fileID: 114840143997270518}
-  blinkMat: {fileID: 2100000, guid: 04b46d7b38a7fa0418132999bb0e4eda, type: 2}
+  shader: {fileID: 4800000, guid: cad56c84f66173c42836510b852723b9, type: 3}
 --- !u!114 &114666500182992818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -394,7 +394,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bd33c44d185dd1b40bb07ccc2a45e52f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -402,7 +402,7 @@ SpriteRenderer:
   m_Size: {x: 0.94, y: 0.94}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!222 &222460698684148312

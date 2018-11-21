@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SODataAssetBundleInfoSOData", menuName = "Asset Bundle Information/SO Datas")]
+[CreateAssetMenu(fileName = "SODataAssetBundleInfoSOData", menuName = "Asset Bundle Informations/SO Datas")]
 public class SODatasABInfo : ABInfoSOData {
 	public string playerSODataName;
 	// public string aISODataName;
