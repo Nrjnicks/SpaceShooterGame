@@ -9,10 +9,10 @@ public class LevelManager : MonoBehaviour {
 	public PlayerPlaneController playerPlaneController;
 	public AIPlaneController aIPlaneController;
 	public PlaneSpawnManager planeSpawnManager;
-	[HideInInspector] public Plane playerPlane;
 	
 	public ScoreController scoreController;
 	int currentLevel;
+	Plane playerPlane;
 	LevelData levelData;
 	GameManager gameManager;
 	
@@ -24,11 +24,12 @@ public class LevelManager : MonoBehaviour {
 	}
 	IEnumerator SetUpGame(){
 		currentLevel = 1;		
-		scoreController.InitParam(this);
 
 		playerPlaneController.InitControls(this);
-		yield return StartCoroutine(SpawnPlayers());
 		aIPlaneController.InitControls(this);
+		scoreController.InitParam(this);
+
+		yield return StartCoroutine(SpawnPlayers());
 		SetUpLevel(currentLevel);
 	}
 
@@ -36,7 +37,7 @@ public class LevelManager : MonoBehaviour {
 		scoreController.ResetParam(this);
 		playerPlaneController.ResetControls(this);
 		aIPlaneController.ResetControls(this);
-		planeSpawnManager.DisableAllPlanes();
+		planeSpawnManager.DisableAllAIPlanes();
 	}
 
 	void StartNextLevel(){		
@@ -72,7 +73,8 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	IEnumerator SpawnPlayers(){
-		planeSpawnManager.SpawnPlayerPlanes(ref playerPlane,levelsSOData.playerPlaneSOData,playerPlaneController,OnPlayerDead);
+		playerPlane = planeSpawnManager.SpawnPlayerPlanes(levelsSOData.playerPlaneSOData,playerPlaneController,OnPlayerDead);
+		if(onPlayerSet!=null) onPlayerSet(playerPlane);
 		yield break;
 	}
 
@@ -82,13 +84,13 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
-	void OnPlayerDead(PlaneSOData planeData){
+	void OnPlayerDead(Plane playerPlane){
 		gameManager.OnGameFinished(false);
 		ResetParam();
 	}
 
-	public void OnEnemyKilled(PlaneSOData planeData){
-		scoreController.OnEnemyKilled((AIPlaneSOData)planeData);
+	public void OnEnemyKilled(Plane aIPlane){
+		scoreController.OnEnemyKilled((AIPlaneSOData)aIPlane.planeData);
 		// if(levelData.winCondition.ConditionToWin(scoreManager)){
 		// 	LevelComplete();
 		// }
@@ -96,7 +98,7 @@ public class LevelManager : MonoBehaviour {
 	
 
 	IEnumerator CheckWinCondition(){
-		while(!levelData.winCondition.ConditionToWin(scoreController)) yield return new WaitForSeconds(levelsSOData.checkWinConditionFrequency);
+		while(!levelData.winCondition.ConditionToWin(scoreController)) yield return new WaitForSeconds(scoreController.scoreSOData.scoreUpdateFrequency);
 		LevelComplete();
 		
 	}
@@ -109,4 +111,5 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public System.Action<int> onLevelStart, onLevelComplete;
+	public System.Action<Plane> onPlayerSet;
 }

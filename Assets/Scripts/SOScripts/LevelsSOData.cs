@@ -11,7 +11,7 @@ public struct NoOfAIPerType{
 [System.Serializable]
 public struct LevelData{
 	public AWinCondition winCondition;
-	public float sequenceSpawnFrequency;
+	public float timeDiffBetweenWaves;
 	public List<NoOfAIPerType> enemySpawnSequence;
 }
 
@@ -23,7 +23,6 @@ public class LevelsSOData : ScriptableObject {
 	public PlaneSOData playerPlaneSOData;
 	public int totalNumOfLevels = 5;
 	public float timeDifferenceBetweenLevels = 5;
-	[Range(0.02f,30)]public float checkWinConditionFrequency = 0.5f;
 	public List<LevelData> levelDatas;
 
 	public LevelData GetLevelData(int level){

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224641792623662668}
   - component: {fileID: 222256974910183100}
   - component: {fileID: 114843766647542398}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: HealthBackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 224456298455969364}
   - component: {fileID: 222886271862377730}
   - component: {fileID: 114995960493315510}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 223271558288274314}
   - component: {fileID: 114115029548217272}
   - component: {fileID: 114699317374813480}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 114845502503505218}
   - component: {fileID: 61306312893347654}
   - component: {fileID: 50380285783856252}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: AIPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 114481983902243364}
   - component: {fileID: 114000353891938466}
   - component: {fileID: 114615968125076368}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4313032039759032}
   - component: {fileID: 212538363119887808}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405353c44c5d3244cab19bfa7971124c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planeSprite: {fileID: 212538363119887808}
   healthModel: {fileID: 114481983902243364}
 --- !u!114 &114995960493315510
 MonoBehaviour:

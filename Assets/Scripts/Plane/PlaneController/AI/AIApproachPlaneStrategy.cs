@@ -8,7 +8,7 @@ public class AIApproachPlaneStrategy : AIPlaneStrategy {
 		moveTowards = aIPlane.enemyPlane.transform.position - aIPlane.transform.position;
 	}
 	public override bool ConditionToSwitch(AIPlane aIPlane){
-		if(Vector2.Distance(aIPlane.transform.position,aIPlane.enemyPlane.transform.position) > ((AIPlaneSOData)aIPlane.PlaneData).minDistanceToAttack) return true;
+		if(Vector2.Distance(aIPlane.transform.position,aIPlane.enemyPlane.transform.position) > ((AIPlaneSOData)aIPlane.planeData).minDistanceToAttack) return true;
 		return false;
 	}
 }

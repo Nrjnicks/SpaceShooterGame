@@ -24,16 +24,21 @@ public class AIPlaneController : APlaneContoller {
 	public override void InitControls(LevelManager levelManager){
 		levelManager.onLevelStart += OnLevelStart;
 		levelManager.onLevelComplete += OnLevelComplete;
-		playerPlane = levelManager.playerPlane;
+		levelManager.onPlayerSet += SetPlayerPlane;
 	}
 
 	public Plane GetEnemyPlane(){
 		return playerPlane;
 	}
 
+	void SetPlayerPlane(Plane playerPlane){
+		this.playerPlane = playerPlane;
+	}
+
 	public override void ResetControls(LevelManager levelManager){
 		levelManager.onLevelStart -= OnLevelStart;
 		levelManager.onLevelComplete -= OnLevelComplete;
+		levelManager.onPlayerSet -= SetPlayerPlane;
 	}
 
 	public override void UpdateControls(Plane plane){
@@ -46,7 +51,7 @@ public class AIPlaneController : APlaneContoller {
 	}
 
 	public virtual bool ConditionToForceDie(AIPlane plane){
-		return (((AIPlaneSOData)plane.PlaneData).maxActiveTimeOnScreen< plane.ActiveTime ||forceEvade)
+		return (((AIPlaneSOData)plane.planeData).maxActiveTimeOnScreen< plane.ActiveTime ||forceEvade)
 					&& WorldSpaceGameBoundary.Instance.IsPointOutsideCameraView(plane.transform.position);
 	}
 
@@ -64,7 +69,7 @@ public class AIPlaneController : APlaneContoller {
 	}
 	
 	public override Vector2 GetMoveDeltaPosition (Plane plane) {
-		plane.transform.up = Vector2.Lerp(plane.transform.up, base.GetMoveDeltaPosition(plane), plane.PlaneData.Speed * Time.deltaTime);
+		plane.transform.up = Vector2.Lerp(plane.transform.up, base.GetMoveDeltaPosition(plane), plane.planeData.Speed * Time.deltaTime);
 		return plane.transform.up;
 	}
 

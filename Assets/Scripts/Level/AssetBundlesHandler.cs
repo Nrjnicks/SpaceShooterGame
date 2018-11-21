@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class AssetBundlesHandler : MonoBehaviour {
 	
-	static Dictionary<ABInfoSOData, AssetBundle> cachedAssetBundle;
+	Dictionary<ABInfoSOData, AssetBundle> cachedAssetBundle;
 	// Use this for initialization
 	void Start () {
 		cachedAssetBundle = new Dictionary<ABInfoSOData, AssetBundle>();
@@ -18,16 +18,16 @@ public class AssetBundlesHandler : MonoBehaviour {
 		assetBundleCreateRequest.completed+= (AsyncOperation asyncOperation)=>{OnBundleLoad();};
 	}
 
-	public void CacheAndLoadAsynFromAssetBundle(ABInfoSOData assetBundleInfo, string assetName, System.Action<GameObject> OnCompleteCallBack){
+	public void CacheAndLoadAsynFromAssetBundle<T>(ABInfoSOData assetBundleInfo, string assetName, System.Action<T> OnCompleteCallBack)where T : Object{
 		if(cachedAssetBundle.ContainsKey(assetBundleInfo)) {
-			OnCompleteCallBack(GetObjectFromAssetBundle(cachedAssetBundle[assetBundleInfo],assetName));
+			OnCompleteCallBack(GetObjectFromAssetBundle<T>(cachedAssetBundle[assetBundleInfo],assetName));
 			return;
 		}
-		LoadAssetBundle(assetBundleInfo, ()=>{OnCompleteCallBack(GetObjectFromAssetBundle(cachedAssetBundle[assetBundleInfo],assetName));});
+		LoadAssetBundle(assetBundleInfo, ()=>{OnCompleteCallBack(GetObjectFromAssetBundle<T>(cachedAssetBundle[assetBundleInfo],assetName));});
 	}
 
-	GameObject GetObjectFromAssetBundle(AssetBundle assetBundle, string assetName){
-		return assetBundle.LoadAsset<GameObject>(assetName);
+	T GetObjectFromAssetBundle<T>(AssetBundle assetBundle, string assetName) where T : Object{
+		return assetBundle.LoadAsset<T>(assetName);
 	}
 
 
@@ -35,7 +35,7 @@ public class AssetBundlesHandler : MonoBehaviour {
 		foreach(AssetBundle assetBundle in cachedAssetBundle.Values){
 			assetBundle.Unload(removeReferences);
 		}
-
+		cachedAssetBundle = null;
 	}
 	void OnDestroy(){
 		UnloadAllCachedAssetBundle(true);

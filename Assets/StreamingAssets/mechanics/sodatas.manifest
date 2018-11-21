@@ -1,0 +1,43 @@
+ManifestFileVersion: 0
+CRC: 3575855993
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 41dca66ab8e14f73865a27cbaae5eaf0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8d28e7007905dbadb09a3d7e635c061b
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: b48780a0a2d36f3438df9578448f2877, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6de89ab00c59d6f4ca7bef10a4ee3778, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4c7fb641e93602846a5aa494e57c0d59, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a133fe649bd96624b9f03523396ef6e0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9ce526e60f9802f469fa2a442f0ed8be, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1dc465abaf8b1664da5a68f77f920330, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3059cf7c718608a44b7be8d995c9c178, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 781c097e118411c4187f77dc1a6d8f1d, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/SOData/AIPlaneData/AIPlaneSOData hard.asset
+- Assets/SOData/PlayerKeyboardControls/KeyBoardControlsSO LeftHand.asset
+- Assets/SOData/Level/ScoreSOData.asset
+- Assets/SOData/Level/WinConditions/ActiveTimeWinCondition.asset
+- Assets/SOData/PlayerKeyboardControls/KeyBoardControlsSO RightHand.asset
+- Assets/SOData/AIPlaneData/AIPlaneSOData mid.asset
+- Assets/SOData/Level/WinConditions/EnemyKilledWinCondition.asset
+- Assets/SOData/PlayerPlaneSOData.asset
+- Assets/SOData/AIPlaneData/AIPlaneSOData easy.asset
+- Assets/SOData/AIPlaneData/AIPlaneSOData boss.asset
+- Assets/SOData/Level/WinConditions/LevelScoreWinCondition.asset
+- Assets/SOData/Level/LevelsSOData.asset
+Dependencies: []

@@ -9,6 +9,6 @@ public class AIPlaneSOData : PlaneSOData {
 	public float minDistanceToAttack = 5;
 	public float FOVToAttack = 10;
 	public float maxActiveTimeOnScreen = 10;
-
+	[Header("Score")]
 	public float scoreBonusOnKill = 50;
 }

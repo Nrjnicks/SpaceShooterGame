@@ -102,7 +102,7 @@ public class ScoreController : MonoBehaviour {
 
 	void SetLevelCompleteDescription(int level){		
 		string levelDiscription = "Level "+level+" Complete";
-		levelDiscription += "\n\nEnemy type\t\t\t|\t Point Gain\tx\tKill count";
+		levelDiscription += "\n\nEnemy type\t\t\t|\tPoint Gain\tx\tKill count";
 		foreach (AIPlaneSOData planeSOData in enemiesKilledPerType.Keys)
 		{
 			levelDiscription+= "\n"+planeSOData.planeName+"\t\t|\t"+ planeSOData.scoreBonusOnKill+"\t\t\t\tx\t"+enemiesKilledPerType[planeSOData];			
@@ -121,7 +121,8 @@ public class ScoreController : MonoBehaviour {
 
 	//Win Conditions with Current Score
 	public void OnEnemyKilled(AIPlaneSOData aiplaneData){
-		enemiesKilled++;
+		if(!restPeriod)
+			enemiesKilled++;
 		AddToScore(aiplaneData.scoreBonusOnKill);
 
 		if(!enemiesKilledPerType.ContainsKey(aiplaneData)) enemiesKilledPerType[aiplaneData] = 0;

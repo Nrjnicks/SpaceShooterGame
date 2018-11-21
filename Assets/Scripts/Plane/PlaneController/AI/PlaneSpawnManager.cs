@@ -6,21 +6,28 @@ public class PlaneSpawnManager : MonoBehaviour {
 
 	[SerializeField] Transform playerSpawnPosition;
 	[SerializeField] PlanePool aIPlanePool;
+	Plane playerPlane;
 	[SerializeField] Transform[] aISpawnPositions;
 	int currentSpawnIndex;
 
 	Plane tempPlane;
 
-	public void SpawnPlayerPlanes(ref Plane planePrefab, PlaneSOData playerPlaneData, APlaneContoller planeContoller, System.Action<PlaneSOData> onDeathCallback){		
-		planePrefab = Instantiate(planePrefab);
-		planePrefab.InitPlane(playerPlaneData, planeContoller, playerSpawnPosition);
-		planePrefab.onDeath += onDeathCallback;
+	public void SetPlayerPlanePrefab(Plane planePrefab){
+		playerPlane = Instantiate (planePrefab);
+		playerPlane.transform.SetParent(transform);
+		playerPlane.gameObject.SetActive(false);
 	}
+	public Plane SpawnPlayerPlanes(PlaneSOData playerPlaneData, APlaneContoller planeContoller, System.Action<Plane> onDeathCallback){
+		playerPlane.InitPlane(playerPlaneData, planeContoller, playerSpawnPosition);
+		playerPlane.onDeath += onDeathCallback;
+		playerPlane.gameObject.SetActive(true);
+		return playerPlane;
+	}
+
 	public void SetAIPlanePrefab(Plane planePrefab){
 		aIPlanePool.CreatePool(planePrefab);
 	}
-
-	public IEnumerator SpawnPlanesForLevel(APlaneContoller planeContoller, LevelData levelData, System.Action<PlaneSOData> onDeathCallback){		
+	public IEnumerator SpawnPlanesForLevel(APlaneContoller planeContoller, LevelData levelData, System.Action<Plane> onDeathCallback){		
 		currentSpawnIndex = 0;
 		foreach(NoOfAIPerType aIPerType in levelData.enemySpawnSequence)
 		{
@@ -31,11 +38,11 @@ public class PlaneSpawnManager : MonoBehaviour {
 				currentSpawnIndex = (currentSpawnIndex+1)%aISpawnPositions.Length;
 				yield return new WaitForSeconds(aIPerType.spawnFrequency);
 			}
-			yield return new WaitForSeconds(levelData.sequenceSpawnFrequency);
+			yield return new WaitForSeconds(levelData.timeDiffBetweenWaves);
 		}
 	}
 
-	public void DisableAllPlanes(){
+	public void DisableAllAIPlanes(){
 		aIPlanePool.DisableAllPoolObjects();
 	}
 	

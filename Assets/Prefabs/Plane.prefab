@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4140322502007860}
   - component: {fileID: 212149770606320998}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 114996236081442642}
   - component: {fileID: 61693648100367136}
   - component: {fileID: 50452917716837458}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 223328965418670032}
   - component: {fileID: 114716689209051322}
   - component: {fileID: 114082971392782506}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 114435212668122166}
   - component: {fileID: 114666500182992818}
   - component: {fileID: 114139319894473082}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,8 @@ GameObject:
   - component: {fileID: 224210236321186898}
   - component: {fileID: 222460698684148312}
   - component: {fileID: 114840143997270518}
-  m_Layer: 9
+  - component: {fileID: 114513478108452872}
+  m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +109,7 @@ GameObject:
   - component: {fileID: 224087414597664376}
   - component: {fileID: 222793070936295648}
   - component: {fileID: 114135366417824666}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: HealthBackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,6 +271,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthController: {fileID: 114666500182992818}
   currentHealth: 0
+--- !u!114 &114513478108452872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842709768386926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1630c1e92b27710479e2e8a1c160141f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthController: {fileID: 114666500182992818}
+  percToStartBlink: 0.45
+  healthBar: {fileID: 114840143997270518}
+  blinkMat: {fileID: 2100000, guid: 04b46d7b38a7fa0418132999bb0e4eda, type: 2}
 --- !u!114 &114666500182992818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -341,6 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb7c3874cd7fa8489b77df23df13248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planeSprite: {fileID: 212149770606320998}
   healthModel: {fileID: 114435212668122166}
 --- !u!212 &212149770606320998
 SpriteRenderer:

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GenericPlaneSOData", menuName = "Plane Data/Generic")]
 public class PlaneSOData : ScriptableObject {
 	[Header("Plane Prefab for this data")]
-	public GameObject plane;
+	public Color planeColor = Color.white;
 	[Header("Generic Plane Data")]
 	public string planeName = "Plane";
 	public float Speed = 5;//Relative Thrust	

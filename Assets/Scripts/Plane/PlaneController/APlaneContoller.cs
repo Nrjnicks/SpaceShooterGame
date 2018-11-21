@@ -39,7 +39,7 @@ public abstract class APlaneContoller: MonoBehaviour {
 	protected void Move(Plane plane, Vector2 relDirection){
 		if(relDirection == Vector2.zero) return;
 
-		newPos = plane.transform.position + plane.PlaneData.Speed* (Vector3)relDirection * Time.deltaTime;
+		newPos = plane.transform.position + plane.planeData.Speed* (Vector3)relDirection * Time.deltaTime;
 		if(IsPossibleToMoveTo(newPos)){
 			plane.transform.position = newPos;
 		}
@@ -51,6 +51,6 @@ public abstract class APlaneContoller: MonoBehaviour {
 
 
 	public void FireBullet(Plane plane){		
-		bulletPool.FireBulletFromPool(plane.transform.position + plane.transform.up, plane.transform.up, plane.PlaneData.bulletSpeed, plane.PlaneData.bulletStrength);
+		bulletPool.FireBulletFromPool(plane.transform.position + plane.transform.up, plane.transform.up, plane.planeData.bulletSpeed, plane.planeData.bulletStrength);
 	}
 }

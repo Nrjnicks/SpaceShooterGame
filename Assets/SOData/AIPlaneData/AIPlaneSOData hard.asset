@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de89ab00c59d6f4ca7bef10a4ee3778, type: 3}
   m_Name: AIPlaneSOData hard
   m_EditorClassIdentifier: 
-  plane: {fileID: 0}
-  planeName: Master Plane
+  planeColor: {r: 1, g: 0, b: 1, a: 1}
+  planeName: Lut. Plane
   Speed: 4
   maxHealth: 40
   attackCooldown: 0.5

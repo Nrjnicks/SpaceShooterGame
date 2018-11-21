@@ -9,7 +9,7 @@ public class AIAttackPlaneStrategy : AIPlaneStrategy {
 	}
 
 	public override bool ShouldOrNotFire(AIPlane aIPlane){
-		if(Vector2.Angle(aIPlane.enemyPlane.transform.position - aIPlane.transform.position, aIPlane.transform.up) < ((AIPlaneSOData)aIPlane.PlaneData).FOVToAttack)
+		if(Vector2.Angle(aIPlane.enemyPlane.transform.position - aIPlane.transform.position, aIPlane.transform.up) < ((AIPlaneSOData)aIPlane.planeData).FOVToAttack)
 			return true; 
 		return false;
 	}

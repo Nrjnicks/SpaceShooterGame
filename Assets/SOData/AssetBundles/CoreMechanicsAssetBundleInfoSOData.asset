@@ -9,11 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60cb6cbda01026745a2b2ee4a1081529, type: 3}
-  m_Name: CoreMechanicsABInfoSOData
+  m_Name: CoreMechanicsAssetBundleInfoSOData
   m_EditorClassIdentifier: 
-  assetBundlePath: D:\UnityProject\SpaceShooter\Assets\StreamingAssets\mechanics\coreelements
+  assetBundlePath: Assets\StreamingAssets\mechanics\coreelements
   playerPlanePrefabName: Plane
-  playerController: 
   aIPlanePrefabName: AIPlane
-  aIController: 
   bulletPrefabName: Bullet

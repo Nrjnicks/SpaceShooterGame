@@ -8,7 +8,7 @@ public class AIEvadePlaneStrategy : AIPlaneStrategy {
 		moveTowards = aIPlane.transform.position - aIPlane.enemyPlane.transform.position;
 	}
 	public override bool ConditionToSwitch(AIPlane aIPlane){
-		if(aIPlane.IsAttackInCoolDown || ((AIPlaneSOData)aIPlane.PlaneData).maxActiveTimeOnScreen<aIPlane.ActiveTime) return true;
+		if(aIPlane.IsAttackInCoolDown || ((AIPlaneSOData)aIPlane.planeData).maxActiveTimeOnScreen<aIPlane.ActiveTime) return true;
 		return false;
 	}
 }

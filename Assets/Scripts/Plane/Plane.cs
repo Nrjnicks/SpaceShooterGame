@@ -5,8 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D),typeof(Collider2D))]
 public class Plane : MonoBehaviour, IHealthable {
 
-	public PlaneSOData PlaneData{get; private set;}
-	APlaneContoller PlaneContoller;
+	public PlaneSOData planeData{get; private set;}
+	[SerializeField] SpriteRenderer planeSprite;
+	APlaneContoller planeContoller;
 	public HealthModel healthModel;
 
 	void ResetParams(){
@@ -14,13 +15,13 @@ public class Plane : MonoBehaviour, IHealthable {
 		onDeath=null;
 	}
 
-	public virtual void InitPlane(PlaneSOData PlaneData, APlaneContoller PlaneContoller, Transform spawnPosRot = null){
+	public virtual void InitPlane(PlaneSOData planeData, APlaneContoller PlaneContoller, Transform spawnPosRot = null){
 		ResetParams();
 		EnablePlane();
-		this.PlaneData = PlaneData;
-		this.PlaneContoller = PlaneContoller;
-		healthModel.InitParams(this, PlaneData.maxHealth, OnPlaneDeath);
-
+		this.planeData = planeData;
+		this.planeContoller = PlaneContoller;
+		healthModel.InitParams(this, planeData.maxHealth, OnPlaneDeath);
+		planeSprite.color = planeData.planeColor;
 		if(spawnPosRot!=null){
 			transform.position = spawnPosRot.position;
 			transform.rotation = spawnPosRot.rotation;
@@ -29,18 +30,18 @@ public class Plane : MonoBehaviour, IHealthable {
 	
 	// Update is called once per frame
 	protected virtual void Update () {
-		if(PlaneContoller!=null)
-			PlaneContoller.UpdateControls(this);
+		if(planeContoller!=null)
+			planeContoller.UpdateControls(this);
 	}	
 
 	public bool IsAttackInCoolDown{ get; private set;}
 	public virtual void FireBullet(){
 		if(IsAttackInCoolDown) return;
 		
-		PlaneContoller.FireBullet(this);
+		planeContoller.FireBullet(this);
 
 		IsAttackInCoolDown = true;
-		Invoke("RemoveCoolDownStatus", PlaneData.attackCooldown);
+		Invoke("RemoveCoolDownStatus", planeData.attackCooldown);
 	}
 
 	protected virtual void RemoveCoolDownStatus(){
@@ -66,12 +67,12 @@ public class Plane : MonoBehaviour, IHealthable {
 
 	public void OnPlaneDeath(){
 		DisablePlane();
-		if(onDeath!=null) onDeath(PlaneData);
+		if(onDeath!=null) onDeath(this);
 	}
 	
-	public System.Action<PlaneSOData> onDeath;
+	public System.Action<Plane> onDeath;
 
 
-	public float inflictingDamageAmount{get{return PlaneData.maxHealth;}}
+	public float inflictingDamageAmount{get{return planeData.maxHealth;}}
 	public System.Action<IHealthable> onHit{get;set;}
 }

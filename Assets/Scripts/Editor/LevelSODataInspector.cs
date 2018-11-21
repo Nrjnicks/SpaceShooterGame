@@ -12,7 +12,6 @@ public class LevelSODataInspector : Editor {
 	SerializedProperty levelDatas;
 	SerializedProperty commonWinCondition;
 	SerializedProperty timeDiffBwLevel;
-	SerializedProperty winCondCheckFrq;
 	SerializedProperty playerDataSO;
 	void OnEnable()
     {
@@ -21,7 +20,6 @@ public class LevelSODataInspector : Editor {
         levelDatas = serializedObject.FindProperty("levelDatas");
 		commonWinCondition = serializedObject.FindProperty("isCommonWinCondition");
 		timeDiffBwLevel = serializedObject.FindProperty("timeDifferenceBetweenLevels");
-		winCondCheckFrq = serializedObject.FindProperty("checkWinConditionFrequency");
 		playerDataSO = serializedObject.FindProperty("playerPlaneSOData");
     }
 	public override void OnInspectorGUI(){
@@ -33,7 +31,6 @@ public class LevelSODataInspector : Editor {
 		if(commonWinCondition.boolValue){
 			EditorGUILayout.PropertyField(winCondition, new GUIContent("Common Win Condition"));
 		}
-		winCondCheckFrq.floatValue = EditorGUILayout.Slider("Check Win Condition Frequency (sec)", winCondCheckFrq.floatValue,0.02f,30);
 		
 		EditorGUILayout.Space();
 		EditorGUILayout.LabelField("Player Related", EditorStyles.boldLabel);
@@ -76,8 +73,8 @@ public class LevelSODataInspector : Editor {
 					}
 					EditorGUILayout.Space();
 					if(inList.arraySize>1){						
-						spawnFrq = list.GetArrayElementAtIndex(i).FindPropertyRelative("sequenceSpawnFrequency");
-						spawnFrq.floatValue = EditorGUILayout.FloatField ("Sequence Spawn Frequency in sec", spawnFrq.floatValue);
+						spawnFrq = list.GetArrayElementAtIndex(i).FindPropertyRelative("timeDiffBetweenWaves");
+						spawnFrq.floatValue = EditorGUILayout.FloatField ("Wait time between waves", spawnFrq.floatValue);
 					}	
 					EditorGUI.indentLevel -= 1;
 					EditorGUILayout.Space();

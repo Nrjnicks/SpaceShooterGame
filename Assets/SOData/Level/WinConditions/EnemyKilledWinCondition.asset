@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7fb641e93602846a5aa494e57c0d59, type: 3}
   m_Name: EnemyKilledWinCondition
   m_EditorClassIdentifier: 
-  EnemyToKill: 6
+  EnemyToKill: 2

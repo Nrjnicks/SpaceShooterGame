@@ -18,7 +18,7 @@ public class HealthController : MonoBehaviour {
 		if(collidable == null) return;
 		
 		healthModel.currentHealth-= collidable.inflictingDamageAmount;
-		Mathf.Clamp(healthModel.currentHealth, 0 , healthModel.maxHealth);
+		if(healthModel.currentHealth<0) healthModel.currentHealth = 0;
 		if(onHealthChange!=null) onHealthChange(healthModel.currentHealth, healthModel.maxHealth);
 		if(healthView!=null) healthView.SetHealthBarFillAmount(healthModel.currentHealth/healthModel.maxHealth);
 		if(healthModel.currentHealth<=0) OnDeath();

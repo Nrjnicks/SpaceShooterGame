@@ -9,16 +9,16 @@ public class GameManager : MonoBehaviour {
 	public AssetReferenceManager assetReferenceManager;
 	// Use this for initialization
 	void Start () {
-	}
-
-	public void StartGame(){
 		assetReferenceManager.SetReferenceToElements();//Called after every game restart//todo
 	}
 
-	public void OnAssetLoad(){
+	public void StartGame(){
 		hUDController.InitParam(this);
 		levelManager.gameObject.SetActive(true);
 		levelManager.InitParam(this);
+	}
+
+	public void OnAssetLoad(){
 
 	}
 	

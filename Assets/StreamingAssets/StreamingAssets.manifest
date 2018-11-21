@@ -1,7 +1,10 @@
 ManifestFileVersion: 0
-CRC: 2450258482
+CRC: 1369771120
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: mechanics/coreelements
+      Dependencies: {}
+    Info_1:
+      Name: mechanics/sodatas
       Dependencies: {}
