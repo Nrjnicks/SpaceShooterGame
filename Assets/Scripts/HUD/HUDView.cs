@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HUDView : MonoBehaviour {
-	[SerializeField] Text healthText;
+	[SerializeField] Text P1healthText;
+	[SerializeField] Text P2healthText;
 	[SerializeField] GameObject gameEndView;
 	[SerializeField] GameObject gameWonObj;
 	[SerializeField] GameObject gameLostObj;
@@ -12,8 +13,15 @@ public class HUDView : MonoBehaviour {
 	[Range(0,5)] float disableLevelStartObjAfterSec = 3;
 	[SerializeField] GameObject levelComplete;
 
-	public void SetHealthText(string health){
-		healthText.text = health;
+	public void SetHealthText(string health, int playerNum = 1){
+		if(playerNum == 1)
+			P1healthText.text = health;
+		if(playerNum == 2)
+			P2healthText.text = health;
+	}
+
+	public void P2SetActiveUI(bool state){
+		P2healthText.gameObject.SetActive(state);
 	}
 
 	public void OnGameStart(){

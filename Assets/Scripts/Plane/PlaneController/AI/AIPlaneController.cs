@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AIPlaneController : APlaneContoller {
-	Plane playerPlane;
+	List<Plane> playerPlanes;
 	AIPlane currentAIPlane;
 
 	//Strategies---------->
@@ -25,14 +25,15 @@ public class AIPlaneController : APlaneContoller {
 		levelManager.onLevelStart += OnLevelStart;
 		levelManager.onLevelComplete += OnLevelComplete;
 		levelManager.onPlayerSet += SetPlayerPlane;
+		playerPlanes = new List<Plane>();
 	}
 
 	public Plane GetEnemyPlane(){
-		return playerPlane;
+		return playerPlanes[UnityEngine.Random.Range(0,playerPlanes.Count)];
 	}
 
-	void SetPlayerPlane(Plane playerPlane){
-		this.playerPlane = playerPlane;
+	void SetPlayerPlane(Plane playerPlane, int playerNum){
+		this.playerPlanes.Add(playerPlane);//order doesn't matter
 	}
 
 	public override void ResetControls(LevelManager levelManager){

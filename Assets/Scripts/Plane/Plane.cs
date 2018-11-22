@@ -6,9 +6,10 @@ using UnityEngine;
 public class Plane : MonoBehaviour, IHealthable {
 
 	public PlaneSOData planeData{get; private set;}
-	[SerializeField] SpriteRenderer planeSprite;
 	APlaneContoller planeContoller;
 	public HealthModel healthModel;
+	[Space]
+	[SerializeField] SpriteRenderer planeSprite;
 
 	void ResetParams(){
 		

@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 1683295785
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: cf2916f2ffe4330cbc459ba8c9eef2da
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e87dbf8571acb99b61a8c3872f3764ee
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/ArtAssets/FireBall.png
+- Assets/Fonts/Adventurer.ttf
+- Assets/Shaders/ScrollableBackgroundMedival.shader
+- Assets/ArtAssets/GrassTile.jpg
+- Assets/ArtAssets/Dragon.png
+- Assets/Shaders/HealthBarBlinkMedival.shader
+- Assets/ArtAssets/Materials/ScrollableBackgroundMedival.mat
+Dependencies:
+- D:/UnityProject/SpaceShooter/Assets/StreamingAssets/aesthetics/spacetheme

@@ -9,7 +9,6 @@ public class AssetReferenceManager : MonoBehaviour {
 	public AestheticsABInfo aestheticsABInfo;
 	[Space]
 	public GameManager gameManager;
-	public SpriteRenderer sprite;
 
 	void Start(){
 
@@ -26,19 +25,25 @@ public class AssetReferenceManager : MonoBehaviour {
 		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<GameObject>(coreMechanicsABInfo,coreMechanicsABInfo.bulletPrefabName,SetBulletPrefab);
 
 		//Aethetics
+		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<Font>(aestheticsABInfo,aestheticsABInfo.fontName,SetTextsFont);
 		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<Sprite>(aestheticsABInfo,aestheticsABInfo.planeSpriteName,SetPlaneSprite);
+		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<Material>(aestheticsABInfo,aestheticsABInfo.verticleScrollerMaterialName,SetBackgroundMaterial);
+		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<Sprite>(aestheticsABInfo,aestheticsABInfo.bulletSpriteName,SetBulletSprite);
+		
+
+		// assetBundlesHandler.UnloadAllCachedAssetBundle(false);
 	}
 
 	void SetPlayerPlane(GameObject planeObj){
-		gameManager.levelManager.planeSpawnManager.SetPlayerPlanePrefab(planeObj.GetComponent<Plane>());
+		gameManager.levelManager.poolManager.planeSpawnManager.SetPlayerPlanePrefab(planeObj.GetComponent<Plane>());
 	}
 
 	void SetAIPlane(GameObject planeObj){
-		gameManager.levelManager.planeSpawnManager.SetAIPlanePrefab(planeObj.GetComponent<Plane>());
+		gameManager.levelManager.poolManager.planeSpawnManager.SetAIPlanePrefab(planeObj.GetComponent<Plane>());
 	}
 
 	void SetBulletPrefab(GameObject bulletObj){
-		gameManager.levelManager.playerPlaneController.bulletPool.CreatePool(bulletObj.GetComponent<Bullet>());
+		gameManager.levelManager.poolManager.bulletPool.CreatePool(bulletObj.GetComponent<Bullet>());
 	}
 
 	void SetLevelSOData(LevelsSOData levelSOData){
@@ -50,9 +55,18 @@ public class AssetReferenceManager : MonoBehaviour {
 	}
 
 	void SetPlaneSprite(Sprite planeSprite){
-		gameManager.levelManager.planeSpawnManager.SetAllPlaneSprite(planeSprite);
+		gameManager.levelManager.poolManager.planeSpawnManager.SetAllPlaneSprite(planeSprite);
 	}
 
-	void SetHealthBarBlinkShader(){
+	void SetBulletSprite(Sprite bulletSprite){
+		gameManager.levelManager.poolManager.bulletPool.SetAllBulletSprite(bulletSprite);
+	}
+
+	void SetTextsFont(Font font){
+		gameManager.hUDController.SetFontForAllText(font);
+	}
+
+	void SetBackgroundMaterial(Material material){
+		gameManager.levelManager.SetBackgroundSpriteShader(material);
 	}
 }

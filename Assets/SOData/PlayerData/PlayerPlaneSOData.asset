@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a133fe649bd96624b9f03523396ef6e0, type: 3}
   m_Name: PlayerPlaneSOData
   m_EditorClassIdentifier: 
-  plane: {fileID: 0}
+  planeColor: {r: 1, g: 1, b: 1, a: 1}
   planeName: Plane
   Speed: 10
   maxHealth: 100

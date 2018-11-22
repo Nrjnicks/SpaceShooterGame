@@ -9,4 +9,14 @@ public class BulletPool : ObjectPool<Bullet> {
 		bullet.InitBullet(position, forwardDirection, bulletSpeed, bulletStrength);
 		bullet.gameObject.SetActive(true);
 	}
+
+	public void SetAllBulletSprite(Sprite sprite){
+		objectForPool.SetBulletSprite(sprite);
+		
+		List<Bullet> bulletPool = GetPoolList();
+		foreach (Bullet bullet in bulletPool)
+		{			
+			bullet.SetBulletSprite(sprite);
+		}
+	}
 }

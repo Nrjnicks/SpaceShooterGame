@@ -8,36 +8,41 @@ public class LevelManager : MonoBehaviour {
 	public LevelsSOData levelsSOData;
 	public PlayerPlaneController playerPlaneController;
 	public AIPlaneController aIPlaneController;
-	public PlaneSpawnManager planeSpawnManager;
-	
+	public PoolManager poolManager;
 	public ScoreController scoreController;
+	[Space]
+	[SerializeField] SpriteRenderer BackgroundSprite;
 	int currentLevel;
-	Plane playerPlane;
+	int activePlayers;
 	LevelData levelData;
 	GameManager gameManager;
 	
 	public void InitParam(GameManager gameManager){
 		this.gameManager = gameManager;
 		gameManager.onGameFinished+=scoreController.OnGameFinished;
-		StartCoroutine(SetUpGame());
-
+		StartCoroutine(SetUpGame(gameManager.GetNumberOfPlayers()));
 	}
-	IEnumerator SetUpGame(){
+	IEnumerator SetUpGame(int numOfPlayers = 1){
 		currentLevel = 1;		
+		if(levelsSOData.multiplayerSOData.playerDataAndControls.Count<numOfPlayers){
+			Debug.Log("Not enough multiplayer data set in LevelsDataSO. Switching to max available.");
+			numOfPlayers = levelsSOData.multiplayerSOData.playerDataAndControls.Count;
+		}
 
 		playerPlaneController.InitControls(this);
 		aIPlaneController.InitControls(this);
+		poolManager.InitParam(this,numOfPlayers);
 		scoreController.InitParam(this);
 
-		yield return StartCoroutine(SpawnPlayers());
+		yield return StartCoroutine(SpawnPlayers(numOfPlayers));
 		SetUpLevel(currentLevel);
 	}
 
 	public void ResetParam(){
 		scoreController.ResetParam(this);
+		poolManager.ResetParam(this);
 		playerPlaneController.ResetControls(this);
 		aIPlaneController.ResetControls(this);
-		planeSpawnManager.DisableAllAIPlanes();
 	}
 
 	void StartNextLevel(){		
@@ -72,21 +77,30 @@ public class LevelManager : MonoBehaviour {
 		yield return StartCoroutine(SpawnAIs());
 	}
 
-	IEnumerator SpawnPlayers(){
-		playerPlane = planeSpawnManager.SpawnPlayerPlanes(levelsSOData.playerPlaneSOData,playerPlaneController,OnPlayerDead);
-		if(onPlayerSet!=null) onPlayerSet(playerPlane);
+	IEnumerator SpawnPlayers(int numOfPlayers = 1){
+		
+		Plane playerPlane;
+		for (int i = 1; i <= numOfPlayers; i++)
+		{
+			playerPlane = poolManager.planeSpawnManager.SpawnPlayerPlanes(levelsSOData.multiplayerSOData.playerDataAndControls[i-1]
+																				,playerPlaneController,OnPlayerDead, i);
+			if(onPlayerSet!=null) onPlayerSet(playerPlane,i);
+		}
+		activePlayers = numOfPlayers;
 		yield break;
 	}
 
 	IEnumerator SpawnAIs(){
 		while(true){
-			yield return aISpawnCoroutine = StartCoroutine(planeSpawnManager.SpawnPlanesForLevel(aIPlaneController, levelData, OnEnemyKilled));
+			yield return aISpawnCoroutine = StartCoroutine(poolManager.planeSpawnManager.SpawnPlanesForLevel(aIPlaneController, levelData, OnEnemyKilled));
 		}
 	}
 
 	void OnPlayerDead(Plane playerPlane){
-		gameManager.OnGameFinished(false);
-		ResetParam();
+		activePlayers--;
+		if(activePlayers<1){
+			gameManager.OnGameFinished(false);
+		}
 	}
 
 	public void OnEnemyKilled(Plane aIPlane){
@@ -110,6 +124,17 @@ public class LevelManager : MonoBehaviour {
 		StartNextLevel();
 	}
 
+	public void SetBackgroundSpriteShader(Material mat, Sprite sprite = null){
+		BackgroundSprite.material = mat;
+		if(sprite == null)
+			BackgroundSprite.sprite = Sprite.Create(
+										(Texture2D)mat.mainTexture, 
+										new Rect(0.0f, 0.0f, mat.mainTexture.width, mat.mainTexture.height), 
+										new Vector2(0.5f, 0.5f));
+		else
+			BackgroundSprite.sprite = sprite;
+	}
+
 	public System.Action<int> onLevelStart, onLevelComplete;
-	public System.Action<Plane> onPlayerSet;
+	public System.Action<Plane,int> onPlayerSet;
 }

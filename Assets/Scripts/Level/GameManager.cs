@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-
+	int numOfPlayers = 1;
 	public LevelManager levelManager;
 	public HUDController hUDController;
 	public AssetReferenceManager assetReferenceManager;
@@ -12,14 +12,19 @@ public class GameManager : MonoBehaviour {
 		assetReferenceManager.SetReferenceToElements();//Called after every game restart//todo
 	}
 
+	public void SetNumOfPlayerAndStartGame(int numOfPlayers){
+		this.numOfPlayers = numOfPlayers;
+		StartGame();
+	}
+
 	public void StartGame(){
 		hUDController.InitParam(this);
 		levelManager.gameObject.SetActive(true);
 		levelManager.InitParam(this);
 	}
 
-	public void OnAssetLoad(){
-
+	public int GetNumberOfPlayers(){
+		return numOfPlayers;
 	}
 	
 	// Update is called once per frame

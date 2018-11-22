@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour, IHealthable{
 	public float inflictingDamageAmount{get; private set;}
 	Vector2 direction;
 	Vector2 newPos;
+	[Space]
+	[SerializeField] SpriteRenderer bulletSprite;
 	// Use this for initialization
 	public void InitBullet (Vector2 startPos, Vector2 moveDirection, float bulletSpeed = 15, float damageAmount = 10) {
 		transform.position = startPos;
@@ -18,6 +20,9 @@ public class Bullet : MonoBehaviour, IHealthable{
 		speed = bulletSpeed;
 		inflictingDamageAmount = damageAmount;
 		healthModel.InitParams(this, damageAmount, DisableBullet);
+	}
+	public void SetBulletSprite(Sprite sprite){
+		bulletSprite.sprite = sprite;
 	}
 	
 	void Update (){

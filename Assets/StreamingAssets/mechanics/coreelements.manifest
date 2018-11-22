@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3295406612
+CRC: 3147302786
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3359804a23838a69e0ee9935c665098c
+    Hash: d81236f8ddf6b5e160bc3591cd00edbe
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e34da3f5b43408ee0306ba741a73980b
+    Hash: aba69a3104e040eb302060e05493aaf9
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -14,8 +14,6 @@ ClassTypes:
 - Class: 4
   Script: {instanceID: 0}
 - Class: 21
-  Script: {instanceID: 0}
-- Class: 28
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
@@ -32,17 +30,19 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 611409235d3d39341907f05d8b3f6462, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 4eb7c3874cd7fa8489b77df23df13248, type: 3}
+  Script: {fileID: 11500000, guid: 405353c44c5d3244cab19bfa7971124c, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 88bc3af7721b52440ae6ecc5ce6ce814, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 1630c1e92b27710479e2e8a1c160141f, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 3059cf7c718608a44b7be8d995c9c178, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: f4d5468d92e4ae549bdc9d84fc25c38b, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: b1ab8e3fe660efa4c8e41236304497ad, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 405353c44c5d3244cab19bfa7971124c, type: 3}
+  Script: {fileID: 11500000, guid: be841283a873d414cbc31948a69298e5, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 212
@@ -58,8 +58,7 @@ ClassTypes:
 Assets:
 - Assets/Prefabs/AIPlane.prefab
 - Assets/Prefabs/Bullet.prefab
-- Assets/ArtAssets/Materials/HealthBarUI.mat
-- Assets/Prefabs/Plane.prefab
-- Assets/ArtAssets/Materials/Unlit_ScrollableBackground.mat
+- Assets/Prefabs/PlayerPlane.prefab
 Dependencies:
-- C:/Users/Neeraj/Documents/UnityProjects/1942Clone/Assets/StreamingAssets/aesthetics/spacetheme
+- D:/UnityProject/SpaceShooter/Assets/StreamingAssets/aesthetics/spacetheme
+- D:/UnityProject/SpaceShooter/Assets/StreamingAssets/mechanics/sodatas

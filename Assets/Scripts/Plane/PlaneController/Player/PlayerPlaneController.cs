@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerPlaneController : APlaneContoller {
 
-	public KeyBoardControlsSO keyControls;
+	KeyBoardControlsSO keyControls;
 
 	protected override bool ShouldOrNotMoveForward(){
 		if(Input.GetKey(keyControls.Forward))
@@ -30,6 +30,12 @@ public class PlayerPlaneController : APlaneContoller {
 		if(Input.GetKey(keyControls.Fire))
 			return true;
 		return false;
+	}
+
+	
+	public override Vector2 GetMoveDeltaPosition (Plane plane) {
+		keyControls = ((PlayerPlane)plane).keyControls;
+		return base.GetMoveDeltaPosition(plane);
 	}
 
 }

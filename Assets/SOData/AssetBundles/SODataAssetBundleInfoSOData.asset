@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: SODataAssetBundleInfoSOData
   m_EditorClassIdentifier: 
   assetBundlePath: Assets\StreamingAssets\mechanics\sodatas
-  playerSODataName: PlayerPlaneSOData
+  multiPlayerSODataName: MultiPlayerSOData
   levelSODataName: LevelsSOData
   scoreSODataName: ScoreSOData

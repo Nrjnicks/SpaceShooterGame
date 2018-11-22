@@ -16,6 +16,7 @@ public class HealthBarBlink : MonoBehaviour {
 	public void SetShader(Shader shader){
 		blinkMat = new Material(shader);//new instance for individuality
 		blinkMat.SetColor("_Color", healthBar.color);
+		blinkMat.SetTexture("_MainTex", healthBar.mainTexture);
 		blinkMat.SetFloat("_Blink", 0);
 	}
 

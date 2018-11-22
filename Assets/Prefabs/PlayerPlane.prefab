@@ -35,11 +35,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4653696931586386}
-  - component: {fileID: 114996236081442642}
+  - component: {fileID: 114816426106618370}
   - component: {fileID: 61693648100367136}
   - component: {fileID: 50452917716837458}
   m_Layer: 8
-  m_Name: Plane
+  m_Name: PlayerPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -319,6 +319,20 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114816426106618370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1428283105278556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be841283a873d414cbc31948a69298e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planeSprite: {fileID: 212149770606320998}
+  healthModel: {fileID: 114435212668122166}
+  keyControls: {fileID: 11400000, guid: 68a155729f5475f4ba52e806d2e3bff2, type: 2}
 --- !u!114 &114840143997270518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,19 +360,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114996236081442642
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1428283105278556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eb7c3874cd7fa8489b77df23df13248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planeSprite: {fileID: 212149770606320998}
-  healthModel: {fileID: 114435212668122166}
 --- !u!212 &212149770606320998
 SpriteRenderer:
   m_ObjectHideFlags: 1

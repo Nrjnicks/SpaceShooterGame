@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2aee550b1e9902438cea5bf279d6e79, type: 3}
+  m_Name: MultiPlayerSOData
+  m_EditorClassIdentifier: 
+  playerDataAndControls:
+  - planeSOData: {fileID: 11400000, guid: e51937fa70cf0854aaf62da1d470a41b, type: 2}
+    keyBoardControl: {fileID: 11400000, guid: 68a155729f5475f4ba52e806d2e3bff2, type: 2}
+  - planeSOData: {fileID: 11400000, guid: e51937fa70cf0854aaf62da1d470a41b, type: 2}
+    keyBoardControl: {fileID: 11400000, guid: 2610c1a8049c00b4d971594970373316, type: 2}

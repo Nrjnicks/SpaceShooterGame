@@ -12,7 +12,7 @@ public class LevelSODataInspector : Editor {
 	SerializedProperty levelDatas;
 	SerializedProperty commonWinCondition;
 	SerializedProperty timeDiffBwLevel;
-	SerializedProperty playerDataSO;
+	SerializedProperty multiplayerSOData;
 	void OnEnable()
     {
         winCondition = serializedObject.FindProperty("winCondition");
@@ -20,7 +20,7 @@ public class LevelSODataInspector : Editor {
         levelDatas = serializedObject.FindProperty("levelDatas");
 		commonWinCondition = serializedObject.FindProperty("isCommonWinCondition");
 		timeDiffBwLevel = serializedObject.FindProperty("timeDifferenceBetweenLevels");
-		playerDataSO = serializedObject.FindProperty("playerPlaneSOData");
+		multiplayerSOData = serializedObject.FindProperty("multiplayerSOData");
     }
 	public override void OnInspectorGUI(){
 		serializedObject.Update();
@@ -34,7 +34,7 @@ public class LevelSODataInspector : Editor {
 		
 		EditorGUILayout.Space();
 		EditorGUILayout.LabelField("Player Related", EditorStyles.boldLabel);
-		EditorGUILayout.PropertyField( playerDataSO, new GUIContent("Player Plane Data SO"));
+		EditorGUILayout.PropertyField( multiplayerSOData, new GUIContent("Multi Player Data SO"));
 		EditorGUILayout.Space();
 		EditorGUILayout.Space();
 		EditorGUILayout.LabelField("Level Related", EditorStyles.boldLabel);

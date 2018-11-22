@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: CoreMechanicsAssetBundleInfoSOData
   m_EditorClassIdentifier: 
   assetBundlePath: Assets\StreamingAssets\mechanics\coreelements
-  playerPlanePrefabName: Plane
+  playerPlanePrefabName: PlayerPlane
   aIPlanePrefabName: AIPlane
   bulletPrefabName: Bullet

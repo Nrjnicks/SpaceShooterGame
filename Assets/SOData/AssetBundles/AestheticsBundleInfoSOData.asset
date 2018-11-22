@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Name: AestheticsBundleInfoSOData
   m_EditorClassIdentifier: 
   assetBundlePath: Assets\StreamingAssets\aesthetics\spacetheme
+  fontName: Minecraftia
   planeSpriteName: PlaneSprite
-  verticleScrollerSpriteName: Background
+  bulletSpriteName: BlueBullet
+  verticleScrollerMaterialName: ScrollableBackground
   healthBarBlinkShaderName: HealthBarBlink

@@ -8,13 +8,16 @@ public abstract class APlaneContoller: MonoBehaviour {
 	protected abstract bool ShouldOrNotMoveRight();
 	protected abstract bool ShouldOrNotFire(Plane plane);
 	
-	public BulletPool bulletPool;
+	BulletPool bulletPool;
 
 	public virtual void InitControls(LevelManager levelManager){
 
 	}
 	public virtual void ResetControls(LevelManager levelManager){
 
+	}
+	public virtual void SetBulletPool(BulletPool bulletPool){
+		this.bulletPool = bulletPool;
 	}
 	
 	public virtual void UpdateControls(Plane plane){
