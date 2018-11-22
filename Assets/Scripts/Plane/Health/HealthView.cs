@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class HealthView : MonoBehaviour {
 		public Image healthBar;
-		public void SetHealthBarFillAmount(float currentHealth){//, float maxHealth){
-			healthBar.fillAmount = currentHealth;
+		
+		///<description>Set Fill Amount [0,1] of health bar</description>
+		public void SetHealthBarFillAmount(float fillAmount){
+			healthBar.fillAmount = fillAmount;
 		}
 }

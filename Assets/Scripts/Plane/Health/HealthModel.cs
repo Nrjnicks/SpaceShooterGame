@@ -9,6 +9,7 @@ public class HealthModel : MonoBehaviour {
 	public float maxHealth{get; private set;}
 	[HideInInspector] public float currentHealth;
 
+	///<description>Setting Health and IHealthable params and callbacks for DeathEvent</description>
 	public void InitParams(IHealthable actor, float maxHealth, System.Action OnDeathCallback){
 		this.actor = actor;
 		this.maxHealth = maxHealth;

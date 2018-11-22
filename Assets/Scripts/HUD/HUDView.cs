@@ -13,6 +13,7 @@ public class HUDView : MonoBehaviour {
 	[Range(0,5)] float disableLevelStartObjAfterSec = 3;
 	[SerializeField] GameObject levelComplete;
 
+	///<description>Set Health Text</description>
 	public void SetHealthText(string health, int playerNum = 1){
 		if(playerNum == 1)
 			P1healthText.text = health;
@@ -20,12 +21,9 @@ public class HUDView : MonoBehaviour {
 			P2healthText.text = health;
 	}
 
+	///<description>Activate or deactivate UI for Player 2</description>
 	public void P2SetActiveUI(bool state){
 		P2healthText.gameObject.SetActive(state);
-	}
-
-	public void OnGameStart(){
-		
 	}
 
 	public void OnGameFinished(bool gameWon){

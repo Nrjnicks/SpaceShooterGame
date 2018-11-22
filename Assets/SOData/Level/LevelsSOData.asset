@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48780a0a2d36f3438df9578448f2877, type: 3}
   m_Name: LevelsSOData
   m_EditorClassIdentifier: 
-  isCommonWinCondition: 0
+  isCommonWinCondition: 1
   winCondition: {fileID: 11400000, guid: 324a84795e08c9244ae9cf39fa7e2442, type: 2}
   multiplayerSOData: {fileID: 11400000, guid: 9c87b905fcb710b4a94be3221dd6cbfd, type: 2}
   totalNumOfLevels: 5
@@ -20,8 +20,8 @@ MonoBehaviour:
   - winCondition: {fileID: 11400000, guid: 072506563026ac545b51918fe353c164, type: 2}
     timeDiffBetweenWaves: 0
     enemySpawnSequence:
-    - aIPlaneSOData: {fileID: 11400000, guid: 1a15cbfd638c6fe4e977e6122ab4a144, type: 2}
-      numberOfSpawns: 1
+    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
+      numberOfSpawns: 6
       spawnFrequency: 3
   - winCondition: {fileID: 11400000, guid: 324a84795e08c9244ae9cf39fa7e2442, type: 2}
     timeDiffBetweenWaves: 3

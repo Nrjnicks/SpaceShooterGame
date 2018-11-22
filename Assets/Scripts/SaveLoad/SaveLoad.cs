@@ -5,6 +5,10 @@ using UnityEngine;
 public class SaveLoad{
 	string defaultPath = Application.persistentDataPath;
 
+
+	///<description>Save data of a serialized class in Binary format (path+filename location)</description>
+	///<param name="fileName">default: typeof(T)</param>
+	///<param name="path">default: Application.persistentDataPath</param>
 	public void SaveData<T>(T data, string fileName = null, string path = null) where T: class
 	{
 		if(path == null) path = defaultPath;
@@ -25,6 +29,9 @@ public class SaveLoad{
         }
 	}
 
+	///<description>Read data of a serialized class, deserialize in Binary format (path+filename location)</description>
+	///<param name="fileName">default: typeof(T)</param>
+	///<param name="path">default: Application.persistentDataPath</param>
 	public T LoadData<T> (string fileName = null, string path = null) where T: class
     {	
 		if(path == null) path = defaultPath;

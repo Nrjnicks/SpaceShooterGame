@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class ObjectPool<T> : MonoBehaviour where T : Component {
 
 	public T objectForPool;
-	public int poolAmount = 5;
-	public bool canGrow = false;
+	[Tooltip("initial number of components to instantiate")] public int poolAmount = 5;
+	[Tooltip("Can this pool grow or not")] public bool canGrow = false;
 	int nextUnused = -1;
 	
 	List<T> ObjPool;
@@ -22,6 +22,7 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : Component {
 		CreatePool();
 	}
 
+	///<description>Create New Pool</description>
 	protected void CreatePool(){
 		DestroyAllPoolObjects();
 		ObjPool = new List<T>();
@@ -38,6 +39,7 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : Component {
 		return poolObj;
 	}
 
+	///<description>Disable All Pool Elements</description>
 	public virtual void DisableAllPoolObjects(){
 		if(ObjPool == null) return;
 		foreach(T obj in ObjPool){
@@ -45,6 +47,7 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : Component {
 		}
 	}	
 
+	///<description>Destroy All Pool Elements</description>
 	public virtual void DestroyAllPoolObjects(){
 		if(ObjPool == null) return;
 		foreach(T obj in ObjPool){
@@ -52,6 +55,7 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : Component {
 		}
 	}
 
+	///<description>Get Next Unused Pooled Object. returns next disabled object or create new if pool can grow</description>
 	protected T GetNextUnusedPooledObject(){
 		if(nextUnused == -1){
 			Debug.Log("Pool Not Created yet!");

@@ -29,15 +29,18 @@ public class WorldSpaceGameBoundary : MonoBehaviour {
 		centre = 0.5f * boundSize + bottomLeftWorldSpaceBound;
 	}
 
+	///<description>Is Point Inside Camera View</description>
 	public bool IsPointInsideCameraView(Vector2 position){
 		return IsPointInsideBound(position,boundSize);
 	}
 
+	///<description>IsPointOutsideCameraView but inside half of (buffer) extra space</description>
 	public bool IsPointOutsideCameraView(Vector2 position){
 		return !IsPointInsideBound(position,boundSize+extraSpace*0.5f);
 	}
 
 	Vector2 extraSpace = new Vector2(4,4);
+	///<description>Is Point Inside (Buffer)Extra Space</description>
 	public bool IsPointInsideExtraSpace(Vector2 position){
 		return IsPointInsideBound(position,boundSize+extraSpace);
 	}
@@ -56,7 +59,7 @@ public class WorldSpaceGameBoundary : MonoBehaviour {
 	}
 	
 
-	#if UNITY_EDITOR
+	#if UNITY_EDITOR//Draw Gizmo for ease of Level Designers
 	Color inColor = new Color(0, 1, 0, 0.3f);
 	Color midColor = new Color(1, 1, 0, 0.3f);
 	Color outColor = new Color(1, 0, 0, 0.3f);

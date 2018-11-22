@@ -36,14 +36,14 @@ public class Plane : MonoBehaviour, IHealthable {
 	// Update is called once per frame
 	protected virtual void Update () {
 		if(planeContoller!=null)
-			planeContoller.UpdateControls(this);
+			planeContoller.UpdateControls(this); //Update this plane's position/state by the controller
 	}	
 
 	public bool IsAttackInCoolDown{ get; private set;}
 	public virtual void FireBullet(){
 		if(IsAttackInCoolDown) return;
 		
-		planeContoller.FireBullet(this);
+		planeContoller.FireBullet(this); //fire bullet
 
 		IsAttackInCoolDown = true;
 		Invoke("RemoveCoolDownStatus", planeData.attackCooldown);
@@ -59,7 +59,7 @@ public class Plane : MonoBehaviour, IHealthable {
 	}
 
 	void OnHit(IHealthable healthable){
-		if(onHit!=null) onHit(healthable);
+		if(onHit!=null) onHit(healthable);//event callback on Trigger Enter
 	}
 
 	public void DisablePlane(){
@@ -70,9 +70,9 @@ public class Plane : MonoBehaviour, IHealthable {
 		gameObject.SetActive(true);
 	}
 
-	public void OnPlaneDeath(){
+	void OnPlaneDeath(){
 		DisablePlane();
-		if(onDeath!=null) onDeath(this);
+		if(onDeath!=null) onDeath(this);//event callback on Plane Death
 	}
 	
 	public System.Action<Plane> onDeath;

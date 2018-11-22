@@ -14,6 +14,7 @@ public class HealthController : MonoBehaviour {
 		if(onHealthChange!=null) onHealthChange(healthModel.currentHealth, healthModel.maxHealth);
 		if(healthView!=null) healthView.SetHealthBarFillAmount(healthModel.currentHealth/healthModel.maxHealth);
 	}
+	///<description>use IHealthable information to inflict damage</description>
 	public void OnActorHit(IHealthable collidable){
 		if(collidable == null) return;
 		

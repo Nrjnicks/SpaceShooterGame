@@ -16,6 +16,7 @@ public class ScoreView : MonoBehaviour {
 	[SerializeField] Text levelCompleteScoreDiscriptionText;
 	
 
+	///<description>Set High Score UI For List</description>
 	public void SetHighScoreUIForList(List<ScoreModel.HighScoreInformation> highScoresList){
 		int rank;
 		for (rank = 1; rank <= highScoresList.Count; rank++)
@@ -28,10 +29,12 @@ public class ScoreView : MonoBehaviour {
 		}
 	}
 
+	///<description>Activate 'enter name' dialog box on high score defeat</description>
 	public void OnHighScoreBeat(bool isBeat){
 		highScoreNameInputField.SetActive(isBeat);
 	}
 
+	///<description>Update High SCore information for particular rank</description>
 	public void SetHighScoreUIForRank(int rank, string name, float score){
 		if(rank<1 || rank>highScoresUIInRank.Length) return;
 		highScoresUIInRank[rank-1].nameText.transform.parent.gameObject.SetActive(true);

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1683295785
+CRC: 1343319261
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: cf2916f2ffe4330cbc459ba8c9eef2da
+    Hash: 9ca0536b331ea371615937b6ff9b3630
   TypeTreeHash:
     serializedVersion: 2
     Hash: e87dbf8571acb99b61a8c3872f3764ee
@@ -28,4 +28,4 @@ Assets:
 - Assets/Shaders/HealthBarBlinkMedival.shader
 - Assets/ArtAssets/Materials/ScrollableBackgroundMedival.mat
 Dependencies:
-- D:/UnityProject/SpaceShooter/Assets/StreamingAssets/aesthetics/spacetheme
+- C:/Users/Neeraj/Documents/UnityProjects/1942Clone/Assets/StreamingAssets/aesthetics/spacetheme

@@ -15,23 +15,26 @@ public class ScoreModel : MonoBehaviour {
 	}
 
 	[System.Serializable]
-	public class HighScores{
-		
+	public class HighScores{		
 		public List<HighScoreInformation> highScoresList;
 		public HighScores(){
 			highScoresList = new List<HighScoreInformation>();
 		}
 	}
-	[Range(0,5)] public int maxRankToSave = 5;
+
+	[Range(0,5)] public int maxRankToSave = 5;//number of ranks to save and show on high score chart
 	HighScores highScores;
 	SaveLoad saveLoad;
 	
+	///<description>Reseting Internal Parameters</description>
+	///<return>List of saved high scores</return>
 	public List<HighScoreInformation> GetHighScoreList() {
 		if(highScores==null)
 			UpdateHighScores();
 		return highScores.highScoresList;
 	}
 
+	///<description>Update High Score to save</description>
 	void UpdateHighScores(){		
 		if(saveLoad == null) 
 			saveLoad = new SaveLoad();
@@ -43,6 +46,8 @@ public class ScoreModel : MonoBehaviour {
 		}
 	}
 
+	///<description>Save High Score</description>
+	///<param name="highScoresList">high Scores List</param>
 	public void SaveHighScoreList(List<HighScoreInformation> highScoresList){
 		if(saveLoad == null) 
 			saveLoad = new SaveLoad();
@@ -53,6 +58,7 @@ public class ScoreModel : MonoBehaviour {
 		saveLoad.SaveData<HighScores>(highScores);
 	}
 	
+	///<description>Initial set of high score</description>
 	void SetInitialHighScores(HighScores highScores){
 		string[] randomNames = {"Is this the real life?", "Is this just fantasy?","Caught in a landslide","no escape from reality", "Please Hire MEE!!!"};
 		for (int i = 0; i < maxRankToSave; i++)

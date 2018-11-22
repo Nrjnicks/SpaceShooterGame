@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f4ff486e281864681c42a00a589323, type: 3}
   m_Name: SODataAssetBundleInfoSOData
   m_EditorClassIdentifier: 
-  assetBundlePath: Assets\StreamingAssets\mechanics\sodatas
+  assetBundlePath: mechanics\sodatas
   multiPlayerSODataName: MultiPlayerSOData
   levelSODataName: LevelsSOData
   scoreSODataName: ScoreSOData

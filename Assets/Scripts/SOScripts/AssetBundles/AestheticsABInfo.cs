@@ -7,6 +7,7 @@ public class AestheticsABInfo : ABInfoSOData {
 	public string fontName;	
 	public string planeSpriteName;
 	public string bulletSpriteName;
+	public string healthBarSpriteName;
 	public string verticleScrollerMaterialName;
-	public string healthBarBlinkShaderName;
+	public string healthBarBlinkMaterialName;
 }

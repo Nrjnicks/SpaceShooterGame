@@ -5,22 +5,30 @@ using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour {
 	public HUDView hUDView; 
+
+
+	///<description>Initializing Internal Parameters</description>
+	///<param name="gameManager">GameManager instance</param>
 	public void InitParam(GameManager gameManager){
 		gameManager.onGameFinished += OnGameFinished;
 		gameManager.levelManager.onPlayerSet += OnPlayerSet;
 		gameManager.levelManager.onLevelStart += hUDView.OnLevelStart;
 		gameManager.levelManager.onLevelComplete += hUDView.OnLevelComplete;
+		gameManager.levelManager.onPlayerKilled+=OnPlayerDeath;
 		hUDView.P2SetActiveUI(gameManager.GetNumberOfPlayers()>1);
 	}	
+	
+	///<description>Reseting Internal Parameters</description>
+	///<param name="gameManager">GameManager instance</param>
 	public void ResetParam(GameManager gameManager){
 		gameManager.onGameFinished -= OnGameFinished;
 		gameManager.levelManager.onPlayerSet -= OnPlayerSet;
 		gameManager.levelManager.onLevelStart -= hUDView.OnLevelStart;
 		gameManager.levelManager.onLevelComplete -= hUDView.OnLevelComplete;
+		gameManager.levelManager.onPlayerKilled+=OnPlayerDeath;
 	}
 
 	void OnPlayerSet(Plane playerPlane, int playerNum){
-		playerPlane.onDeath+=OnPlayerDeath;
 		if(playerNum == 1){
 			playerPlane.healthModel.healthController.onHealthChange+=OnP1HealthChange;
 			OnP1HealthChange(playerPlane.healthModel.currentHealth,playerPlane.healthModel.maxHealth);
@@ -42,18 +50,19 @@ public class HUDController : MonoBehaviour {
 		}
 	}
 	
-	public void OnGameFinished(bool gameWon){
+	void OnGameFinished(bool gameWon){
 		hUDView.OnGameFinished(gameWon);
 	}
 
-	void OnP1HealthChange(float currentHealth, float maxHealth){
+	void OnP1HealthChange(float currentHealth, float maxHealth){ //Player 1
 		hUDView.SetHealthText(currentHealth+"/"+maxHealth, 1);
 	}
 
-	void OnP2HealthChange(float currentHealth, float maxHealth){
+	void OnP2HealthChange(float currentHealth, float maxHealth){ //Player 2
 		hUDView.SetHealthText(currentHealth+"/"+maxHealth, 2);
 	}
 
+	///<description>Set Font of all text for any game theme</description>
 	public void SetFontForAllText(Font font){
 		Text[] allTexts = gameObject.GetComponentsInChildren<Text>(true);
 		foreach (Text text in allTexts)

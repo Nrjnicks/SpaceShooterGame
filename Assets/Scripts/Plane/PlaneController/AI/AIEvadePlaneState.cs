@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIEvadePlaneStrategy : AIPlaneStrategy {
+public class AIEvadePlaneState : AIPlaneState {
 	
 	public override void UpdateMoveDirection(AIPlane aIPlane){
 		moveTowards = aIPlane.transform.position - aIPlane.enemyPlane.transform.position;

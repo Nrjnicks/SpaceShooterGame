@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AssetReferenceManager : MonoBehaviour {
 	public AssetBundlesHandler assetBundlesHandler;
+	[Space]
+	//references to asset bundle information (Stored in SO files for ease of project)
 	public CoreMechanicsABInfo coreMechanicsABInfo;
 	public SODatasABInfo sODatasInfo;
 	public AestheticsABInfo aestheticsABInfo;
@@ -14,24 +16,34 @@ public class AssetReferenceManager : MonoBehaviour {
 
 	}
 
+	///<discription>Set all inter-dependencies from asset bundles to in-game elements</discription>
 	public void SetReferenceToElements(){
 		//SODatas
-		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<LevelsSOData>(sODatasInfo,sODatasInfo.levelSODataName,SetLevelSOData);
-		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<ScoreSOData>(sODatasInfo,sODatasInfo.scoreSODataName,SetScoreSOData);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<LevelsSOData>(sODatasInfo,sODatasInfo.levelSODataName,SetLevelSOData);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<ScoreSOData>(sODatasInfo,sODatasInfo.scoreSODataName,SetScoreSOData);
 
 		//Plane//AI//Bullets
-		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<GameObject>(coreMechanicsABInfo,coreMechanicsABInfo.playerPlanePrefabName,SetPlayerPlane);
-		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<GameObject>(coreMechanicsABInfo,coreMechanicsABInfo.aIPlanePrefabName,SetAIPlane);
-		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<GameObject>(coreMechanicsABInfo,coreMechanicsABInfo.bulletPrefabName,SetBulletPrefab);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<GameObject>(coreMechanicsABInfo,coreMechanicsABInfo.playerPlanePrefabName,SetPlayerPlane);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<GameObject>(coreMechanicsABInfo,coreMechanicsABInfo.aIPlanePrefabName,SetAIPlane);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<GameObject>(coreMechanicsABInfo,coreMechanicsABInfo.bulletPrefabName,SetBulletPrefab);
 
 		//Aethetics
-		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<Font>(aestheticsABInfo,aestheticsABInfo.fontName,SetTextsFont);
-		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<Sprite>(aestheticsABInfo,aestheticsABInfo.planeSpriteName,SetPlaneSprite);
-		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<Material>(aestheticsABInfo,aestheticsABInfo.verticleScrollerMaterialName,SetBackgroundMaterial);
-		assetBundlesHandler.CacheAndLoadAsynFromAssetBundle<Sprite>(aestheticsABInfo,aestheticsABInfo.bulletSpriteName,SetBulletSprite);
-		
+		//fontName
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Font>(aestheticsABInfo,aestheticsABInfo.fontName,SetTextsFont);
+		//planeSpriteName
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Sprite>(aestheticsABInfo,aestheticsABInfo.planeSpriteName,SetPlaneSprite);
+		//healthBarSpriteName
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Sprite>(aestheticsABInfo,aestheticsABInfo.healthBarSpriteName,SetHealthBarSprite);
+		//verticleScrollerMaterialName
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Material>(aestheticsABInfo,aestheticsABInfo.verticleScrollerMaterialName,SetBackgroundMaterial);
+		//bulletSpriteName
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Sprite>(aestheticsABInfo,aestheticsABInfo.bulletSpriteName,SetBulletSprite);
+		//healthBarBlinkMaterialName
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Material>(aestheticsABInfo,aestheticsABInfo.healthBarBlinkMaterialName,SetHealthBarBlinkMaterial);
 
-		// assetBundlesHandler.UnloadAllCachedAssetBundle(false);
+		
+		assetBundlesHandler.UnloadAllCachedAssetBundle(false);
+
 	}
 
 	void SetPlayerPlane(GameObject planeObj){
@@ -62,11 +74,19 @@ public class AssetReferenceManager : MonoBehaviour {
 		gameManager.levelManager.poolManager.bulletPool.SetAllBulletSprite(bulletSprite);
 	}
 
+	void SetHealthBarSprite(Sprite healthSprite){
+		gameManager.levelManager.poolManager.planeSpawnManager.SetAllPlaneHealthBarSprite(healthSprite);
+	}
+
 	void SetTextsFont(Font font){
 		gameManager.hUDController.SetFontForAllText(font);
 	}
 
 	void SetBackgroundMaterial(Material material){
-		gameManager.levelManager.SetBackgroundSpriteShader(material);
+		gameManager.levelManager.SetBackgroundSpriteMaterial(material);
+	}
+
+	void SetHealthBarBlinkMaterial(Material material){
+		gameManager.levelManager.poolManager.planeSpawnManager.SetHealthBlinkMaterial(material);
 	}
 }

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1630795233
+CRC: 4053701254
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 98aee1ab0e16816fd14c6f62b959dbdc
+    Hash: 1161c6b50bfb4df68d59e7f3fea07c1f
   TypeTreeHash:
     serializedVersion: 2
     Hash: e87dbf8571acb99b61a8c3872f3764ee
@@ -21,10 +21,11 @@ ClassTypes:
   Script: {instanceID: 0}
 Assets:
 - Assets/Shaders/HealthBarBlink.shader
-- Assets/ArtAssets/boneWhite.jpg
+- Assets/ArtAssets/White.jpg
 - Assets/Shaders/ScrollableBackground.shader
 - Assets/ArtAssets/Background.jpg
 - Assets/ArtAssets/Materials/ScrollableBackground.mat
+- Assets/ArtAssets/Materials/HealthBarBlink.mat
 - Assets/ArtAssets/PlaneSprite.png
 - Assets/Fonts/Minecraftia.ttf
 - Assets/ArtAssets/BlueBullet.png

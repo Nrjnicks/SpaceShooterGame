@@ -6,21 +6,24 @@ public class AIPlaneController : APlaneContoller {
 	List<Plane> playerPlanes;
 	AIPlane currentAIPlane;
 
-	//Strategies---------->
-	AIApproachPlaneStrategy approachPlaneStrategy;
-	AIAttackPlaneStrategy attackPlaneStrategy;
-	AIEvadePlaneStrategy evadePlaneStrategy;
+	//States---------->
+	AIApproachPlaneState approachPlaneState;
+	AIAttackPlaneState attackPlaneState;
+	AIEvadePlaneState evadePlaneState;
 	//<---------------------
 
-	AIPlaneStrategy currentStrategy;
+	AIPlaneState currentState;
 
 	bool forceEvade;
 
 	void Start(){		
-		approachPlaneStrategy = new AIApproachPlaneStrategy();
-		attackPlaneStrategy = new AIAttackPlaneStrategy();
-		evadePlaneStrategy = new AIEvadePlaneStrategy();
+		approachPlaneState = new AIApproachPlaneState();
+		attackPlaneState = new AIAttackPlaneState();
+		evadePlaneState = new AIEvadePlaneState();
 	}
+	
+	///<description>Initializing Internal Parameters of this instance</description>
+	///<param name="levelManager">LevelManager instance</param>
 	public override void InitControls(LevelManager levelManager){
 		levelManager.onLevelStart += OnLevelStart;
 		levelManager.onLevelComplete += OnLevelComplete;
@@ -28,7 +31,8 @@ public class AIPlaneController : APlaneContoller {
 		playerPlanes = new List<Plane>();
 	}
 
-	public Plane GetEnemyPlane(){
+	///<description>Get Random Enemy plane to aim</description>
+	public Plane GetRandomEnemyPlane(){
 		return playerPlanes[UnityEngine.Random.Range(0,playerPlanes.Count)];
 	}
 
@@ -36,18 +40,21 @@ public class AIPlaneController : APlaneContoller {
 		this.playerPlanes.Add(playerPlane);//order doesn't matter
 	}
 
+	///<description>Reseting Internal Parameters</description>
+	///<param name="levelManager">LevelManager instance</param>
 	public override void ResetControls(LevelManager levelManager){
 		levelManager.onLevelStart -= OnLevelStart;
 		levelManager.onLevelComplete -= OnLevelComplete;
 		levelManager.onPlayerSet -= SetPlayerPlane;
 	}
 
+	///<description>Updating Controls and States of the AI</description>
 	public override void UpdateControls(Plane plane){
 		currentAIPlane = (AIPlane)plane;
 		if(ConditionToForceDie(currentAIPlane)) plane.DisablePlane();
-		//update strategy here
-		UpdateStrategy(currentAIPlane);
-		currentStrategy.UpdateMoveDirection(currentAIPlane);
+		//update State here
+		UpdateState(currentAIPlane);
+		currentState.UpdateMoveDirection(currentAIPlane);
 		base.UpdateControls(plane);
 	}
 
@@ -56,19 +63,21 @@ public class AIPlaneController : APlaneContoller {
 					&& WorldSpaceGameBoundary.Instance.IsPointOutsideCameraView(plane.transform.position);
 	}
 
-	void UpdateStrategy(AIPlane aiPlane){
-		
-		if(evadePlaneStrategy.ConditionToSwitch(aiPlane)||forceEvade){
-			currentStrategy = evadePlaneStrategy;
+	///<description>Update State Machine</description>
+	void UpdateState(AIPlane aiPlane){
+		//In sentence: Attack, if in range and not in cooldown. Evade, if in cooldown. Approach, if not in cooldown and far away
+		if(evadePlaneState.ConditionToSwitch(aiPlane)||forceEvade){
+			currentState = evadePlaneState;
 		}
 		else{			
-			if(approachPlaneStrategy.ConditionToSwitch(aiPlane))
-				currentStrategy = approachPlaneStrategy;
+			if(approachPlaneState.ConditionToSwitch(aiPlane))
+				currentState = approachPlaneState;
 			else
-				currentStrategy = attackPlaneStrategy;
+				currentState = attackPlaneState;
 		}
 	}
 	
+	///<description>Get Direction to move to, for this plane</description>
 	public override Vector2 GetMoveDeltaPosition (Plane plane) {
 		plane.transform.up = Vector2.Lerp(plane.transform.up, base.GetMoveDeltaPosition(plane), plane.planeData.Speed * Time.deltaTime);
 		return plane.transform.up;
@@ -89,27 +98,27 @@ public class AIPlaneController : APlaneContoller {
 
 	float errorRange = 0.1f;
 	protected override bool ShouldOrNotMoveForward(){
-		if(currentStrategy.GetNormalizedMoveDirection().y > +errorRange)
+		if(currentState.GetNormalizedMoveDirection().y > +errorRange)
 			return true;
 		return false;
 	}
 	protected override bool ShouldOrNotMoveBackward(){
-		if(currentStrategy.GetNormalizedMoveDirection().y < -errorRange)
+		if(currentState.GetNormalizedMoveDirection().y < -errorRange)
 			return true;
 		return false;
 	}
 	protected override bool ShouldOrNotMoveLeft(){
-		if(currentStrategy.GetNormalizedMoveDirection().x < -errorRange)
+		if(currentState.GetNormalizedMoveDirection().x < -errorRange)
 			return true;
 		return false;
 	}
 	protected override bool ShouldOrNotMoveRight(){
-		if(currentStrategy.GetNormalizedMoveDirection().x > +errorRange)
+		if(currentState.GetNormalizedMoveDirection().x > +errorRange)
 			return true;
 		return false;
 	}
 	protected override bool ShouldOrNotFire(Plane plane){
-		if(currentStrategy.ShouldOrNotFire((AIPlane)plane))
+		if(currentState.ShouldOrNotFire((AIPlane)plane))
 			return true;
 		return false;
 	}

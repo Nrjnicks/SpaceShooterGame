@@ -33,6 +33,7 @@ public class PlayerPlaneController : APlaneContoller {
 	}
 
 	
+	///<description>Get Direction to move to, for this plane</description>
 	public override Vector2 GetMoveDeltaPosition (Plane plane) {
 		keyControls = ((PlayerPlane)plane).keyControls;
 		return base.GetMoveDeltaPosition(plane);

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ef7ab042c648a40a7c535bda55fdb6, type: 3}
   m_Name: AestheticsBundleInfoSOData Medival
   m_EditorClassIdentifier: 
-  assetBundlePath: Assets\StreamingAssets\aesthetics\medivaltheme
+  assetBundlePath: aesthetics\medivaltheme
   fontName: Adventurer
   planeSpriteName: Dragon
   bulletSpriteName: FireBall

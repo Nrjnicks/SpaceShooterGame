@@ -11,9 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ef7ab042c648a40a7c535bda55fdb6, type: 3}
   m_Name: AestheticsBundleInfoSOData
   m_EditorClassIdentifier: 
-  assetBundlePath: Assets\StreamingAssets\aesthetics\spacetheme
+  assetBundlePath: aesthetics\spacetheme
   fontName: Minecraftia
   planeSpriteName: PlaneSprite
   bulletSpriteName: BlueBullet
+  healthBarSpriteName: White
   verticleScrollerMaterialName: ScrollableBackground
-  healthBarBlinkShaderName: HealthBarBlink
+  healthBarBlinkMaterialName: HealthBarBlink

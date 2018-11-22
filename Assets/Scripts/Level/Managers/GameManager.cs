@@ -4,41 +4,44 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 	int numOfPlayers = 1;
+	public AssetReferenceManager assetReferenceManager;
 	public LevelManager levelManager;
 	public HUDController hUDController;
-	public AssetReferenceManager assetReferenceManager;
 	// Use this for initialization
 	void Start () {
-		assetReferenceManager.SetReferenceToElements();//Called after every game restart//todo
+		assetReferenceManager.SetReferenceToElements();//Set all references manually for more controls and less dependencies
 	}
 
+	///Called to Set Request of number of player and Start the game
+	///<param name="numOfPlayers">number of players requested by the game to start level with</param>
 	public void SetNumOfPlayerAndStartGame(int numOfPlayers){
 		this.numOfPlayers = numOfPlayers;
 		StartGame();
 	}
 
+	///Start Game
 	public void StartGame(){
 		hUDController.InitParam(this);
 		levelManager.gameObject.SetActive(true);
 		levelManager.InitParam(this);
 	}
-
+	
+	///<returns>returns number of players requested by the game</returns>  
 	public int GetNumberOfPlayers(){
 		return numOfPlayers;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
+	///Called when Game is finished
+	///<param name="gameWon">won (true) | lost (false)</param>
 	public void OnGameFinished(bool gameWon){
 		if(onGameFinished!=null) onGameFinished(gameWon);
 		levelManager.ResetParam();
+		levelManager.UnsetParams();
 		levelManager.gameObject.SetActive(false);//also reset
 		hUDController.ResetParam(this);
 	}
 
+	///<description>event callback on Game Finished</description>
 	public System.Action<bool> onGameFinished{get; set;}
 
 }
