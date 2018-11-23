@@ -27,41 +27,32 @@ MonoBehaviour:
     timeDiffBetweenWaves: 3
     enemySpawnSequence:
     - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
-      numberOfSpawns: 3
-      timeDiffToSpawn: 2
-    - aIPlaneSOData: {fileID: 11400000, guid: 6c576af836b7088468b2930e1302e1a8, type: 2}
-      numberOfSpawns: 3
+      numberOfSpawns: 2
       timeDiffToSpawn: 3
+    - aIPlaneSOData: {fileID: 11400000, guid: 6c576af836b7088468b2930e1302e1a8, type: 2}
+      numberOfSpawns: 4
+      timeDiffToSpawn: 4
   - winCondition: {fileID: 11400000, guid: cd703a3e1c1037445a4d22dd997d469b, type: 2}
     timeDiffBetweenWaves: 3
     enemySpawnSequence:
-    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
-      numberOfSpawns: 2
-      timeDiffToSpawn: 2
     - aIPlaneSOData: {fileID: 11400000, guid: 6c576af836b7088468b2930e1302e1a8, type: 2}
-      numberOfSpawns: 1
-      timeDiffToSpawn: 2
+      numberOfSpawns: 3
+      timeDiffToSpawn: 3
     - aIPlaneSOData: {fileID: 11400000, guid: c68661900f2af984987416c45a2e68d5, type: 2}
       numberOfSpawns: 2
+      timeDiffToSpawn: 5
+    - aIPlaneSOData: {fileID: 11400000, guid: 6c576af836b7088468b2930e1302e1a8, type: 2}
+      numberOfSpawns: 3
       timeDiffToSpawn: 2
   - winCondition: {fileID: 0}
     timeDiffBetweenWaves: 4
     enemySpawnSequence:
-    - aIPlaneSOData: {fileID: 11400000, guid: 6c576af836b7088468b2930e1302e1a8, type: 2}
-      numberOfSpawns: 3
-      timeDiffToSpawn: 2
     - aIPlaneSOData: {fileID: 11400000, guid: c68661900f2af984987416c45a2e68d5, type: 2}
-      numberOfSpawns: 3
-      timeDiffToSpawn: 1
+      numberOfSpawns: 4
+      timeDiffToSpawn: 3
   - winCondition: {fileID: 0}
     timeDiffBetweenWaves: 3
     enemySpawnSequence:
-    - aIPlaneSOData: {fileID: 11400000, guid: 14f480dd2e51c7547a5df98eb72c5dec, type: 2}
-      numberOfSpawns: 3
-      timeDiffToSpawn: 1
-    - aIPlaneSOData: {fileID: 11400000, guid: c68661900f2af984987416c45a2e68d5, type: 2}
-      numberOfSpawns: 3
-      timeDiffToSpawn: 2
     - aIPlaneSOData: {fileID: 11400000, guid: 1a15cbfd638c6fe4e977e6122ab4a144, type: 2}
-      numberOfSpawns: 1
-      timeDiffToSpawn: 5
+      numberOfSpawns: 2
+      timeDiffToSpawn: 6
