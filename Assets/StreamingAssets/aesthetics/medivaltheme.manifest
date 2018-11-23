@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 896666766
+CRC: 1365478156
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 234a37c6bca61f118da3877348361163
+    Hash: d812996a92ad106e92f8f0c3a87b5ea9
   TypeTreeHash:
     serializedVersion: 2
     Hash: e87dbf8571acb99b61a8c3872f3764ee
@@ -20,13 +20,15 @@ ClassTypes:
 - Class: 213
   Script: {instanceID: 0}
 Assets:
-- Assets/ArtAssets/FireBall.png
+- Assets/ArtAssets/MedivalShooter/FireBall.png
 - Assets/Fonts/Adventurer.ttf
 - Assets/Shaders/ScrollableBackgroundMedival.shader
-- Assets/ArtAssets/Dragon2.png
-- Assets/ArtAssets/GrassTile.jpg
-- Assets/ArtAssets/Dragon.png
+- Assets/ArtAssets/MedivalShooter/Materials/ScrollableBackgroundMedival.mat
+- Assets/ArtAssets/MedivalShooter/Blood.png
+- Assets/ArtAssets/MedivalShooter/Dragon.png
+- Assets/ArtAssets/MedivalShooter/GrassTile.jpg
 - Assets/Shaders/HealthBarBlinkMedival.shader
-- Assets/ArtAssets/Materials/ScrollableBackgroundMedival.mat
+- Assets/ArtAssets/MedivalShooter/White.jpg
+- Assets/ArtAssets/MedivalShooter/Materials/HealthBarBlinkMedival.mat
 Dependencies:
-- D:/UnityProject/SpaceShooter/Assets/StreamingAssets/aesthetics/spacetheme
+- C:/Users/Neeraj/Documents/UnityProjects/1942Clone/Assets/StreamingAssets/aesthetics/spacetheme

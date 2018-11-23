@@ -11,8 +11,6 @@ public abstract class APlaneContoller: MonoBehaviour { //DI
 	protected abstract bool ShouldOrNotFire(Plane plane);
 	//<--
 	
-	BulletPool bulletPool;
-
 	
 	///<description>Initializing Internal Parameters of this instance</description>
 	///<param name="levelManager">LevelManager instance</param>
@@ -24,10 +22,6 @@ public abstract class APlaneContoller: MonoBehaviour { //DI
 	public virtual void ResetControls(LevelManager levelManager){
 
 	}
-	public virtual void SetBulletPool(BulletPool bulletPool){
-		this.bulletPool = bulletPool;
-	}
-	
 	public virtual void UpdateControls(Plane plane){
 		Move(plane, GetMoveDeltaPosition(plane));
 		if(ShouldOrNotFire(plane))
@@ -66,6 +60,8 @@ public abstract class APlaneContoller: MonoBehaviour { //DI
 
 	///<description>Fire bullet</description>
 	public void FireBullet(Plane plane){		
-		bulletPool.FireBulletFromPool(plane.transform.position + plane.transform.up, plane.transform.up, plane.planeData.bulletSpeed, plane.planeData.bulletStrength);
+		onFireShot(plane);
 	}
+
+	public System.Action<Plane> onFireShot;
 }

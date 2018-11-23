@@ -43,6 +43,7 @@ public class AssetBundlesHandler : MonoBehaviour {
 	///<description>Unload All Cached AssetBundle</description>
 	///<param name="removeReferences">remove references from the game or not</param>
 	public void UnloadAllCachedAssetBundle(bool removeReferences){
+		if(cachedAssetBundle!=null)
 		foreach(AssetBundle assetBundle in cachedAssetBundle.Values){
 			assetBundle.Unload(removeReferences);
 		}

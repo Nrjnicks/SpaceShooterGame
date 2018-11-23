@@ -32,10 +32,13 @@ public class HUDController : MonoBehaviour {
 		if(playerNum == 1){
 			playerPlane.healthModel.healthController.onHealthChange+=OnP1HealthChange;
 			OnP1HealthChange(playerPlane.healthModel.currentHealth,playerPlane.healthModel.maxHealth);
+			hUDView.SetP1ControlsText(GetControlsText(((PlayerPlane)playerPlane).keyControls));
+			hUDView.SetP2ControlsText("");
 		}
 		if(playerNum == 2){
 			playerPlane.healthModel.healthController.onHealthChange+=OnP2HealthChange;
 			OnP2HealthChange(playerPlane.healthModel.currentHealth,playerPlane.healthModel.maxHealth);
+			hUDView.SetP2ControlsText(GetControlsText(((PlayerPlane)playerPlane).keyControls));
 		}
 	}
 
@@ -48,6 +51,10 @@ public class HUDController : MonoBehaviour {
 			playerPlane.healthModel.healthController.onHealthChange-=OnP2HealthChange;
 			hUDView.SetHealthText("DIED!", 2);
 		}
+	}
+	///<description>Set Text of controls for ease of players</description>
+	string GetControlsText(KeyBoardControlsSO keycontrols){
+		return keycontrols.Forward+"\n"+keycontrols.Left+" "+keycontrols.Backward+" "+keycontrols.Right+"\n"+keycontrols.Fire;
 	}
 	
 	void OnGameFinished(bool gameWon){

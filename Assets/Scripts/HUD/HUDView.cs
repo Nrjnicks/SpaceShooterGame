@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HUDView : MonoBehaviour {
-	[SerializeField] Text P1healthText;
-	[SerializeField] Text P2healthText;
+	[SerializeField] Text P1HealthText;
+	[SerializeField] Text P2HealthText;
+	[SerializeField] Text P1ControlText;
+	[SerializeField] Text P2ControlText;
 	[SerializeField] GameObject gameEndView;
 	[SerializeField] GameObject gameWonObj;
 	[SerializeField] GameObject gameLostObj;
@@ -16,14 +18,24 @@ public class HUDView : MonoBehaviour {
 	///<description>Set Health Text</description>
 	public void SetHealthText(string health, int playerNum = 1){
 		if(playerNum == 1)
-			P1healthText.text = health;
+			P1HealthText.text = health;
 		if(playerNum == 2)
-			P2healthText.text = health;
+			P2HealthText.text = health;
 	}
 
 	///<description>Activate or deactivate UI for Player 2</description>
 	public void P2SetActiveUI(bool state){
-		P2healthText.gameObject.SetActive(state);
+		P2HealthText.gameObject.SetActive(state);
+	}
+
+	///<description>Set Text of controls for ease of player 1</description>
+	public void SetP1ControlsText(string controls){
+		P1ControlText.text = controls;
+	}
+
+	///<description>Set Text of controls for ease of player 2</description>
+	public void SetP2ControlsText(string controls){
+		P2ControlText.text = controls;
 	}
 
 	public void OnGameFinished(bool gameWon){

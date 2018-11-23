@@ -1,19 +1,22 @@
 ManifestFileVersion: 0
-CRC: 2635701611
+CRC: 2593745740
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: mechanics/coreelements
       Dependencies:
-        Dependency_0: aesthetics/spacetheme
-        Dependency_1: mechanics/sodatas
+        Dependency_0: mechanics/sodatas
+        Dependency_1: aesthetics/spacetheme
     Info_1:
-      Name: aesthetics/spacetheme
+      Name: mechanics/sodatas
       Dependencies: {}
     Info_2:
-      Name: mechanics/sodatas
+      Name: aesthetics/spacetheme
       Dependencies: {}
     Info_3:
       Name: aesthetics/medivaltheme
       Dependencies:
         Dependency_0: aesthetics/spacetheme
+    Info_4:
+      Name: soundfiles
+      Dependencies: {}

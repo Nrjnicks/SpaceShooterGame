@@ -9,6 +9,7 @@ public class AssetReferenceManager : MonoBehaviour {
 	public CoreMechanicsABInfo coreMechanicsABInfo;
 	public SODatasABInfo sODatasInfo;
 	public AestheticsABInfo aestheticsABInfo;
+	public SoundFilesABInfo soundFilesABInfo;
 	[Space]
 	public GameManager gameManager;
 
@@ -28,18 +29,19 @@ public class AssetReferenceManager : MonoBehaviour {
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<GameObject>(coreMechanicsABInfo,coreMechanicsABInfo.bulletPrefabName,SetBulletPrefab);
 
 		//Aethetics
-		//fontName
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Font>(aestheticsABInfo,aestheticsABInfo.fontName,SetTextsFont);
-		//planeSpriteName
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Sprite>(aestheticsABInfo,aestheticsABInfo.planeSpriteName,SetPlaneSprite);
-		//healthBarSpriteName
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Sprite>(aestheticsABInfo,aestheticsABInfo.healthBarSpriteName,SetHealthBarSprite);
-		//verticleScrollerMaterialName
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Material>(aestheticsABInfo,aestheticsABInfo.verticleScrollerMaterialName,SetBackgroundMaterial);
-		//bulletSpriteName
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Sprite>(aestheticsABInfo,aestheticsABInfo.bulletSpriteName,SetBulletSprite);
-		//healthBarBlinkMaterialName
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Sprite>(aestheticsABInfo,aestheticsABInfo.blastSpriteName,SetBlastSprite);
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Material>(aestheticsABInfo,aestheticsABInfo.healthBarBlinkMaterialName,SetHealthBarBlinkMaterial);
+
+		//Sound
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<AudioClip>(soundFilesABInfo,soundFilesABInfo.levelOnGoingMusicName,SetLevelOnGoingMusic);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<AudioClip>(soundFilesABInfo,soundFilesABInfo.levelOnCompleteMusicName,SetLevelOnCompleteMusic);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<AudioClip>(soundFilesABInfo,soundFilesABInfo.fireBulletSfxName,SetFireBulletSFX);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<AudioClip>(soundFilesABInfo,soundFilesABInfo.blastSfxName,SetBlastSFX);
 
 		
 		assetBundlesHandler.UnloadAllCachedAssetBundle(false);
@@ -74,6 +76,10 @@ public class AssetReferenceManager : MonoBehaviour {
 		gameManager.levelManager.poolManager.bulletPool.SetAllBulletSprite(bulletSprite);
 	}
 
+	void SetBlastSprite(Sprite blastSprite){
+		gameManager.levelManager.poolManager.blastPool.SetAllBlastSprite(blastSprite);
+	}
+
 	void SetHealthBarSprite(Sprite healthSprite){
 		gameManager.levelManager.poolManager.planeSpawnManager.SetAllPlaneHealthBarSprite(healthSprite);
 	}
@@ -88,5 +94,21 @@ public class AssetReferenceManager : MonoBehaviour {
 
 	void SetHealthBarBlinkMaterial(Material material){
 		gameManager.levelManager.poolManager.planeSpawnManager.SetHealthBlinkMaterial(material);
+	}
+
+	void SetLevelOnGoingMusic(AudioClip audioClip){
+		gameManager.levelManager.soundManager.levelOnGoingMusic = audioClip;
+	}
+
+	void SetLevelOnCompleteMusic(AudioClip audioClip){
+		gameManager.levelManager.soundManager.levelOnCompleteMusic = audioClip;
+	}
+
+	void SetFireBulletSFX(AudioClip audioClip){
+		gameManager.levelManager.soundManager.fireBulletSfx = audioClip;
+	}
+
+	void SetBlastSFX(AudioClip audioClip){
+		gameManager.levelManager.soundManager.blastSfx = audioClip;
 	}
 }

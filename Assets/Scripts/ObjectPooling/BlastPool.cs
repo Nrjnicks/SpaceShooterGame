@@ -36,6 +36,7 @@ public class BlastPool : ObjectPool<SpriteRenderer> {
 		objectForPool.sprite = sprite;
 		
 		List<SpriteRenderer> blastPool = GetPoolList();
+		if(blastPool!=null)
 		foreach (SpriteRenderer blast in blastPool)
 		{			
 			blast.sprite = sprite;

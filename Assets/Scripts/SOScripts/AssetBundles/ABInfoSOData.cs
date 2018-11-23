@@ -3,6 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ABInfoSOData : ScriptableObject {
-	public string assetBundlePath;
+	[Tooltip("Asset Path Relative to Streaming Asset Path")]public string assetBundlePath;
 
 }

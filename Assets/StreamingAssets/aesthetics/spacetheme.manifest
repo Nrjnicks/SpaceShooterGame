@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2743298858
+CRC: 50528479
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c7b9c66acbd74a8e56f8fb2d3479b60c
+    Hash: d2ac415f6b0065a0d6be00519d0b32ce
   TypeTreeHash:
     serializedVersion: 2
     Hash: e87dbf8571acb99b61a8c3872f3764ee
@@ -20,13 +20,14 @@ ClassTypes:
 - Class: 213
   Script: {instanceID: 0}
 Assets:
+- Assets/ArtAssets/SpaceShooter/Blast.png
 - Assets/Shaders/HealthBarBlink.shader
-- Assets/ArtAssets/White.jpg
+- Assets/ArtAssets/SpaceShooter/White.jpg
 - Assets/Shaders/ScrollableBackground.shader
-- Assets/ArtAssets/Background.jpg
-- Assets/ArtAssets/Materials/ScrollableBackground.mat
-- Assets/ArtAssets/Materials/HealthBarBlink.mat
-- Assets/ArtAssets/PlaneSprite.png
+- Assets/ArtAssets/SpaceShooter/Background.jpg
+- Assets/ArtAssets/SpaceShooter/Materials/ScrollableBackgroundSpace.mat
+- Assets/ArtAssets/SpaceShooter/Materials/HealthBarBlinkSpace.mat
+- Assets/ArtAssets/SpaceShooter/PlaneSprite.png
 - Assets/Fonts/Minecraftia.ttf
-- Assets/ArtAssets/BlueBullet.png
+- Assets/ArtAssets/SpaceShooter/BlueBullet.png
 Dependencies: []

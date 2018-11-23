@@ -5,8 +5,10 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour {
 	public AudioSource audioSource;
 	public AudioSource SFXAudioSource;
+	[Space]
 	public AudioClip levelOnGoingMusic;
 	public AudioClip levelOnCompleteMusic;
+	public AudioClip fireBulletSfx;
 	public AudioClip blastSfx;
 	
 	///<description>Initializing Internal Parameters of this instance</description>
@@ -15,6 +17,10 @@ public class SoundManager : MonoBehaviour {
 		levelManager.onLevelStart += OnLevelStart;
 		levelManager.onLevelComplete += OnLevelComplete;
 		levelManager.onEnemyKilled += OnEnemyKilled;
+		levelManager.playerPlaneController.onFireShot+=PlayFireSFX;
+		levelManager.aIPlaneController.onFireShot+=PlayFireSFX;
+		
+		PlayGameMusic();
 	}
 
 	///<description>Reseting Internal Parameters</description>
@@ -23,6 +29,12 @@ public class SoundManager : MonoBehaviour {
 		levelManager.onLevelStart -= OnLevelStart;
 		levelManager.onLevelComplete -= OnLevelComplete;
 		levelManager.onEnemyKilled -= OnEnemyKilled;
+		levelManager.playerPlaneController.onFireShot-=PlayFireSFX;
+		levelManager.aIPlaneController.onFireShot-=PlayFireSFX;
+	}
+
+	public void PlayGameMusic(){
+		PlayMusic(levelOnGoingMusic,true);
 	}
 
 	void OnEnemyKilled(Plane plane){
@@ -30,25 +42,35 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	void OnLevelStart(int level){
-		audioSource.clip = levelOnGoingMusic;
-		audioSource.loop = true;
-		audioSource.Play();
+		PlayMusic(levelOnGoingMusic,true);
 	}
 
 	void OnLevelComplete(int level){
-		audioSource.clip = levelOnCompleteMusic;
-		audioSource.loop = false;
-		audioSource.Play();
+		PlayMusic(levelOnCompleteMusic);
 	}
 
 	void PlayBlastSFX(){
-		SFXAudioSource.clip = blastSfx;
-		SFXAudioSource.loop = false;
-		SFXAudioSource.Play();
+		PlaySFX(blastSfx);
+	}
+
+	void PlayFireSFX(Plane plane){
+		PlaySFX(fireBulletSfx);
 	}
 
 	public void SetVolume(float vol){
 		audioSource.volume = vol;
 		SFXAudioSource.volume = vol;
+	}
+
+	public void PlayMusic(AudioClip audioClip, bool loop = false){
+		if(audioSource.clip == audioClip) return;
+		audioSource.clip = audioClip;
+		audioSource.loop = loop;
+		audioSource.Play();		
+	}
+
+	public void PlaySFX(AudioClip audioClip){
+		SFXAudioSource.clip = audioClip;
+		SFXAudioSource.Play();		
 	}
 }
