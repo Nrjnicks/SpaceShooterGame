@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class LoadMainGameFromAB : MonoBehaviour {
 
-	public string sceneABPath;
+	[Tooltip("Path Relative to Streaming Assets")]public string sceneABPath;
 	public string sceneName;
 	[Space]
-	public string assetBundlesInfoABPath;
+	[Tooltip("Path Relative to Streaming Assets")]public string assetBundlesInfoABPath;
 	public string assetBundlesInfo;
 	// Use this for initialization
 	void Awake () {

@@ -314,8 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405353c44c5d3244cab19bfa7971124c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planeSprite: {fileID: 212538363119887808}
   healthModel: {fileID: 114481983902243364}
+  planeSprite: {fileID: 212538363119887808}
 --- !u!114 &114995960493315510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -329,13 +329,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.14117648, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 26259876dfb922f4e8fb09b817d72743, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
