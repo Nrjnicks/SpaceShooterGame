@@ -8,6 +8,7 @@ public class HUDView : MonoBehaviour {
 	[SerializeField] Text P2HealthText;
 	[SerializeField] Text P1ControlText;
 	[SerializeField] Text P2ControlText;
+	[SerializeField] Text levelText;
 	[SerializeField] GameObject gameEndView;
 	[SerializeField] GameObject gameWonObj;
 	[SerializeField] GameObject gameLostObj;
@@ -42,16 +43,19 @@ public class HUDView : MonoBehaviour {
 		DisableAll();
 		gameEndView.SetActive(true);
 		if(gameWon){
+			levelText.text = "";
 			gameWonObj.SetActive(true);
 			gameLostObj.SetActive(false);
 		}
 		else{
+			levelText.text = "";
 			gameWonObj.SetActive(false);
 			gameLostObj.SetActive(true);
 		}
 	}
 
 	public void OnLevelStart(int level){
+		levelText.text = "Level: "+level;
 		levelComplete.SetActive(false);
 		levelStart.SetActive(true);
 		Invoke("DisableLevelStartObj",disableLevelStartObjAfterSec);
@@ -61,6 +65,7 @@ public class HUDView : MonoBehaviour {
 		levelStart.SetActive(false);
 	}
 	public void OnLevelComplete(int level){
+		levelText.text = "Completed: "+level;
 		levelStart.SetActive(false);
 		levelComplete.SetActive(true);
 	}
