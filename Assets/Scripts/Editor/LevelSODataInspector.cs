@@ -86,7 +86,7 @@ public class LevelSODataInspector : Editor {
 	}
 }
 
-[CustomPropertyDrawer(typeof(NoOfAIPerType))]
+[CustomPropertyDrawer(typeof(AIWaveData))]
 public class NoOfAIPerTypeDrawer: PropertyDrawer
 {
 	

@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 2154909122
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: dce117b2805642d2c30b836b19611479
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0e7bc338d89817cbffbfdb92baad574f
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: 38ef7ab042c648a40a7c535bda55fdb6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 94f4ff486e281864681c42a00a589323, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 60cb6cbda01026745a2b2ee4a1081529, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 007ef5eb0d5d82c47b88c188af253d14, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/SOData/AssetBundles/GameAB/CoreMechanicsAssetBundleInfoSOData.asset
+- Assets/SOData/AssetBundles/GameAB/AestheticsBundleInfoSOData Space.asset
+- Assets/SOData/AssetBundles/GameAB/AestheticsBundleInfoSOData Medival.asset
+- Assets/SOData/AssetBundles/GameAB/SODataAssetBundleInfoSOData.asset
+- Assets/SOData/AssetBundles/GameAB/SoundFilesAssetBundleInfo.asset
+Dependencies: []

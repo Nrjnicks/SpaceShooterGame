@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class AssetBundlesHandler : MonoBehaviour {
 	
-	Dictionary<ABInfoSOData, AssetBundle> cachedAssetBundle; //caching assetbundles
+	Dictionary<ABInfoSOData, AssetBundle> cachedAssetBundle = new Dictionary<ABInfoSOData, AssetBundle>(); //caching assetbundles
 	// Use this for initialization
 	void Start () {
 		cachedAssetBundle = new Dictionary<ABInfoSOData, AssetBundle>();
@@ -48,6 +48,12 @@ public class AssetBundlesHandler : MonoBehaviour {
 			assetBundle.Unload(removeReferences);
 		}
 		cachedAssetBundle = null;
+	}
+	///<description>Unload All Cached AssetBundle</description>
+	///<param name="removeReferences">remove references from the game or not</param>
+	
+	public void UnloadCachedAssetBundle(ABInfoSOData aBInfoSOData, bool removeReferences = false){
+		if(cachedAssetBundle.ContainsKey(aBInfoSOData)) cachedAssetBundle[aBInfoSOData].Unload(removeReferences);
 	}
 	void OnDestroy(){
 		UnloadAllCachedAssetBundle(true);

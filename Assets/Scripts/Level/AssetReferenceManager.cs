@@ -5,23 +5,36 @@ using UnityEngine;
 public class AssetReferenceManager : MonoBehaviour {
 	public AssetBundlesHandler assetBundlesHandler;
 	[Space]
+	public AssetBundlesABInfo assetBundlesABInfo;
+	[Space]
 	//references to asset bundle information (Stored in SO files for ease of project)
 	public CoreMechanicsABInfo coreMechanicsABInfo;
-	public SODatasABInfo sODatasInfo;
+	public SODatasABInfo sODatasABInfo;
 	public AestheticsABInfo aestheticsABInfo;
 	public SoundFilesABInfo soundFilesABInfo;
 	[Space]
 	public GameManager gameManager;
 
 	void Start(){
+		if(assetBundlesABInfo!=null) LoadAssetBundles(assetBundlesABInfo);
+	}
 
+	public void LoadAssetBundles(AssetBundlesABInfo assetBundlesABInfo){
+		//AssetBundles Info
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<ScriptableObject>(assetBundlesABInfo,assetBundlesABInfo.coreMechanicsABInfoName,SetCoreMechanicsABInfo);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<ScriptableObject>(assetBundlesABInfo,assetBundlesABInfo.sODatasABInfoName,SetSODatasABInfo);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<ScriptableObject>(assetBundlesABInfo,assetBundlesABInfo.aestheticsABInfoName,SetAestheticsABInfo);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<ScriptableObject>(assetBundlesABInfo,assetBundlesABInfo.soundFilesABInfoName,SetSoundFilesABInfo);
+		gameManager.gameObject.SetActive(true);
 	}
 
 	///<discription>Set all inter-dependencies from asset bundles to in-game elements</discription>
-	public void SetReferenceToElements(){
+	public void SetReferenceToElements(GameManager gameManager){
+		this.gameManager = gameManager;
+
 		//SODatas
-		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<LevelsSOData>(sODatasInfo,sODatasInfo.levelSODataName,SetLevelSOData);
-		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<ScoreSOData>(sODatasInfo,sODatasInfo.scoreSODataName,SetScoreSOData);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<LevelsSOData>(sODatasABInfo,sODatasABInfo.levelSODataName,SetLevelSOData);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<ScoreSOData>(sODatasABInfo,sODatasABInfo.scoreSODataName,SetScoreSOData);
 
 		//Plane//AI//Bullets
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<GameObject>(coreMechanicsABInfo,coreMechanicsABInfo.playerPlanePrefabName,SetPlayerPlane);
@@ -32,9 +45,9 @@ public class AssetReferenceManager : MonoBehaviour {
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Font>(aestheticsABInfo,aestheticsABInfo.fontName,SetTextsFont);
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Sprite>(aestheticsABInfo,aestheticsABInfo.planeSpriteName,SetPlaneSprite);
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Sprite>(aestheticsABInfo,aestheticsABInfo.healthBarSpriteName,SetHealthBarSprite);
-		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Material>(aestheticsABInfo,aestheticsABInfo.verticleScrollerMaterialName,SetBackgroundMaterial);
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Sprite>(aestheticsABInfo,aestheticsABInfo.bulletSpriteName,SetBulletSprite);
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Sprite>(aestheticsABInfo,aestheticsABInfo.blastSpriteName,SetBlastSprite);
+		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Material>(aestheticsABInfo,aestheticsABInfo.verticleScrollerMaterialName,SetBackgroundMaterial);
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<Material>(aestheticsABInfo,aestheticsABInfo.healthBarBlinkMaterialName,SetHealthBarBlinkMaterial);
 
 		//Sound
@@ -48,6 +61,24 @@ public class AssetReferenceManager : MonoBehaviour {
 
 	}
 
+	void SetCoreMechanicsABInfo(ScriptableObject coreMechanicsABInfo){
+		this.coreMechanicsABInfo = (CoreMechanicsABInfo)coreMechanicsABInfo;
+	}
+
+
+	void SetSODatasABInfo(ScriptableObject sODatasABInfo){
+		this.sODatasABInfo = (SODatasABInfo)sODatasABInfo;
+	}
+
+
+	void SetAestheticsABInfo(ScriptableObject aestheticsABInfo){
+		this.aestheticsABInfo = (AestheticsABInfo)aestheticsABInfo;
+	}
+
+
+	void SetSoundFilesABInfo(ScriptableObject soundFilesABInfo){
+		this.soundFilesABInfo = (SoundFilesABInfo)soundFilesABInfo;
+	}
 	void SetPlayerPlane(GameObject planeObj){
 		gameManager.levelManager.poolManager.planeSpawnManager.SetPlayerPlanePrefab(planeObj.GetComponent<Plane>());
 	}

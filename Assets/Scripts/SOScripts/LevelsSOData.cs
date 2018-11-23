@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct NoOfAIPerType{
+public struct AIWaveData{
 	[Tooltip("Plane Data SO of AI")]public AIPlaneSOData aIPlaneSOData;
 	[Tooltip("number of spawns in this wave")]public int numberOfSpawns;
 	[Tooltip("")]public float timeDiffToSpawn;
@@ -12,7 +12,7 @@ public struct NoOfAIPerType{
 public struct LevelData{
 	[Tooltip("")]public AWinCondition winCondition;
 	[Tooltip("")]public float timeDiffBetweenWaves;
-	[Tooltip("")]public List<NoOfAIPerType> enemySpawnSequence;
+	[Tooltip("")]public List<AIWaveData> enemySpawnSequence;
 }
 
 [CreateAssetMenu(fileName = "LevelsSOData", menuName = "Level/Level Information")]

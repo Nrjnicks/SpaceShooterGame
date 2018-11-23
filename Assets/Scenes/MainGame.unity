@@ -1158,11 +1158,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assetBundlesHandler: {fileID: 311101276}
-  coreMechanicsABInfo: {fileID: 11400000, guid: f7d3b903e8addb241a05018947942e29,
-    type: 2}
-  sODatasInfo: {fileID: 11400000, guid: 3b3c46ee4e6094841b8cdaaa8b77d290, type: 2}
-  aestheticsABInfo: {fileID: 11400000, guid: 5ad07e642b972664cacc477573de9ed0, type: 2}
-  soundFilesABInfo: {fileID: 11400000, guid: 2c45ddbf189b56a4a80fe800c2c115e6, type: 2}
+  coreMechanicsABInfo: {fileID: 0}
+  sODatasABInfo: {fileID: 0}
+  aestheticsABInfo: {fileID: 0}
+  soundFilesABInfo: {fileID: 0}
   gameManager: {fileID: 1962192105}
 --- !u!1 &348885465
 GameObject:
@@ -6500,7 +6499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1962192104
 Transform:
   m_ObjectHideFlags: 0

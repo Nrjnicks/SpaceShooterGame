@@ -59,6 +59,8 @@ public class HUDController : MonoBehaviour {
 	
 	void OnGameFinished(bool gameWon){
 		hUDView.OnGameFinished(gameWon);
+		hUDView.SetP1ControlsText("");
+		hUDView.SetP2ControlsText("");
 	}
 
 	void OnP1HealthChange(float currentHealth, float maxHealth){ //Player 1

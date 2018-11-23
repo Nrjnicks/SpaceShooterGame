@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour {
 	public HUDController hUDController;
 	// Use this for initialization
 	void Start () {
-		assetReferenceManager.SetReferenceToElements();//Set all references manually for more controls and less dependencies
+		if(assetReferenceManager!=null)
+		assetReferenceManager.SetReferenceToElements(this);//Set all references manually for more controls and less dependencies
 	}
 
 	///Called to Set Request of number of player and Start the game

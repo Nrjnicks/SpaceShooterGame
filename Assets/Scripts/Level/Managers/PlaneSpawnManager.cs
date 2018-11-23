@@ -58,14 +58,14 @@ public class PlaneSpawnManager : MonoBehaviour {
 		currentSpawnIndex = 0;
 		
 		Plane tempPlane;
-		foreach(NoOfAIPerType aIPerType in levelData.enemySpawnSequence)
+		foreach(AIWaveData aIWaveData in levelData.enemySpawnSequence)
 		{
-			for (int i = 0; i < aIPerType.numberOfSpawns; i++)
+			for (int i = 0; i < aIWaveData.numberOfSpawns; i++)
 			{			
-				tempPlane = aIPlanePool.SpawnPlane(aIPerType.aIPlaneSOData, planeContoller, aISpawnPositions[currentSpawnIndex]);
+				tempPlane = aIPlanePool.SpawnPlane(aIWaveData.aIPlaneSOData, planeContoller, aISpawnPositions[currentSpawnIndex]);
 				tempPlane.onDeath+=onDeathCallback;
 				currentSpawnIndex = (currentSpawnIndex+1)%aISpawnPositions.Length;
-				yield return new WaitForSeconds(aIPerType.timeDiffToSpawn);
+				yield return new WaitForSeconds(aIWaveData.timeDiffToSpawn);
 			}
 			yield return new WaitForSeconds(levelData.timeDiffBetweenWaves);
 		}
