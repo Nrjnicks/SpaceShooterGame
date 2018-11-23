@@ -5,7 +5,9 @@ Hi! I am Neeraj S. Thakur, Game Programmer. This repository is dedicated to an o
 
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/GameplaySpaceMultiplayer.jpg "GameplaySpaceMultiplayer")
 
-Load game from **GameLoader** scene. [Disclaimer]Asset Bundles are already built and  since everything is loaded asyn in the game and asset bundles are platform dependent, please build for specific platform in case of any bundle load error. (Also, let me know so i can make the code more flexible)
+Load game from **GameLoader** scene. (Windows Standalone. Recomended Resolution 1920x1080 or aspect ratio of 16:9)
+
+[Disclaimer]Asset Bundles are already built and  since everything is loaded asyn in the game and asset bundles are platform dependent, please build for specific platform in case of any bundle load error. (Also, let me know so i can make the code more flexible)
 # Game Mechanics
 
 
