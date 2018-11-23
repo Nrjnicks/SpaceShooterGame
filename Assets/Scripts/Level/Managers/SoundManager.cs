@@ -30,19 +30,19 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	void OnLevelStart(int level){
-		// audioSource.clip = levelOnGoingMusic;
+		audioSource.clip = levelOnGoingMusic;
 		audioSource.loop = true;
 		audioSource.Play();
 	}
 
 	void OnLevelComplete(int level){
-		// audioSource.clip = levelOnCompleteMusic;
+		audioSource.clip = levelOnCompleteMusic;
 		audioSource.loop = false;
 		audioSource.Play();
 	}
 
 	void PlayBlastSFX(){
-		// SFXAudioSource.clip = blastSfx;
+		SFXAudioSource.clip = blastSfx;
 		SFXAudioSource.loop = false;
 		SFXAudioSource.Play();
 	}

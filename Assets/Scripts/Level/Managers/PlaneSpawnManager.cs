@@ -65,7 +65,7 @@ public class PlaneSpawnManager : MonoBehaviour {
 				tempPlane = aIPlanePool.SpawnPlane(aIPerType.aIPlaneSOData, planeContoller, aISpawnPositions[currentSpawnIndex]);
 				tempPlane.onDeath+=onDeathCallback;
 				currentSpawnIndex = (currentSpawnIndex+1)%aISpawnPositions.Length;
-				yield return new WaitForSeconds(aIPerType.spawnFrequency);
+				yield return new WaitForSeconds(aIPerType.timeDiffToSpawn);
 			}
 			yield return new WaitForSeconds(levelData.timeDiffBetweenWaves);
 		}

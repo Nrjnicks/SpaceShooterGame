@@ -96,7 +96,7 @@ public class NoOfAIPerTypeDrawer: PropertyDrawer
 	public override void OnGUI (Rect position, SerializedProperty property, GUIContent label) {
 		aIPlaneController = property.FindPropertyRelative("aIPlaneSOData");
 		numOfSpawns = property.FindPropertyRelative("numberOfSpawns");
-		frqOfSpawns = property.FindPropertyRelative("spawnFrequency");
+		frqOfSpawns = property.FindPropertyRelative("timeDiffToSpawn");
 
 		label = EditorGUI.BeginProperty(position, label, property);
 		Rect contentPosition = EditorGUI.PrefixLabel(position, label);

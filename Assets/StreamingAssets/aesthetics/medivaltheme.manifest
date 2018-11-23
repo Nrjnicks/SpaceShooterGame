@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1343319261
+CRC: 896666766
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9ca0536b331ea371615937b6ff9b3630
+    Hash: 234a37c6bca61f118da3877348361163
   TypeTreeHash:
     serializedVersion: 2
     Hash: e87dbf8571acb99b61a8c3872f3764ee
@@ -23,9 +23,10 @@ Assets:
 - Assets/ArtAssets/FireBall.png
 - Assets/Fonts/Adventurer.ttf
 - Assets/Shaders/ScrollableBackgroundMedival.shader
+- Assets/ArtAssets/Dragon2.png
 - Assets/ArtAssets/GrassTile.jpg
 - Assets/ArtAssets/Dragon.png
 - Assets/Shaders/HealthBarBlinkMedival.shader
 - Assets/ArtAssets/Materials/ScrollableBackgroundMedival.mat
 Dependencies:
-- C:/Users/Neeraj/Documents/UnityProjects/1942Clone/Assets/StreamingAssets/aesthetics/spacetheme
+- D:/UnityProject/SpaceShooter/Assets/StreamingAssets/aesthetics/spacetheme

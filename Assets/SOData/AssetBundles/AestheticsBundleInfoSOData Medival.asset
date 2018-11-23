@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assetBundlePath: aesthetics\medivaltheme
   fontName: Adventurer
-  planeSpriteName: Dragon
+  planeSpriteName: Dragon2
   bulletSpriteName: FireBall
+  healthBarSpriteName: HealthBarBlink
   verticleScrollerMaterialName: ScrollableBackgroundMedival
-  healthBarBlinkShaderName: HealthBarBlinkMedival
+  healthBarBlinkMaterialName: 

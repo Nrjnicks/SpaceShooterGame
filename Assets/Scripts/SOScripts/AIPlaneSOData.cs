@@ -6,9 +6,9 @@ using UnityEngine;
 public class AIPlaneSOData : PlaneSOData {
 	
 	[Header("AI specific Plane Data")]
-	public float minDistanceToAttack = 5;
-	public float FOVToAttack = 10;
-	public float maxActiveTimeOnScreen = 10;
+	[Tooltip("Attack player once reach this distance")]public float minDistanceToAttack = 5;
+	[Tooltip("Field of View of AI")]public float FOVToAttack = 10;
+	[Tooltip("Max time AI will be active on screen before evading")]public float maxActiveTimeOnScreen = 10;
 	[Header("Score")]
-	public float scoreBonusOnKill = 50;
+	[Tooltip("Score bonus when enemy is killed")]public float scoreBonusOnKill = 50;
 }
