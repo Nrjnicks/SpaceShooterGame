@@ -3,7 +3,7 @@
 
 Hi! I am Neeraj S. Thakur, Game Programmer. This repository is dedicated to an open Unity3D multiplayer vertical scroller and shooter game project which is very designer friendly with easy configurable win conditions and async asset loads. In this readme, I have explained all the features of the project. 
 
-![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/GameplaySpaceMultiplayer.jpg "GameplaySpaceMultiplayer")
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/GameplaySpaceSingleplayer.jpg "GameplaySpaceSingleplayer")
 
 Load game from **GameLoader** scene. (Windows Standalone. Recomended Resolution 1920x1080 or aspect ratio of 16:9)
 
@@ -23,6 +23,7 @@ A same-screen multiplayer 2D **vertically scrolling** or **vertical scroller** s
 
 Game has two modes **single player** and (local) **multi player**. 
 
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/GameplaySpaceMultiplayer.jpg "GameplaySpaceMultiplayer")
 
 ## Game Flow
 
@@ -80,7 +81,13 @@ Current max for this project is 4 just because I've only set 4 player spawn posi
 
 ## Win Conditions
 `LevelsSOData` contains a `commonWinCondition` and list of `LevelData` which has `WinCondition` and list of `AIWaveData` values. The 3 win condition types mentioned above has exposed variable and can be created as `ScriptableObject` and assigned for these win conditions.
-[Inspector image and right click create SO image]
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/WinConditions.jpg "WinConditions")
+
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/WinConditionsLevelSO.jpg "WinConditionsLevelSO")
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/WinConditionsDiffLevelSO.jpg "WinConditionsDiffLevelSO")
 
 ## Controls
 KeyBoard Controls for player is read by `KeyBoardControlsSO` which can be configured in editor (or via script for run-time changes!) and assigned individually for each players.
@@ -99,7 +106,7 @@ AI planes has some extra params
 - FOV To Attack
 - Max Active Time On Screen
 - Score Bonus On Kill
-
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/GameplaySpaceMultiplayer2.jpg "GameplaySpaceMultiplayer2")
 You can play around with these parameters to create different type of enemies. By just making assigning  *0* to `minDistanceToAttack`, you can make plane, a homing missile.
 Having different data and changeable on fly made level design, creating different kind of enemies (dumb to smart) and setting wave sequence very easy.
 
@@ -156,6 +163,8 @@ To explain state transition in words: **Attack**, if in range and not in cooldow
 Internally, more priority is given to Evade state, than Approach, than Attack.
 With just these 3 states, and different `PlaneDataSO`, we are able to create various kind of enemies with similar behaviors.
 
+### Asset Bundles
+
 ### Model - View - Controller (MVC)
 We are using MVC architectural pattern for 3 systems.
 
@@ -178,7 +187,7 @@ Internally, `HealthController.cs` reduces health from maxHealth by *inflictingDa
 
 `LevelManager.cs` initialize `ScoreController.cs` on start of the game session. `ScoreController.cs` updates score based on *updatefrequency* from `ScoreDataSO`. 
 `ScoreController.cs` also subscribes to onEnemyKilled and onPlayerKilled from `LevelManager.cs` and updates score based on Enemy Data or Evaluate Final Score to show highscore in `ScoreView.cs`.
-List of High Scores are saved using `SaveLoad.cs` class in persistence data folder (for now atleast), and read by `ScoreModel.cs` after game session ends (on player death). `ScoreController.cs` then evaluates and respond to `ScoreView.cs` to show (or not) high score dialog box.
+List of High Scores are saved using `SaveLoad.cs` class in persistent data folder (for now atleast), and read by `ScoreModel.cs` after game session ends (on player death). `ScoreController.cs` then evaluates and respond to `ScoreView.cs` to show (or not) high score dialog box.
 
 User can type their name in the dialog box to save their high score.
 
@@ -223,12 +232,46 @@ If you'll look at the image above,
 - ![#FF0000](https://placehold.it/15/FF0000/000000?text=+)  **Red**: Points are inside extra range
 
 `PlayerPlaneController.cs` works inside  ![#00FF00](https://placehold.it/15/00FF00/000000?text=+) green zone, meaning PlayerPlane cannot move beyond camera view.
-`AIPlaneController.cs` works inside  ![#FF0000](https://placehold.it/15/FF0000/000000?text=+) red zone, meaning AIPlane can move beyond camera view but not far away.  `AIPlaneController.cs`checks for ![#FFFF00](https://placehold.it/15/FFFF00/000000?text=+) yellow zone when disabling force killing the AI enemy (or making enemy plane move out of the camera before killing them)
+`AIPlaneController.cs` works inside  ![#FF0000](https://placehold.it/15/FF0000/000000?text=+) red zone, meaning AIPlane can move beyond camera view but not far away.  `AIPlaneController.cs`checks for ![#FFFF00](https://placehold.it/15/FFFF00/000000?text=+) yellow zone when disabling or force killing the AI enemy (or making enemy plane move out of the camera before killing them)
 
 > `WorldSpaceGameBoundary.cs` could have been easily referenced by `GameManager.cs` and used by `APlaneController.cs` instead of Singleton, but my vision was to provide 'A valid world bound' for all objects irrespective of  inter-references for ease of Level Designers. 
 
 ### Save Load
+`SaveLoad.cs` is used to save a serialized class. It uses binary serialization and save *filename* (default: typeof(Serialized Class) in *path* (default: Application.persistentDataPath folder).
+you may create an instance of this class and call `Save<T>()` or `Load<T>` to save or retrieve data.
+In current project, this class is used to save score of player.
+
 ### Win Condition
-### Asset Bundles
-### Editor Programming for Levels Data SO
+As mentioned earlier, my main focus was to make project as designer friendly as possible. 
+`LevelManager.cs` has a reference to `AWinCondition.cs` which is abstract class to be implemented to check for win condition. `AWinCondition.cs` inherits from `ScriptableObject` meaning WinConditions can be created as an asset by the designers
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/WinConditionCreate.jpg "WinConditionCreate")
+
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/WinConditions.jpg "WinConditions")
+
+These win conditions are set in `LevelsDataSO`
+for common win condition for all levels:
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/WinConditionsLevelSO.jpg "WinConditionsLevelSO")
+
+for different win condition for all levels:
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/WinConditionsDiffLevelSO.jpg "WinConditionsDiffLevelSO")
+
+to create a totally new type of wincondition, inherit `AWinCondition.cs` and implement `ConditionToWin(ScoreController)` function, create SO and there you go just drag it on `LevelsDataSO`
+
+#### Editor Programming for Levels Data SO
+For ease of Designers, I also wrote a custom inspector editor script for LevelsDataSO
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/LevelsSOData.jpg "LevelsSOData")
+
+If designers wants a common win condition, they can toggle the variable and inspector format changes. Designers can have different win conditions for all levels with toggle of a button. Internally, we are checking for the same variable to set level win conditions for individual levels.
+
+Also, Enemy wave information is shown in a single line so it is easier to read. AIPlaneData to spawn, number of this data enemies in the wave and spawn time difference
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/Wave.jpg "Wave")
+
 ### Shader
+We Custom created 2 shaders. One `ScrollableBackground` for vertical scrolling, which adds an offset to uv data with some speed attached to Background Obj in scene
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/ScrollableBackground.jpg "ScrollableBackground")
+
+and the other is `HealthBarBlink` for blink effect on UI element. This materials gets set by `HealthBarBlink.cs` on the Health Bar Image on player(s) as soon as health becomes less than some threshold
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/HealthBarBlink.jpg "HealthBarBlink")
