@@ -62,7 +62,15 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : Component {
 			return null;
 		}
 		T nextObj;
-		if(ObjPool[nextUnused].gameObject.activeSelf){				
+		if(ObjPool[nextUnused].gameObject.activeSelf){
+			int i = 1;
+			for (; i < ObjPool.Count; i++)
+			{
+				if(!ObjPool[(nextUnused+i)%ObjPool.Count].gameObject.activeSelf){
+					nextUnused = (nextUnused+i+1)%ObjPool.Count;
+					return ObjPool[(nextUnused+i)%ObjPool.Count];
+				}
+			}
 			if(canGrow){
 				nextObj = CreateOnePoolObject();
 				ObjPool.Add(nextObj);
