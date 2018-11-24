@@ -1,4 +1,5 @@
 
+
 # Vertical Scroller Shooter [Read Me in progress]
 
 Hi! I am Neeraj S. Thakur, Game Programmer. This repository is dedicated to an open Unity3D multiplayer vertical scroller and shooter game project which is very designer friendly with easy configurable win conditions and async asset loads. In this readme, I have explained all the features of the project. 
@@ -112,7 +113,7 @@ Wow! looks so simple.
 
 Let's simplify it to get the main flow and we'll come back to this diagram again.
 
-Let's Group MVCs together, State Machines together, Win Conditions together, remove some parent classes and let's assume all assets are already loaded so we dont need to worry about asset bundles.
+Let's Group MVCs together, State Machines together, Win Conditions together, combine some abstraction classes and let's assume all assets are pre-loaded so we don't need to worry about asset bundles.
 
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/SimplifiedUML.png "SimplifiedUML")
 much better! Let's start with the technical flow
@@ -135,8 +136,24 @@ When the game starts, Player chooses mode of the game and calls `GameManager.cs`
 
 ## Project Contents [In progress]
 With the basic flow explained, let me go deeper into the code and explain more systems.
-### APlaneController (Dependency Injection) and Command pattern
+### APlaneController (Dependency Injection) 
+`APlaneController.cs` is an abstract class which Updates movement direction of the plane, Move it and triggers FireBullet event. 
+This class is implemented by `PlayerPlaneController.cs` and `AIPlaneController.cs` which use conditions statements provided by `KeyboardControllerSO.cs` (Command pattern) and `AIPlaneState.cs` (State Machine) respectively.
+
 ### AIPlaneState (State Machine)
+We implemented a very simple State Machine.
+
+ - Approach state: Try to follow player (`AIApproachPlaneState.cs`)
+ - Attack state: Fire Bullet (`AIAttackPlaneState.cs`)
+ - Evade state: Run away from player (`AIEvadePlaneState.cs`)
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/AIStateMachine.png "AIStateMachine")
+
+To explain state transition in words: **Attack**, if in range and not in cooldown. **Evade**, if in cooldown. **Approach**, if not in cooldown and far away.
+
+Internally, more priority is given to Evade state, than Approach, than Attack.
+With just these 3 states, and different `PlaneDataSO`, we are able to create various kind of enemies with similar behaviors.
+
 ### Model - View - Controller (MVC)
 ### WorldSpaceGameBoundary (Singleton)
 ### ObjectPool<**T**>
