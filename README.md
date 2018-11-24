@@ -60,6 +60,9 @@ Player(s) plane is(are) controlled via Keyboard keys. Based on default settings,
 
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/KeyboardControls.jpg "KeyboardControls")
 
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/KeyboardControlsSO.jpg.jpg "KeyboardControlsSO.jpg")
+
 ## Enemies
 Game has 3 different types of AI Planes (Easy difficulty, Medium difficulty, Hard difficulty) and similar types of Homing Missiles inflicting different damage.
 
@@ -230,7 +233,11 @@ User can type their name in the dialog box to save their high score.
 
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/HighScore.jpg "HighScore")
 
-[More on Saving in SaveLoad session]
+### Save Load
+`SaveLoad.cs` is used to save a serialized class. It uses binary serialization and save *filename* (default: typeof(Serialized Class) in *path* (default: Application.persistentDataPath folder).
+you may create an instance of this class and call `Save<T>()` or `Load<T>` to save or retrieve data.
+
+In current project, this class is used to save score of player.
 
 #### Head Up Display (HUD)
 
@@ -273,10 +280,6 @@ If you'll look at the image above,
 
 > `WorldSpaceGameBoundary.cs` could have been easily referenced by `GameManager.cs` and used by `APlaneController.cs` instead of Singleton, but my vision was to provide 'A valid world bound' for all objects irrespective of  inter-references for ease of Level Designers. 
 
-### Save Load
-`SaveLoad.cs` is used to save a serialized class. It uses binary serialization and save *filename* (default: typeof(Serialized Class) in *path* (default: Application.persistentDataPath folder).
-you may create an instance of this class and call `Save<T>()` or `Load<T>` to save or retrieve data.
-In current project, this class is used to save score of player.
 
 ### Win Condition
 As mentioned earlier, my main focus was to make project as designer friendly as possible. 
@@ -315,4 +318,5 @@ We Custom created 2 shaders. One `ScrollableBackground` for vertical scrolling, 
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/ScrollableBackground.jpg "ScrollableBackground")
 
 and the other is `HealthBarBlink` for blink effect on UI element. This materials gets set by `HealthBarBlink.cs` on the Health Bar Image on player(s) as soon as health becomes less than some threshold
+
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/HealthBarBlink.jpg "HealthBarBlink")
