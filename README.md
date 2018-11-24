@@ -1,6 +1,4 @@
-
-
-# Vertical Scroller Shooter [Read Me in progress]
+# Vertical Scroller Shooter [Read Me: in progress]
 
 Hi! I am Neeraj S. Thakur, Game Programmer. This repository is dedicated to an open Unity3D multiplayer vertical scroller and shooter game project which is very designer friendly with easy configurable win conditions and async asset loads. In this readme, I have explained all the features of the project. 
 
@@ -138,6 +136,9 @@ When the game starts, Player chooses mode of the game and calls `GameManager.cs`
 With the basic flow explained, let me go deeper into the code and explain more systems.
 ### APlaneController (Dependency Injection) 
 `APlaneController.cs` is an abstract class which Updates movement direction of the plane, Move it and triggers FireBullet event. 
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/APlaneControllerDI.png "APlaneControllerDI")
+
 This class is implemented by `PlayerPlaneController.cs` and `AIPlaneController.cs` which use conditions statements provided by `KeyboardControllerSO.cs` (Command pattern) and `AIPlaneState.cs` (State Machine) respectively.
 
 ### AIPlaneState (State Machine)
@@ -155,6 +156,40 @@ Internally, more priority is given to Evade state, than Approach, than Attack.
 With just these 3 states, and different `PlaneDataSO`, we are able to create various kind of enemies with similar behaviors.
 
 ### Model - View - Controller (MVC)
+We are using MVC architectural pattern for 3 systems.
+
+ #### Heath System
+ ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/HealthMVC.png "HealthMVC")
+
+`Plane.cs` has direct reference to `HealthModel.cs`, which subscribes to onHit(IHealthable). This event callback for every collision trigger, based on **Layer Collision Matrix** set at **Physics2D** settings
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/CollisionMatrix.jpg "CollisionMatrix")
+
+Internally, `HealthController.cs` reduces health from maxHealth by *inflictingDamageAmount* from `IHealthable.cs` interface. 
+
+`HealthModel.cs` sets onHealthChange(currentHealth, maxHealth) event of `HealthController.cs` for onHit(IHealthable). onHealthChange event also gets subscribed by local `HealthView.cs` to display health bar. 
+
+*[onHealthChange is also subscribed by `HealthBarBlink.cs` which makes healthbar blink once it reach some value (configurable from prefab)]*
+#### Score System
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/ScoreMVC.png "ScoreMVC")
+
+`LevelManager.cs` initialize `ScoreController.cs` on start of the game session. `ScoreController.cs` updates score based on *updatefrequency* from `ScoreDataSO`. 
+`ScoreController.cs` also subscribes to onEnemyKilled and onPlayerKilled from `LevelManager.cs` and updates score based on Enemy Data or Evaluate Final Score to show highscore in `ScoreView.cs`.
+List of High Scores are saved using `SaveLoad.cs` class in persistence data folder (for now atleast), and read by `ScoreModel.cs` after game session ends (on player death). `ScoreController.cs` then evaluates and respond to `ScoreView.cs` to show (or not) high score dialog box.
+
+User can type their name in the dialog box to save their high score.
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/HighScore.jpg "HighScore")
+
+[More on Saving in SaveLoad session]
+
+#### Head Up Display (HUD)
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/HUDMVC.png "HUDMVC")
+
+`GameManager.cs` on session start, sets `HUDController.cs` which subscribes itself to different events in `LevelManager.cs` to show and hide UI using `HUDView.cs`
+
 ### WorldSpaceGameBoundary (Singleton)
 ### ObjectPool<**T**>
 ### Save Load
