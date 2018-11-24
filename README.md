@@ -275,8 +275,13 @@ If you'll look at the image above,
 - ![#FFFF00](https://placehold.it/15/FFFF00/000000?text=+)  **Yellow**: Points outside the camera view but within a range of extra world range.
 - ![#FF0000](https://placehold.it/15/FF0000/000000?text=+)  **Red**: Points are inside extra range
 
-`PlayerPlaneController.cs` works inside  ![#00FF00](https://placehold.it/15/00FF00/000000?text=+) green zone, meaning PlayerPlane cannot move beyond camera view.
+`PlayerPlaneController.cs` works inside  ![#00FF00](https://placehold.it/15/00FF00/000000?text=+) green zone, meaning PlayerPlane cannot move beyond camera view. Bullets also works inside this zone.
 `AIPlaneController.cs` works inside  ![#FF0000](https://placehold.it/15/FF0000/000000?text=+) red zone, meaning AIPlane can move beyond camera view but not far away.  `AIPlaneController.cs`checks for ![#FFFF00](https://placehold.it/15/FFFF00/000000?text=+) yellow zone when disabling or force killing the AI enemy (or making enemy plane move out of the camera before killing them)
+
+
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/WorldSpaceBoundaryScene.jpg "WorldSpaceBoundaryScene")
+
 
 > `WorldSpaceGameBoundary.cs` could have been easily referenced by `GameManager.cs` and used by `APlaneController.cs` instead of Singleton, but my vision was to provide 'A valid world bound' for all objects irrespective of  inter-references for ease of Level Designers. 
 
