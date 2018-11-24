@@ -169,7 +169,8 @@ Internally, `HealthController.cs` reduces health from maxHealth by *inflictingDa
 
 `HealthModel.cs` sets onHealthChange(currentHealth, maxHealth) event of `HealthController.cs` for onHit(IHealthable). onHealthChange event also gets subscribed by local `HealthView.cs` to display health bar. 
 
-*[onHealthChange is also subscribed by `HealthBarBlink.cs` which makes healthbar blink once it reach some value (configurable from prefab)]*
+> onHealthChange is also subscribed by `HealthBarBlink.cs` which makes healthbar blink once it reach some threshold value (configurable from prefab)
+
 #### Score System
 
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/ScoreMVC.png "ScoreMVC")
@@ -188,10 +189,18 @@ User can type their name in the dialog box to save their high score.
 
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/HUDMVC.png "HUDMVC")
 
-`GameManager.cs` on session start, sets `HUDController.cs` which subscribes itself to different events in `LevelManager.cs` to show and hide UI using `HUDView.cs`
+`GameManager.cs` on session start, sets `HUDController.cs` which subscribes itself to different events in `LevelManager.cs` to show and hide UI using `HUDView.cs`. 
+
+### ObjectPool<**T**>
+`ObjectPool<T>` is a generic abstract class with type constraint of `Component`. This script can be implemented by any other script to create bool of similar type. Set *objectForPool*, pool size and hit play. On Start(), if the object is set, the script will create a pool which can be managed by the implemented script.
+
+In current project we are using this script for creating pool of **Plane**, **Bullets** and **Transform (Blast)**. `PoolManager.cs` manages them with level and game events.
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/PoolManager.jpg "PoolManager")
+
 
 ### WorldSpaceGameBoundary (Singleton)
-### ObjectPool<**T**>
+
 ### Save Load
 ### Win Condition
 ### Asset Bundles
