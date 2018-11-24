@@ -1,4 +1,4 @@
-﻿Shader "Custom/UI/HealthBarBlinkMedival"
+﻿Shader "Custom/UI/HealthBarBlinkMedieval"
 {
 	Properties
 	{

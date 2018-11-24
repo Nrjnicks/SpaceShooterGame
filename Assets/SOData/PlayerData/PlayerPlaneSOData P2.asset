@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a133fe649bd96624b9f03523396ef6e0, type: 3}
-  m_Name: PlayerPlaneSOData
+  m_Name: PlayerPlaneSOData P2
   m_EditorClassIdentifier: 
-  planeColor: {r: 1, g: 1, b: 1, a: 1}
-  planeName: Plane
+  planeColor: {r: 0, g: 1, b: 0.50980395, a: 1}
+  planeName: Player 2
   Speed: 10
   maxHealth: 100
   attackCooldown: 0.2

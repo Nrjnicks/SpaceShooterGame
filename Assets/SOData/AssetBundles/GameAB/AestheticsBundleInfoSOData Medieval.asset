@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38ef7ab042c648a40a7c535bda55fdb6, type: 3}
-  m_Name: AestheticsBundleInfoSOData Medival
+  m_Name: AestheticsBundleInfoSOData Medieval
   m_EditorClassIdentifier: 
   assetBundlePath: aesthetics/medivaltheme
   fontName: Adventurer

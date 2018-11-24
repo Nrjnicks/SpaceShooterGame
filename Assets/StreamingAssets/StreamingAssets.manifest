@@ -1,31 +1,31 @@
 ManifestFileVersion: 0
-CRC: 3996091790
+CRC: 52277745
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: mechanics/coreelements
       Dependencies:
-        Dependency_0: aesthetics/spacetheme
-        Dependency_1: mechanics/sodatas
+        Dependency_0: mechanics/sodatas
+        Dependency_1: aesthetics/spacetheme
     Info_1:
-      Name: aesthetics/spacetheme
-      Dependencies: {}
-    Info_2:
       Name: mechanics/sodatas
       Dependencies: {}
+    Info_2:
+      Name: aesthetics/spacetheme
+      Dependencies: {}
     Info_3:
-      Name: aesthetics/medivaltheme
-      Dependencies:
-        Dependency_0: aesthetics/spacetheme
+      Name: mechanics/assetbundles
+      Dependencies: {}
     Info_4:
       Name: gameinitializer/scene
       Dependencies: {}
     Info_5:
-      Name: mechanics/assetbundles
-      Dependencies: {}
-    Info_6:
       Name: gameinitializer/assetbundleinfo
       Dependencies: {}
+    Info_6:
+      Name: aesthetics/medievaltheme
+      Dependencies:
+        Dependency_0: aesthetics/spacetheme
     Info_7:
-      Name: soundfiles
+      Name: sound/audioclips
       Dependencies: {}

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2259639636
+CRC: 2706081661
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: bd3b14d66f83cbd48a05e8ee1af7a14c
+    Hash: b0ba0427db020859018d67e9c4f4180f
   TypeTreeHash:
     serializedVersion: 2
     Hash: d815895b4aa97867b70a626bb5770f12
@@ -60,5 +60,5 @@ Assets:
 - Assets/Prefabs/Bullet.prefab
 - Assets/Prefabs/PlayerPlane.prefab
 Dependencies:
-- D:/UnityProject/SpaceShooter/Assets/StreamingAssets/aesthetics/spacetheme
-- D:/UnityProject/SpaceShooter/Assets/StreamingAssets/mechanics/sodatas
+- C:/Users/Neeraj/Documents/UnityProjects/1942Clone/Assets/StreamingAssets/mechanics/sodatas
+- C:/Users/Neeraj/Documents/UnityProjects/1942Clone/Assets/StreamingAssets/aesthetics/spacetheme

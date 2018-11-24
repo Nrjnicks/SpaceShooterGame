@@ -1,4 +1,4 @@
-﻿Shader "Custom/Unlit/ScrollableBackgroundMedival"
+﻿Shader "Custom/Unlit/ScrollableBackgroundMedieval"
 {
 	Properties
 	{

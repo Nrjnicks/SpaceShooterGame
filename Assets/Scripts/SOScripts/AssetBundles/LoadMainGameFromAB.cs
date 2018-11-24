@@ -26,7 +26,9 @@ public class LoadMainGameFromAB : MonoBehaviour {
 	
 	void SetAssetBundleInfo(AsyncOperation asyncOperation){
 		AssetBundle assetBundle = ((AssetBundleCreateRequest)asyncOperation).assetBundle;
-		AssetBundlesABInfo assetBundlesABInfo = (AssetBundlesABInfo) assetBundle.LoadAsset<ScriptableObject>(assetBundlesInfo);
-		GameObject.FindObjectOfType<AssetReferenceManager>().LoadAssetBundles(assetBundlesABInfo);
+		assetBundle.LoadAssetAsync<ScriptableObject>(assetBundlesInfo).completed+=(AsyncOperation assetBundleRequest)=>{
+			AssetBundlesABInfo assetBundlesABInfo = (AssetBundlesABInfo)((AssetBundleRequest)assetBundleRequest).asset;
+			GameObject.FindObjectOfType<AssetReferenceManager>().LoadAssetBundles(assetBundlesABInfo);
+		};
 	}
 }

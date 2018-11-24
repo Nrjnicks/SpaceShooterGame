@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007ef5eb0d5d82c47b88c188af253d14, type: 3}
   m_Name: SoundFilesAssetBundleInfo
   m_EditorClassIdentifier: 
-  assetBundlePath: soundfiles
+  assetBundlePath: sound/audioclips
   levelOnGoingMusicName: GameMusic
   levelOnCompleteMusicName: LevelWon
   fireBulletSfxName: BulletFire

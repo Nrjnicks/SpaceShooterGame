@@ -21,6 +21,7 @@ public class Plane : MonoBehaviour, IHealthable {
 		EnablePlane();
 		this.planeData = planeData;
 		this.planeContoller = PlaneContoller;
+		transform.name = planeData.planeName;
 		healthModel.InitParams(this, planeData.maxHealth, OnPlaneDeath);
 		planeSprite.color = planeData.planeColor;
 		if(spawnPosRot!=null){

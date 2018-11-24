@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1729137923
+CRC: 4036418846
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: cb714b01404dd2e20195dda7006e0a26
+    Hash: 50da386fe4728dbda789780e6951bbbd
   TypeTreeHash:
     serializedVersion: 2
     Hash: 87123adc2cf1f41ec6046918e5fd2571
@@ -38,7 +38,8 @@ Assets:
 - Assets/SOData/PlayerData/PlayerKeyboardControls/KeyBoardControlsSO RightHand.asset
 - Assets/SOData/AIPlaneData/AIPlaneSOData mid.asset
 - Assets/SOData/Level/WinConditions/EnemyKilledWinCondition.asset
-- Assets/SOData/PlayerData/PlayerPlaneSOData.asset
+- Assets/SOData/PlayerData/PlayerPlaneSOData P1.asset
+- Assets/SOData/PlayerData/PlayerPlaneSOData P2.asset
 - Assets/SOData/AIPlaneData/AIPlaneSOData easy.asset
 - Assets/SOData/AIPlaneData/AIPlaneSOData boss.asset
 - Assets/SOData/Level/WinConditions/LevelScoreWinCondition.asset

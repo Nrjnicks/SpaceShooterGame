@@ -1,0 +1,34 @@
+ManifestFileVersion: 0
+CRC: 3458598449
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c5561a4f8017e671ed362ff61e07a72b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e87dbf8571acb99b61a8c3872f3764ee
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/ArtAssets/MedievalShooter/FireBall.png
+- Assets/Fonts/Adventurer.ttf
+- Assets/Shaders/ScrollableBackgroundMedieval.shader
+- Assets/ArtAssets/MedievalShooter/Materials/ScrollableBackgroundMedieval.mat
+- Assets/ArtAssets/MedievalShooter/Blood.png
+- Assets/ArtAssets/MedievalShooter/Dragon.png
+- Assets/ArtAssets/MedievalShooter/GrassTile.jpg
+- Assets/Shaders/HealthBarBlinkMedieval.shader
+- Assets/ArtAssets/MedievalShooter/White.jpg
+- Assets/ArtAssets/MedievalShooter/Materials/HealthBarBlinkMedieval.mat
+Dependencies:
+- C:/Users/Neeraj/Documents/UnityProjects/1942Clone/Assets/StreamingAssets/aesthetics/spacetheme

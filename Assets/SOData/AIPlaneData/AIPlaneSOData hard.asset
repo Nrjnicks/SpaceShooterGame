@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: AIPlaneSOData hard
   m_EditorClassIdentifier: 
   planeColor: {r: 1, g: 0, b: 1, a: 1}
-  planeName: Lut. Plane
+  planeName: Lieutenant Major
   Speed: 4
   maxHealth: 40
   attackCooldown: 0.5

@@ -14,5 +14,5 @@ MonoBehaviour:
   playerDataAndControls:
   - planeSOData: {fileID: 11400000, guid: e51937fa70cf0854aaf62da1d470a41b, type: 2}
     keyBoardControl: {fileID: 11400000, guid: 68a155729f5475f4ba52e806d2e3bff2, type: 2}
-  - planeSOData: {fileID: 11400000, guid: e51937fa70cf0854aaf62da1d470a41b, type: 2}
+  - planeSOData: {fileID: 11400000, guid: 6a53425cf254e0c47a11ab872bbb4c70, type: 2}
     keyBoardControl: {fileID: 11400000, guid: 2610c1a8049c00b4d971594970373316, type: 2}

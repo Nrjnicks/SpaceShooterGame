@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1878528901
+CRC: 2125751178
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e60e56168ec387e63a21565070053e9b
+    Hash: a3191f75dd80eba03e85bfc3a4b19489
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 0e7bc338d89817cbffbfdb92baad574f
+    Hash: f95ebd365d07b341869d75468e68192f
 HashAppended: 0
 ClassTypes:
 - Class: 114
@@ -14,15 +14,15 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 94f4ff486e281864681c42a00a589323, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 60cb6cbda01026745a2b2ee4a1081529, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 007ef5eb0d5d82c47b88c188af253d14, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 60cb6cbda01026745a2b2ee4a1081529, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 Assets:
 - Assets/SOData/AssetBundles/GameAB/CoreMechanicsAssetBundleInfoSOData.asset
 - Assets/SOData/AssetBundles/GameAB/AestheticsBundleInfoSOData Space.asset
-- Assets/SOData/AssetBundles/GameAB/AestheticsBundleInfoSOData Medival.asset
+- Assets/SOData/AssetBundles/GameAB/AestheticsBundleInfoSOData Medieval.asset
 - Assets/SOData/AssetBundles/GameAB/SODataAssetBundleInfoSOData.asset
 - Assets/SOData/AssetBundles/GameAB/SoundFilesAssetBundleInfo.asset
 Dependencies: []
