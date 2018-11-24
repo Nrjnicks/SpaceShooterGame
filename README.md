@@ -1,6 +1,6 @@
 
 
-# Vertical Scroller Shooter [Read Me: in progress]
+# Vertical Scroller Shooter
 
 Hi! I am Neeraj S. Thakur, Game Programmer. This repository is dedicated to an open Unity3D multiplayer vertical scroller and shooter game project which is very designer friendly with easy configurable win conditions and async asset loads. In this readme, I have explained all the features of the project. 
 
@@ -62,12 +62,15 @@ Player(s) plane is(are) controlled via Keyboard keys. Based on default settings,
 
 ## Enemies
 Game has 3 different types of AI Planes (Easy difficulty, Medium difficulty, Hard difficulty) and similar types of Homing Missiles inflicting different damage.
+
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/Enemies.jpg "Enemies")
 
 # Designers Friendly
 
 Enough about the game. Now, let's talk about this Unity3D project.
 Main focus in my mind while making this project was to make it adaptive, but also predictive.  Almost everything in game is configurable using `ScriptableObject` (Later, I'll show you how by changing few values in ScriptableObjects you can change the whole game). Let's talk about stuff mentioned above  again, but in more Level and Game Designer perspective.
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/AIPlaneData.jpg "AIPlaneData")
 
 ## Platform
 **Windows Standalone**.
@@ -81,6 +84,7 @@ Game has two modes **single player** and (local) **multi player**.
 Game currently has 2 players multiplayer, but can be theoretically expanded to *int_max*.  Number of players are requested by `GameManager.cs` to `LevelManager.cs` which checks  `MultiPlayerSOData` for Multiplayer data and spawn players. 
 `MultiPlayerSOData` contains list of struct with `PlayerPlaneSOData` and `KeyBoardControlsSO`. Create (explained in details later) as many as you like and enjoy.
 Current max for this project is 4 just because I've only set 4 player spawn positions. Feel free to add inside PoolManager Transform. 
+
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/GameplaySpaceSingleplayer2.jpg "GameplaySpaceSingleplayer2")
 
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/GameplayMedivalMultiplayer2.jpg "GameplayMedivalMultiplayer2")
@@ -97,7 +101,8 @@ Current max for this project is 4 just because I've only set 4 player spawn posi
 
 ## Controls
 KeyBoard Controls for player is read by `KeyBoardControlsSO` which can be configured in editor (or via script for run-time changes!) and assigned individually for each players.
-[right click create SO image]
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/KeyboardControls.jpg "KeyboardControls")
 
 ## Plane Data
 Configurable Parameters of generic planes:
@@ -112,6 +117,7 @@ AI planes has some extra params
 - FOV To Attack
 - Max Active Time On Screen
 - Score Bonus On Kill
+
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/PlaneData.jpg "PlaneData")
 
 
@@ -149,7 +155,7 @@ When the game starts, Player chooses mode of the game and calls `GameManager.cs`
 
 `APlaneController.cs` handles onFireBulletEvent, which is subscribed to functions of `BulletPool` to spawn bullets and `SoundManager.cs` to play SFX. `Plane.cs` onDeathEvent is also subscribed to function of `BlastPool.cs` to spawn blast at place of death. `Plane.cs` has onHit event which on collision with bullet or other `IHealthable.cs`, coordinates with `Health MVC`(more on this in later section) to display health (and in case of player, start health bar blink if health is below threshold) and manage onHealthChange and onDeath events.
 
-## Project Contents [In progress]
+## Project Contents
 With the basic flow explained, let me go deeper into the code and explain more systems.
 ### APlaneController (Dependency Injection) 
 `APlaneController.cs` is an abstract class which Updates movement direction of the plane, Move it and triggers FireBullet event. 
