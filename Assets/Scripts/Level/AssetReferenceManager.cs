@@ -25,7 +25,7 @@ public class AssetReferenceManager : MonoBehaviour {
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<ScriptableObject>(assetBundlesABInfo,assetBundlesABInfo.sODatasABInfoName,SetSODatasABInfo);
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<ScriptableObject>(assetBundlesABInfo,assetBundlesABInfo.aestheticsABInfoName,SetAestheticsABInfo);
 		assetBundlesHandler.LoadAndCacheAssetBundleAsyn<ScriptableObject>(assetBundlesABInfo,assetBundlesABInfo.soundFilesABInfoName,SetSoundFilesABInfo);
-		gameManager.gameObject.SetActive(true);
+
 	}
 
 	///<discription>Set all inter-dependencies from asset bundles to in-game elements</discription>
@@ -77,7 +77,7 @@ public class AssetReferenceManager : MonoBehaviour {
 
 
 	void SetSoundFilesABInfo(ScriptableObject soundFilesABInfo){
-		this.soundFilesABInfo = (SoundFilesABInfo)soundFilesABInfo;
+		this.soundFilesABInfo = (SoundFilesABInfo)soundFilesABInfo;		gameManager.gameObject.SetActive(true);
 	}
 	void SetPlayerPlane(GameObject planeObj){
 		gameManager.levelManager.poolManager.planeSpawnManager.SetPlayerPlanePrefab(planeObj.GetComponent<Plane>());

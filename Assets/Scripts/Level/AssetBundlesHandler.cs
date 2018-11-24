@@ -9,34 +9,44 @@ public class AssetBundlesHandler : MonoBehaviour {
 	void Start () {
 		cachedAssetBundle = new Dictionary<ABInfoSOData, AssetBundle>();
 	}
+
+	///Load AssetBundle Async and cache it for reuse
+	///<param name="assetBundleInfo">Information of asset bundle stored in SO format</param>
+	///<param name="assetName">name of the asset to find</param>
+	///<param name="onCompleteCallBack">Event Callback once asset is loaded</param>
+	public void LoadAndCacheAssetBundleAsyn<T>(ABInfoSOData assetBundleInfo, string assetName, System.Action<T> onCompleteCallBack)where T : Object{
+		if(cachedAssetBundle.ContainsKey(assetBundleInfo)) {
+			OnBundleLoaded<T>(cachedAssetBundle[assetBundleInfo],assetName,onCompleteCallBack);
+			return;
+		}
+		LoadAssetBundle(assetBundleInfo, ()=>{OnBundleLoaded<T>(cachedAssetBundle[assetBundleInfo],assetName,onCompleteCallBack);});
+	}
+
 	///<description>Load AssetBundle Async</description>
 	///<param name="assetBundleInfo">Information of asset bundle stored in SO format</param>
-	///<param name="OnBundleLoad">Event Callback once asset bundle is loaded</param>
-	void LoadAssetBundle(ABInfoSOData assetBundleInfo, System.Action OnBundleLoad){
+	///<param name="onBundleLoad">Event Callback once asset bundle is loaded</param>
+	void LoadAssetBundle(ABInfoSOData assetBundleInfo, System.Action onBundleLoad){
 		AssetBundleCreateRequest assetBundleCreateRequest = (AssetBundleCreateRequest)AssetBundle.LoadFromFileAsync(Path.Combine(UnityEngine.Application.streamingAssetsPath,assetBundleInfo.assetBundlePath));
 		
 		cachedAssetBundle[assetBundleInfo] = assetBundleCreateRequest.assetBundle;
 
-		assetBundleCreateRequest.completed+= (AsyncOperation asyncOperation)=>{OnBundleLoad();};
+		assetBundleCreateRequest.completed+= (AsyncOperation asyncOperation)=>{onBundleLoad();};
 	}
 
-	///Load AssetBundle Async and cache it for reuse
-	///<param name="assetBundleInfo">Information of asset bundle stored in SO format</param>
-	///<param name="OnCompleteCallBack">Event Callback once asset is loaded</param>
-	public void LoadAndCacheAssetBundleAsyn<T>(ABInfoSOData assetBundleInfo, string assetName, System.Action<T> OnCompleteCallBack)where T : Object{
-		if(cachedAssetBundle.ContainsKey(assetBundleInfo)) {
-			OnCompleteCallBack(GetAssetFromAssetBundle<T>(cachedAssetBundle[assetBundleInfo],assetName));
-			return;
-		}
-		LoadAssetBundle(assetBundleInfo, ()=>{OnCompleteCallBack(GetAssetFromAssetBundle<T>(cachedAssetBundle[assetBundleInfo],assetName));});
-	}
-
-	///Get Asset From Asset Bundle
+	///Load asset async
 	///<param name="assetBundle">Asset Bundle</param>
 	///<param name="assetName">name of the asset to find</param>
-	///<return>return asset of type</return>
-	T GetAssetFromAssetBundle<T>(AssetBundle assetBundle, string assetName) where T : Object{
-		return assetBundle.LoadAsset<T>(assetName);
+	///<param name="onCompleteCallBack">Event Callback once asset is loaded</param>
+	void OnBundleLoaded<T>(AssetBundle assetBundle, string assetName,System.Action<T> onCompleteCallBack) where T : Object{
+		assetBundle.LoadAssetAsync<T>(assetName).completed +=
+								(AsyncOperation asyncOperation)=>{OnAssetLoaded<T>((AssetBundleRequest)asyncOperation,onCompleteCallBack);};
+	}
+
+	///Call callback as soon as asset is loaded
+	///<param name="assetBundleRequest">AssetBundleRequest which has information of asset</param>
+	///<param name="onCompleteCallBack">Event Callback once asset is loaded</param>
+	void OnAssetLoaded<T>(AssetBundleRequest assetBundleRequest,System.Action<T> onCompleteCallBack)where T : Object{
+		onCompleteCallBack((T)(assetBundleRequest.asset));
 	}
 
 

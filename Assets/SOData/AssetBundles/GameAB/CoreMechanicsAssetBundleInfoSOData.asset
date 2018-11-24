@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60cb6cbda01026745a2b2ee4a1081529, type: 3}
   m_Name: CoreMechanicsAssetBundleInfoSOData
   m_EditorClassIdentifier: 
-  assetBundlePath: mechanics\coreelements
+  assetBundlePath: mechanics/coreelements
   playerPlanePrefabName: PlayerPlane
   aIPlanePrefabName: AIPlane
   bulletPrefabName: Bullet
