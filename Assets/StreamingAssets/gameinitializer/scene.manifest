@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1369098855
+CRC: 878206750
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0613d01584f59d6a0a6364216230859e
+    Hash: 0d6e03cb1c2d75f5a7d7f383a225073f
   TypeTreeHash:
     serializedVersion: 2
     Hash: 211886d9f09161a519d63a3b8616d5ee
@@ -99,4 +99,5 @@ ClassTypes:
   Script: {instanceID: 0}
 Assets:
 - Assets/Scenes/MainGame.unity
-Dependencies: []
+Dependencies:
+- C:/Users/Neeraj/Documents/UnityProjects/1942Clone/Assets/StreamingAssets/aesthetics/spacetheme

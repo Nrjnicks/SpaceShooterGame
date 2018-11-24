@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 52277745
+CRC: 1971143172
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -18,7 +18,8 @@ AssetBundleManifest:
       Dependencies: {}
     Info_4:
       Name: gameinitializer/scene
-      Dependencies: {}
+      Dependencies:
+        Dependency_0: aesthetics/spacetheme
     Info_5:
       Name: gameinitializer/assetbundleinfo
       Dependencies: {}

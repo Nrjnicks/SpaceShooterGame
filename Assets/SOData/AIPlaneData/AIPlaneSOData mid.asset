@@ -21,4 +21,4 @@ MonoBehaviour:
   minDistanceToAttack: 5
   FOVToAttack: 10
   maxActiveTimeOnScreen: 10
-  scoreBonusOnKill: 75
+  scoreBonusOnKill: 150
