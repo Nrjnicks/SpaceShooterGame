@@ -1,4 +1,5 @@
 
+
 # Vertical Scroller Shooter [Read Me: in progress]
 
 Hi! I am Neeraj S. Thakur, Game Programmer. This repository is dedicated to an open Unity3D multiplayer vertical scroller and shooter game project which is very designer friendly with easy configurable win conditions and async asset loads. In this readme, I have explained all the features of the project. 
@@ -35,8 +36,6 @@ Game starts with user selecting **single player** or **multi player** mode and f
 
 Player(s) starts the level and get approached by enemies in waves. Player has to satisfy win condition (configurable) to proceed to next level, where the cycle repeats.
 
-![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/GameplayMedivalMultiplayer.jpg "GameplayMedivalMultiplayer")
-
 
 ### Game End
 Game ends if player(s) survive all waves in different levels (Won) or lose all health (Lost)
@@ -50,15 +49,20 @@ Player has to kill *number_of_enemy_planes*, to proceed to next level
 Player has to survive waves of enemies for *time_in_seconds* without dying, to proceed to next level
 ### 3.  Score
 Player has to gain *score* by either surviving or killing enemy planes, to proceed to next level
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/WinConditions.jpg "WinConditions")
 
 ## Controls
 Player(s) plane is(are) controlled via Keyboard keys. Based on default settings,  
+
 **Player 1** keys: *W A S D* for movement and *Space bar* to fire.
+
 **Player 2** keys: *Arrow Keys* for movement and *Right Ctrl* to fire.
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/KeyboardControls.jpg "KeyboardControls")
 
 ## Enemies
 Game has 3 different types of AI Planes (Easy difficulty, Medium difficulty, Hard difficulty) and similar types of Homing Missiles inflicting different damage.
-[Add types image here]
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/Enemies.jpg "Enemies")
 
 # Designers Friendly
 
@@ -77,7 +81,9 @@ Game has two modes **single player** and (local) **multi player**.
 Game currently has 2 players multiplayer, but can be theoretically expanded to *int_max*.  Number of players are requested by `GameManager.cs` to `LevelManager.cs` which checks  `MultiPlayerSOData` for Multiplayer data and spawn players. 
 `MultiPlayerSOData` contains list of struct with `PlayerPlaneSOData` and `KeyBoardControlsSO`. Create (explained in details later) as many as you like and enjoy.
 Current max for this project is 4 just because I've only set 4 player spawn positions. Feel free to add inside PoolManager Transform. 
-[Image]
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/GameplaySpaceSingleplayer2.jpg "GameplaySpaceSingleplayer2")
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/GameplayMedivalMultiplayer2.jpg "GameplayMedivalMultiplayer2")
 
 ## Win Conditions
 `LevelsSOData` contains a `commonWinCondition` and list of `LevelData` which has `WinCondition` and list of `AIWaveData` values. The 3 win condition types mentioned above has exposed variable and can be created as `ScriptableObject` and assigned for these win conditions.
@@ -106,7 +112,10 @@ AI planes has some extra params
 - FOV To Attack
 - Max Active Time On Screen
 - Score Bonus On Kill
-![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/GameplaySpaceMultiplayer2.jpg "GameplaySpaceMultiplayer2")
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/PlaneData.jpg "PlaneData")
+
+
+
 You can play around with these parameters to create different type of enemies. By just making assigning  *0* to `minDistanceToAttack`, you can make plane, a homing missile.
 Having different data and changeable on fly made level design, creating different kind of enemies (dumb to smart) and setting wave sequence very easy.
 
@@ -164,6 +173,28 @@ Internally, more priority is given to Evade state, than Approach, than Attack.
 With just these 3 states, and different `PlaneDataSO`, we are able to create various kind of enemies with similar behaviors.
 
 ### Asset Bundles
+Asset Bundles are a great way to not just to reduce the build size and load assets async, but to change the game on fly.
+For this, we created `AssetBundlesHandler.cs` which locally cache and load asset bundle from `ABInfoSOData.cs`. `ABInfoSOData.cs` is implemented by different class containing information of assets.
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/AssetBundleInfo.png "AssetBundleInfo")
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/AssetBundlesInfo.jpg "AssetBundleInfo")
+
+
+`AssetBundlesHandler.cs` asynchronously loads assets and calls an onComplete<**T**> event passed by `AssetBundlesHandler.cs`. 
+we finally implemented
+`AssetBundlesABInfo.cs` which has information of all assets bundles to be loaded (**The one above all!**). First we load this asset bundle and from there, we load other asset bundles which then load the assets. this makes our whole game total independent of assets.
+
+You will observe that I removed sprites from all the prefabs and setting them while loading assets. This was mostly for removing any inter-dependencies in asset bundles. 
+
+Let me show you an experiment. Let's change the asset bundle name for aesthetics bundle in `AssetBundlesABInfo` from "AestheticsBundleInfoSOData Space" to "AestheticsBundleInfoSOData Medieval". We already have this bundle information SO data ready. So let's build all the asset bundles (**Assets>AssetBundles>Build All AssetBundles**) and hit play.
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/GameplayMedivalMultiplayer.jpg "GameplayMedivalMultiplayer")
+
+
+Woah! now instead of spaceships shooting lasers, we have dragons spitting fire! Great! 2 same screen multiplayer game in build time of one. **noice!**
+> Currently, we are loading all the data on game start, but we can do lazy load as well since we are caching the asset bundle (Cached asset bundle can be unload as well, but kept loaded just to give idea of lazy loading).
+ 
 
 ### Model - View - Controller (MVC)
 We are using MVC architectural pattern for 3 systems.
@@ -252,9 +283,11 @@ As mentioned earlier, my main focus was to make project as designer friendly as 
 
 These win conditions are set in `LevelsDataSO`
 for common win condition for all levels:
+
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/WinConditionsLevelSO.jpg "WinConditionsLevelSO")
 
 for different win condition for all levels:
+
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/WinConditionsDiffLevelSO.jpg "WinConditionsDiffLevelSO")
 
 to create a totally new type of wincondition, inherit `AWinCondition.cs` and implement `ConditionToWin(ScoreController)` function, create SO and there you go just drag it on `LevelsDataSO`
@@ -267,10 +300,12 @@ For ease of Designers, I also wrote a custom inspector editor script for LevelsD
 If designers wants a common win condition, they can toggle the variable and inspector format changes. Designers can have different win conditions for all levels with toggle of a button. Internally, we are checking for the same variable to set level win conditions for individual levels.
 
 Also, Enemy wave information is shown in a single line so it is easier to read. AIPlaneData to spawn, number of this data enemies in the wave and spawn time difference
+
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/Wave.jpg "Wave")
 
 ### Shader
 We Custom created 2 shaders. One `ScrollableBackground` for vertical scrolling, which adds an offset to uv data with some speed attached to Background Obj in scene
+
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/ScrollableBackground.jpg "ScrollableBackground")
 
 and the other is `HealthBarBlink` for blink effect on UI element. This materials gets set by `HealthBarBlink.cs` on the Health Bar Image on player(s) as soon as health becomes less than some threshold
