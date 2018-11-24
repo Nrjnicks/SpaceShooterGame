@@ -1,3 +1,4 @@
+
 # Vertical Scroller Shooter [Read Me: in progress]
 
 Hi! I am Neeraj S. Thakur, Game Programmer. This repository is dedicated to an open Unity3D multiplayer vertical scroller and shooter game project which is very designer friendly with easy configurable win conditions and async asset loads. In this readme, I have explained all the features of the project. 
@@ -194,12 +195,37 @@ User can type their name in the dialog box to save their high score.
 ### ObjectPool<**T**>
 `ObjectPool<T>` is a generic abstract class with type constraint of `Component`. This script can be implemented by any other script to create bool of similar type. Set *objectForPool*, pool size and hit play. On Start(), if the object is set, the script will create a pool which can be managed by the implemented script.
 
-In current project we are using this script for creating pool of **Plane**, **Bullets** and **Transform (Blast)**. `PoolManager.cs` manages them with level and game events.
+In current project we are using this script for creating pool of **Plane**, **Bullets** and **SpriteRenderer** (Blast). `PoolManager.cs` manages them with level and game events.
 
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/PoolManager.jpg "PoolManager")
 
+On Start of the game session, `LevelManager.cs` initialize parameters of `PoolManager.cs` which creates pool for these types.
+Let's talk about them in detail.
+#### Plane Spawn Manager and Plane Pool
+`PlaneSpawnManager.cs` has reference to `PlanePool.cs` which creates pool of `(Player)Plane.cs` and `(AI)Plane.cs`. `PlaneSpawnManager.cs` is responsible for spawning waves of enemy for each level. It reads data from `LevelData` starts spawning enemies.
 
-### WorldSpaceGameBoundary (Singleton)
+#### Bullet Pool
+`BulletPool.cs` is subscribed to `APlaneController.cs`'s onFireBullet(Plane) event and spawns bullet (`Bullet.cs`) at *position*, *speed* and *direction*.
+
+#### Blast Pool
+`BlastPool.cs` instantiates pool of SpriteRenderer, whose positions are set at spawn. `BlastPool.cs` is subscribed to onEnemyKilled(Plane) and onPlayerKilled(Plane) event from `LevelManager.cs` and spawns blast on any plane death.
+
+### World Space Game Boundary (Singleton)
+`WorldSpaceGameBoundary.cs` is a singleton class which is used by `APlaneController.cs` and `Bullet.cs` to check if it is valid to move to a *position*.
+
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/WorldSpaceBoundary.jpg "WorldSpaceBoundary")
+
+`WorldSpaceGameBoundary.cs` draws gizmos in Editor mode for bounds (explained below) and is also *[ExecuteInEditMode]* so Level Designers have visual representation of world to work with.
+
+If you'll look at the image above, 
+- ![#00FF00](https://placehold.it/15/00FF00/000000?text=+)  **Green**: Points are inside camera view
+- ![#FFFF00](https://placehold.it/15/FFFF00/000000?text=+)  **Yellow**: Points outside the camera view but within a range of extra world range.
+- ![#FF0000](https://placehold.it/15/FF0000/000000?text=+)  **Red**: Points are inside extra range
+
+`PlayerPlaneController.cs` works inside  ![#00FF00](https://placehold.it/15/00FF00/000000?text=+) green zone, meaning PlayerPlane cannot move beyond camera view.
+`AIPlaneController.cs` works inside  ![#FF0000](https://placehold.it/15/FF0000/000000?text=+) red zone, meaning AIPlane can move beyond camera view but not far away.  `AIPlaneController.cs`checks for ![#FFFF00](https://placehold.it/15/FFFF00/000000?text=+) yellow zone when disabling force killing the AI enemy (or making enemy plane move out of the camera before killing them)
+
+> `WorldSpaceGameBoundary.cs` could have been easily referenced by `GameManager.cs` and used by `APlaneController.cs` instead of Singleton, but my vision was to provide 'A valid world bound' for all objects irrespective of  inter-references for ease of Level Designers. 
 
 ### Save Load
 ### Win Condition
