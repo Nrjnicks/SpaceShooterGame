@@ -61,7 +61,7 @@ Player(s) plane is(are) controlled via Keyboard keys. Based on default settings,
 ![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/KeyboardControls.jpg "KeyboardControls")
 
 
-![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/KeyboardControlsSO.jpg.jpg "KeyboardControlsSO.jpg")
+![alt text](https://raw.githubusercontent.com/Nrjnicks/SpaceShooterGame/master/ReadmeImages/KeyboardControlsSO.jpg "KeyboardControlsSO.jpg")
 
 ## Enemies
 Game has 3 different types of AI Planes (Easy difficulty, Medium difficulty, Hard difficulty) and similar types of Homing Missiles inflicting different damage.
